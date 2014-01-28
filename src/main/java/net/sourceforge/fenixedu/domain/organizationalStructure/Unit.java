@@ -219,7 +219,7 @@ public class Unit extends Unit_Base {
                 && !hasAnyFunctions() && !hasAnyVigilantGroups() && !hasAnyAssociatedNonAffiliatedTeachers()
                 && !hasAnyPayedGuides() && !hasAnyPayedReceipts() && !hasAnyExternalCurricularCourses()
                 && !hasAnyResultUnitAssociations() && !hasUnitServiceAgreementTemplate() && !hasAnyResearchInterests()
-                && !hasAnyProjectParticipations() && !hasAnyParticipations() && !hasAnyBoards()
+                && !hasAnyProjectParticipations() && !hasAnyParticipations() && getBoardsSet().isEmpty()
                 && (!hasSite() || getSite().isDeletable()) && !hasAnyOwnedReceipts() && !hasAnyPrecedentDegreeInformations()
                 && !hasAnyCandidacyPrecedentDegreeInformations() && !hasAnyUnitSpaceOccupations() && !hasAnyExamCoordinators()
                 && !hasAnyExternalRegistrationDatas() && !hasAnyCooperation() && !hasAnyFiles() && !hasAnyPersistentGroups()
@@ -1713,6 +1713,11 @@ public class Unit extends Unit_Base {
     @Override
     public boolean isAdministrativeOfficeUnit() {
         return getAdministrativeOffice() != null;
+    }
+
+    @Deprecated
+    public java.util.Set<net.sourceforge.fenixedu.domain.messaging.UnitAnnouncementBoard> getBoards() {
+        return getBoardsSet();
     }
 
     @Deprecated
