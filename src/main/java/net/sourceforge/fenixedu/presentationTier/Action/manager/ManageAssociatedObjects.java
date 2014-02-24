@@ -13,17 +13,18 @@ import net.sourceforge.fenixedu.domain.Person;
 import net.sourceforge.fenixedu.domain.accounting.serviceAgreementTemplates.AdministrativeOfficeServiceAgreementTemplate;
 import net.sourceforge.fenixedu.domain.administrativeOffice.AdministrativeOffice;
 import net.sourceforge.fenixedu.domain.administrativeOffice.AdministrativeOfficeType;
-import net.sourceforge.fenixedu.domain.organizationalStructure.AccountabilityType;
 import net.sourceforge.fenixedu.domain.organizationalStructure.AccountabilityTypeEnum;
 import net.sourceforge.fenixedu.domain.organizationalStructure.EmployeeContract;
 import net.sourceforge.fenixedu.domain.organizationalStructure.Unit;
 import net.sourceforge.fenixedu.presentationTier.Action.base.FenixDispatchAction;
+import net.sourceforge.fenixedu.presentationTier.Action.manager.ManagerApplications.ManagerSystemManagementApp;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.fenixedu.bennu.core.domain.Bennu;
-import org.joda.time.DateTime;
+import org.fenixedu.bennu.portal.EntryPoint;
+import org.fenixedu.bennu.portal.StrutsFunctionality;
 import org.joda.time.YearMonthDay;
 
 import pt.ist.fenixWebFramework.struts.annotations.Forward;
@@ -32,6 +33,8 @@ import pt.ist.fenixWebFramework.struts.annotations.Mapping;
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
 
+@StrutsFunctionality(app = ManagerSystemManagementApp.class, path = "manage-associated-objects",
+        titleKey = "title.manage.associated.objects")
 @Mapping(path = "/manageAssociatedObjects", module = "manager")
 @Forwards({ @Forward(name = "show", path = "/manager/listAssociatedObjects.jsp"),
         @Forward(name = "list", path = "/manager/listAssociatedObjects.jsp"),
@@ -52,7 +55,7 @@ public class ManageAssociatedObjects extends FenixDispatchAction {
         private Unit unit;
         private String username;
         private boolean teacher;
-        
+
         public boolean isActive() {
             return active;
         }
@@ -150,6 +153,7 @@ public class ManageAssociatedObjects extends FenixDispatchAction {
         }
     }
 
+    @EntryPoint
     public ActionForward list(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         Set<Department> departments = Bennu.getInstance().getDepartmentsSet();
@@ -206,29 +210,31 @@ public class ManageAssociatedObjects extends FenixDispatchAction {
         new AdministrativeOfficeServiceAgreementTemplate(office);
         office.setRootDomainObject(Bennu.getInstance());
     }
-    
+
     public ActionForward prepareAssociatePersonUnit(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         AssociatedObjectsBean associatedObjectsBean = new AssociatedObjectsBean();
         associatedObjectsBean.setUnits(Unit.readAllUnits());
         request.setAttribute("bean", associatedObjectsBean);
-        
+
         return mapping.findForward("associatePersonUnit");
     }
-    
+
     public ActionForward associatePersonUnit(ActionMapping mapping, ActionForm form, HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         AssociatedObjectsBean bean = getRenderedObject("office");
-        
+
         createAssociationToUnit(bean);
-        
+
         return list(mapping, form, request, response);
     }
-    @Atomic(mode=TxMode.WRITE)
+
+    @Atomic(mode = TxMode.WRITE)
     private void createAssociationToUnit(AssociatedObjectsBean bean) {
         Person person = Person.readPersonByUsername(bean.getUsername());
-        EmployeeContract ec = new EmployeeContract(person, bean.getStart(), null, bean.getUnit(), bean.getAccTypeEnum(), bean.isTeacher());
-        
+        EmployeeContract ec =
+                new EmployeeContract(person, bean.getStart(), null, bean.getUnit(), bean.getAccTypeEnum(), bean.isTeacher());
+
         person.getEmployee().getCurrentDepartmentWorkingPlace();
     }
 }
