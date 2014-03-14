@@ -1976,16 +1976,6 @@ public class Unit extends Unit_Base {
     }
 
     @Deprecated
-    public java.util.Set<net.sourceforge.fenixedu.domain.accounting.events.InstitutionAffiliationEvent> getAffiliationEvent() {
-        return getAffiliationEventSet();
-    }
-
-    @Deprecated
-    public boolean hasAnyAffiliationEvent() {
-        return !getAffiliationEventSet().isEmpty();
-    }
-
-    @Deprecated
     public java.util.Set<net.sourceforge.fenixedu.domain.serviceRequests.documentRequests.ExternalCourseLoadRequest> getExternalCourseLoadRequests() {
         return getExternalCourseLoadRequestsSet();
     }
@@ -1993,16 +1983,6 @@ public class Unit extends Unit_Base {
     @Deprecated
     public boolean hasAnyExternalCourseLoadRequests() {
         return !getExternalCourseLoadRequestsSet().isEmpty();
-    }
-
-    @Deprecated
-    public java.util.Set<net.sourceforge.fenixedu.domain.accounting.events.MicroPaymentEvent> getMicroPaymentEvent() {
-        return getMicroPaymentEventSet();
-    }
-
-    @Deprecated
-    public boolean hasAnyMicroPaymentEvent() {
-        return !getMicroPaymentEventSet().isEmpty();
     }
 
     @Deprecated
@@ -2043,16 +2023,6 @@ public class Unit extends Unit_Base {
     @Deprecated
     public boolean hasAnyFunctions() {
         return !getFunctionsSet().isEmpty();
-    }
-
-    @Deprecated
-    public java.util.Set<net.sourceforge.fenixedu.domain.accounting.events.InstitutionAffiliationEvent> getOpenAffiliationEvent() {
-        return getOpenAffiliationEventSet();
-    }
-
-    @Deprecated
-    public boolean hasAnyOpenAffiliationEvent() {
-        return !getOpenAffiliationEventSet().isEmpty();
     }
 
     @Deprecated
