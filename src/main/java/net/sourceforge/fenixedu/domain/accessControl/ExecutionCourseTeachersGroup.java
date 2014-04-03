@@ -14,6 +14,7 @@ import net.sourceforge.fenixedu.domain.accessControl.groups.language.exceptions.
 import net.sourceforge.fenixedu.domain.accessControl.groups.language.operators.OidOperator;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.fenixedu.bennu.core.domain.groups.UnionGroup;
 
 public class ExecutionCourseTeachersGroup extends AbstractExecutionCourseTeachersGroup {
 
@@ -100,4 +101,9 @@ public class ExecutionCourseTeachersGroup extends AbstractExecutionCourseTeacher
         return false;
     }
 
+    @Override
+    public UnionGroup convert() {
+        return UnionGroup.getInstance(PersistentTeacherGroup.getInstance(getExecutionCourse()),
+                PersistentCoordinatorsOfDegreesOfExecutionCourseGroup.getInstance(getExecutionCourse()));
+    }
 }
