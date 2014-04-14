@@ -7489,7 +7489,6 @@ class inquiries.InquiryResult  {
 
 class inquiries.InquiryResultComment  {
 	String comment;
-	Group allowedToView;
 	Integer resultOrder;
 	ResultPersonCategory personCategory;
 }
