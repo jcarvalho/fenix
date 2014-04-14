@@ -94,11 +94,6 @@ public abstract class File extends File_Base {
     }
 
     @Deprecated
-    public boolean hasExternalStorageIdentification() {
-        return getExternalStorageIdentification() != null;
-    }
-
-    @Deprecated
     public boolean hasChecksumAlgorithm() {
         return getChecksumAlgorithm() != null;
     }
