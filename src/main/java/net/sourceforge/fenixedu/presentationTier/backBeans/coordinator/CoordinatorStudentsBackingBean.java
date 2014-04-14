@@ -307,7 +307,7 @@ public class CoordinatorStudentsBackingBean extends FenixBackingBean {
 
     public String getSerializedFilteredStudents() {
         SearchDegreeStudentsGroup searchGroup = getSearchCriteriaGroup();
-        return searchGroup.getExpressionInHex();
+        return searchGroup.serialize();
     }
 
     public StudentCurricularPlanState getStudentCurricularPlanState() {
