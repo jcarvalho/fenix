@@ -13,24 +13,16 @@ import net.sourceforge.fenixedu.domain.Alert;
 import net.sourceforge.fenixedu.domain.DegreeCurricularPlan;
 import net.sourceforge.fenixedu.domain.Department;
 import net.sourceforge.fenixedu.domain.File;
-import net.sourceforge.fenixedu.domain.LibraryCardSystem;
-import net.sourceforge.fenixedu.domain.ManagementGroups;
-import net.sourceforge.fenixedu.domain.ResourceAllocationRole;
-import net.sourceforge.fenixedu.domain.Role;
 import net.sourceforge.fenixedu.domain.accessControl.Group;
 import net.sourceforge.fenixedu.domain.accessControl.Group.InvalidGroupException;
 import net.sourceforge.fenixedu.domain.accessControl.NoOneGroup;
 import net.sourceforge.fenixedu.domain.accessControl.groups.BennuGroupBridge;
-import net.sourceforge.fenixedu.domain.inquiries.InquiryResultComment;
 import net.sourceforge.fenixedu.domain.messaging.AnnouncementBoard;
 import net.sourceforge.fenixedu.domain.messaging.ExecutionCourseAnnouncementBoard;
 import net.sourceforge.fenixedu.domain.messaging.UnitAnnouncementBoard;
-import net.sourceforge.fenixedu.domain.person.RoleType;
 import net.sourceforge.fenixedu.domain.phd.alert.PhdCustomAlert;
 import net.sourceforge.fenixedu.domain.resource.Resource;
 import net.sourceforge.fenixedu.domain.space.Space;
-import net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess;
-import net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution;
 import net.sourceforge.fenixedu.domain.util.email.Recipient;
 import net.sourceforge.fenixedu.domain.util.email.Sender;
 import net.sourceforge.fenixedu.util.ConnectionManager;
@@ -89,17 +81,9 @@ public class GroupTranslator extends CronTask {
 //        }
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertLibraryCardSystem() {
 //      net.sourceforge.fenixedu.domain.LibraryCardSystem: higherClearenceGroup
-        LibraryCardSystem libraryCardSystem = Bennu.getInstance().getLibraryCardSystem();
-        int counter = 0;
-        try {
-            libraryCardSystem.setHigherClearenceGroup(convert(libraryCardSystem.getHigherClearenceGroup()));
-            counter++;
-        } catch (AlreadyConverted e) {
-        }
-        taskLog("Converted %d LibraryCardSystem.higherClearenceGroup\n", counter);
+//      deleted
     }
 
     @Atomic(mode = TxMode.WRITE)
@@ -116,36 +100,12 @@ public class GroupTranslator extends CronTask {
         taskLog("Converted %d Department.competenceCourseMembersGroup\n", counter);
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertTSDProcess() {
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: automaticValuationGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: omissionConfigurationGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: phasesManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: tsdCoursesAndTeachersManagementGroup
-        int counter = 0;
-        for (TSDProcess tsdProcess : Bennu.getInstance().getTSDProcessesSet()) {
-            try {
-                tsdProcess.setAutomaticValuationGroup(convert(tsdProcess.getAutomaticValuationGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                tsdProcess.setOmissionConfigurationGroup(convert(tsdProcess.getOmissionConfigurationGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                tsdProcess.setPhasesManagementGroup(convert(tsdProcess.getPhasesManagementGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                tsdProcess.setTsdCoursesAndTeachersManagementGroup(convert(tsdProcess.getTsdCoursesAndTeachersManagementGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-        }
-        taskLog("Converted %d groups of TSDProcess\n", counter);
+//      deleted
     }
 
     private void convertAnnouncementBoard() {
@@ -270,18 +230,9 @@ public class GroupTranslator extends CronTask {
         taskLog("Converted %d groups of Space\n", counter);
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertInquiryResultComment() {
 //      net.sourceforge.fenixedu.domain.inquiries.InquiryResultComment: allowedToView
-        int counter = 0;
-        for (InquiryResultComment comment : Bennu.getInstance().getInquiryResultCommentsSet()) {
-            try {
-                comment.setAllowedToView(convert(comment.getAllowedToView()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-        }
-        taskLog("Converted %d InquiryResultComment.allowedToView\n", counter);
+//      deleted
     }
 
     @Atomic(mode = TxMode.WRITE)
@@ -351,67 +302,20 @@ public class GroupTranslator extends CronTask {
         taskLog("Converted %d DegreeCurricularPlan.curricularPlanMembersGroup\n", counter);
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertResourceAllocationRole() {
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: schedulesAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: spacesAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: materialsAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: vehiclesAccessGroup
-        int counter = 0;
-        ResourceAllocationRole role = (ResourceAllocationRole) Role.getRoleByRoleType(RoleType.RESOURCE_ALLOCATION_MANAGER);
-        try {
-            role.setSchedulesAccessGroup(convert(role.getSchedulesAccessGroup()));
-            counter++;
-        } catch (AlreadyConverted e) {
-        }
-        try {
-            role.setSpacesAccessGroup(convert(role.getSpacesAccessGroup()));
-            counter++;
-        } catch (AlreadyConverted e) {
-        }
-        try {
-            role.setMaterialsAccessGroup(convert(role.getMaterialsAccessGroup()));
-            counter++;
-        } catch (AlreadyConverted e) {
-        }
-        try {
-            role.setVehiclesAccessGroup(convert(role.getVehiclesAccessGroup()));
-            counter++;
-        } catch (AlreadyConverted e) {
-        }
-        taskLog("Converted %d groups of ResourceAllocationRole\n", counter);
+//      deleted
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertTeacherServiceDistribution() {
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: coursesManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: teachersManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: coursesValuationManagers
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: teachersValuationManagers
-        int counter = 0;
-        for (TeacherServiceDistribution distribution : Bennu.getInstance().getTeacherServiceDistributionsSet()) {
-            try {
-                distribution.setCoursesManagementGroup(convert(distribution.getCoursesManagementGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                distribution.setTeachersManagementGroup(convert(distribution.getTeachersManagementGroup()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                distribution.setCoursesValuationManagers(convert(distribution.getCoursesValuationManagers()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                distribution.setTeachersValuationManagers(convert(distribution.getTeachersValuationManagers()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-        }
-        taskLog("Converted %d groups of TeacherServiceDistribution\n", counter);
+//      deleted
     }
 
     private void convertRecipient() {
@@ -456,32 +360,14 @@ public class GroupTranslator extends CronTask {
 
     private void convertGroupAvailability() {
 //      net.sourceforge.fenixedu.domain.functionalities.GroupAvailability: targetGroup
+//      deleted
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertManagementGroups() {
 //      net.sourceforge.fenixedu.domain.ManagementGroups: assiduousnessManagers
 //      net.sourceforge.fenixedu.domain.ManagementGroups: assiduousnessSectionStaff
 //      net.sourceforge.fenixedu.domain.ManagementGroups: payrollSectionStaff
-        int counter = 0;
-        for (ManagementGroups managementGroups : Bennu.getInstance().getManagementGroupsSet()) {
-            try {
-                managementGroups.setAssiduousnessManagers(convert(managementGroups.getAssiduousnessManagers()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                managementGroups.setAssiduousnessSectionStaff(convert(managementGroups.getAssiduousnessSectionStaff()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-            try {
-                managementGroups.setPayrollSectionStaff(convert(managementGroups.getPayrollSectionStaff()));
-                counter++;
-            } catch (AlreadyConverted e) {
-            }
-        }
-        taskLog("Converted %d groups of ManagementGroups\n", counter);
+//      deleted
     }
 
     private class AlreadyConverted extends Exception {

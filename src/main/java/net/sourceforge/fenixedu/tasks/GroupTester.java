@@ -13,25 +13,17 @@ import net.sourceforge.fenixedu.domain.Alert;
 import net.sourceforge.fenixedu.domain.DegreeCurricularPlan;
 import net.sourceforge.fenixedu.domain.Department;
 import net.sourceforge.fenixedu.domain.File;
-import net.sourceforge.fenixedu.domain.LibraryCardSystem;
-import net.sourceforge.fenixedu.domain.ManagementGroups;
 import net.sourceforge.fenixedu.domain.Person;
-import net.sourceforge.fenixedu.domain.ResourceAllocationRole;
-import net.sourceforge.fenixedu.domain.Role;
 import net.sourceforge.fenixedu.domain.accessControl.Group.InvalidGroupException;
 import net.sourceforge.fenixedu.domain.accessControl.GroupDifference;
 import net.sourceforge.fenixedu.domain.accessControl.GroupIntersection;
 import net.sourceforge.fenixedu.domain.accessControl.GroupUnion;
-import net.sourceforge.fenixedu.domain.inquiries.InquiryResultComment;
 import net.sourceforge.fenixedu.domain.messaging.AnnouncementBoard;
 import net.sourceforge.fenixedu.domain.messaging.ExecutionCourseAnnouncementBoard;
 import net.sourceforge.fenixedu.domain.messaging.UnitAnnouncementBoard;
-import net.sourceforge.fenixedu.domain.person.RoleType;
 import net.sourceforge.fenixedu.domain.phd.alert.PhdCustomAlert;
 import net.sourceforge.fenixedu.domain.resource.Resource;
 import net.sourceforge.fenixedu.domain.space.Space;
-import net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess;
-import net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution;
 import net.sourceforge.fenixedu.domain.util.email.Recipient;
 import net.sourceforge.fenixedu.domain.util.email.Sender;
 import net.sourceforge.fenixedu.injectionCode.IGroup;
@@ -95,11 +87,9 @@ public class GroupTester extends CronTask {
 //        }
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertLibraryCardSystem() {
 //      net.sourceforge.fenixedu.domain.LibraryCardSystem: higherClearenceGroup
-        LibraryCardSystem libraryCardSystem = Bennu.getInstance().getLibraryCardSystem();
-        test(libraryCardSystem.getHigherClearenceGroup());
+//      deleted
     }
 
     @Atomic(mode = TxMode.WRITE)
@@ -110,18 +100,12 @@ public class GroupTester extends CronTask {
         }
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertTSDProcess() {
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: automaticValuationGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: omissionConfigurationGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: phasesManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TSDProcess: tsdCoursesAndTeachersManagementGroup
-        for (TSDProcess tsdProcess : Bennu.getInstance().getTSDProcessesSet()) {
-            test(tsdProcess.getAutomaticValuationGroup());
-            test(tsdProcess.getOmissionConfigurationGroup());
-            test(tsdProcess.getPhasesManagementGroup());
-            test(tsdProcess.getTsdCoursesAndTeachersManagementGroup());
-        }
+//      deleted
     }
 
     private void convertAnnouncementBoard() {
@@ -179,12 +163,9 @@ public class GroupTester extends CronTask {
         }
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertInquiryResultComment() {
 //      net.sourceforge.fenixedu.domain.inquiries.InquiryResultComment: allowedToView
-        for (InquiryResultComment comment : Bennu.getInstance().getInquiryResultCommentsSet()) {
-            test(comment.getAllowedToView());
-        }
+//      deleted
     }
 
     @Atomic(mode = TxMode.WRITE)
@@ -227,31 +208,20 @@ public class GroupTester extends CronTask {
         }
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertResourceAllocationRole() {
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: schedulesAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: spacesAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: materialsAccessGroup
 //      net.sourceforge.fenixedu.domain.ResourceAllocationRole: vehiclesAccessGroup
-        ResourceAllocationRole role = (ResourceAllocationRole) Role.getRoleByRoleType(RoleType.RESOURCE_ALLOCATION_MANAGER);
-        test(role.getSchedulesAccessGroup());
-        test(role.getSpacesAccessGroup());
-        test(role.getMaterialsAccessGroup());
-        test(role.getVehiclesAccessGroup());
+//      deleted
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertTeacherServiceDistribution() {
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: coursesManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: teachersManagementGroup
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: coursesValuationManagers
 //      net.sourceforge.fenixedu.domain.teacherServiceDistribution.TeacherServiceDistribution: teachersValuationManagers
-        for (TeacherServiceDistribution distribution : Bennu.getInstance().getTeacherServiceDistributionsSet()) {
-            test(distribution.getCoursesManagementGroup());
-            test(distribution.getTeachersManagementGroup());
-            test(distribution.getCoursesValuationManagers());
-            test(distribution.getTeachersValuationManagers());
-        }
+//      deleted
     }
 
     private void convertRecipient() {
@@ -274,18 +244,14 @@ public class GroupTester extends CronTask {
 
     private void convertGroupAvailability() {
 //      net.sourceforge.fenixedu.domain.functionalities.GroupAvailability: targetGroup
+//      deleted
     }
 
-    @Atomic(mode = TxMode.WRITE)
     private void convertManagementGroups() {
 //      net.sourceforge.fenixedu.domain.ManagementGroups: assiduousnessManagers
 //      net.sourceforge.fenixedu.domain.ManagementGroups: assiduousnessSectionStaff
 //      net.sourceforge.fenixedu.domain.ManagementGroups: payrollSectionStaff
-        for (ManagementGroups managementGroups : Bennu.getInstance().getManagementGroupsSet()) {
-            test(managementGroups.getAssiduousnessManagers());
-            test(managementGroups.getAssiduousnessSectionStaff());
-            test(managementGroups.getPayrollSectionStaff());
-        }
+//      deleted
     }
 
     private List<List<String>> chunkalhate(int chunkSize, String table, Class<?>... types) {
