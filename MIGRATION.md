@@ -16,6 +16,15 @@ update ROLE_OPERATION_LOG set OID_ROLE = (select @newOid) where OID_ROLE = (sele
 update FF$DOMAIN_CLASS_INFO set DOMAIN_CLASS_NAME = 'net.sourceforge.fenixedu.domain.Installation' where DOMAIN_CLASS_NAME = 'net.sourceforge.fenixedu.domain.Instalation';
 RENAME TABLE INSTALATION to INSTALLATION;
 alter table BENNU change OID_INSTALATION OID_INSTALLATION bigint unsigned;
+
+delete from FILE_STORAGE where OID = (SELECT OID_D_SPACE_FILE_STORAGE from BENNU);
+
+DROP TABLE MENU_ITEM;
+DROP TABLE PORTAL_CONFIGURATION;
+UPDATE BENNU SET OID_CONFIGURATION = NULL;
+
+DELETE FROM GENERIC_FILE where OID >> 32 in (SELECT DOMAIN_CLASS_ID from FF$DOMAIN_CLASS_INFO where DOMAIN_CLASS_NAME in ('net.sourceforge.fenixedu.domain.documents.LibraryMissingCardsDocument', 'net.sourceforge.fenixedu.domain.documents.LibraryMissingLettersDocument'));
+
 ```
 
 TEMPORARY: For the IST Database, run `delete from PERSON_ROLE where OID_ROLE = 2899102924804;`
