@@ -10,7 +10,6 @@ import net.sourceforge.fenixedu.domain.Professorship;
 import org.fenixedu.bennu.core.annotation.CustomGroupOperator;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.domain.groups.Group;
-import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.joda.time.DateTime;
 
 import pt.ist.fenixframework.Atomic;
@@ -23,13 +22,6 @@ public class PersistentTeacherResponsibleOfExecutionCourseGroup extends Persiste
     protected PersistentTeacherResponsibleOfExecutionCourseGroup(ExecutionCourse executionCourse) {
         super();
         init(executionCourse);
-    }
-
-    @Override
-    public String getPresentationNameKey() {
-        return BundleUtil.getString("resources.SiteResources",
-                " label.net.sourceforge.fenixedu.domain.accessControl.ExecutionCourseResponsibleTeachersGroupWithName",
-                getExecutionCourse().getNameI18N().getContent());
     }
 
     @Override

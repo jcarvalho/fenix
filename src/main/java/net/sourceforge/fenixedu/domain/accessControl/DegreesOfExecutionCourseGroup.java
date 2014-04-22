@@ -18,8 +18,6 @@ import net.sourceforge.fenixedu.domain.accessControl.groups.language.exceptions.
 import net.sourceforge.fenixedu.domain.accessControl.groups.language.operators.OidOperator;
 import net.sourceforge.fenixedu.domain.student.Registration;
 
-import org.fenixedu.bennu.core.domain.groups.UnionGroup;
-
 /**
  * This group represents the group of students associated to at least one degree
  * where a specific execution course is present
@@ -139,9 +137,7 @@ public class DegreesOfExecutionCourseGroup extends ExecutionCourseGroup {
     }
 
     @Override
-    public UnionGroup convert() {
-        return UnionGroup.getInstance(PersistentStudentGroup.getInstance(getExecutionCourse()),
-                PersistentStudentSharingDegreeOfExecutionCourseGroup.getInstance(getExecutionCourse()),
-                PersistentCoordinatorsOfDegreesOfExecutionCourseGroup.getInstance(getExecutionCourse()));
+    public PersistentStudentSharingDegreeOfExecutionCourseGroup convert() {
+        return PersistentStudentSharingDegreeOfExecutionCourseGroup.getInstance(getExecutionCourse());
     }
 }

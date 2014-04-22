@@ -4,11 +4,13 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.sourceforge.fenixedu.domain.Coordinator;
 import net.sourceforge.fenixedu.domain.CurricularCourse;
 import net.sourceforge.fenixedu.domain.Degree;
 import net.sourceforge.fenixedu.domain.DegreeCurricularPlan;
 import net.sourceforge.fenixedu.domain.Department;
 import net.sourceforge.fenixedu.domain.ExecutionCourse;
+import net.sourceforge.fenixedu.domain.ExecutionDegree;
 import net.sourceforge.fenixedu.domain.ExecutionYear;
 import net.sourceforge.fenixedu.domain.Person;
 import net.sourceforge.fenixedu.domain.Professorship;
@@ -217,6 +219,15 @@ public class PersistentTeacherGroup extends PersistentTeacherGroup_Base {
                     users.add(user);
                 }
             }
+            // also include coordinators, this is hidden from the documented semantic of the group and should be taken away in the future
+            for (ExecutionDegree executionDegree : getExecutionCourse().getExecutionDegrees()) {
+                for (Coordinator coordinator : executionDegree.getCoordinatorsListSet()) {
+                    User user = coordinator.getPerson().getUser();
+                    if (user != null) {
+                        users.add(user);
+                    }
+                }
+            }
         }
         return users;
     }
@@ -228,38 +239,52 @@ public class PersistentTeacherGroup extends PersistentTeacherGroup_Base {
 
     @Override
     public boolean isMember(User user) {
-        if (user == null || user.getPerson().getTeacher() == null) {
+        if (user == null) {
             return false;
         }
-        for (final Professorship professorship : user.getPerson().getTeacher().getProfessorshipsSet()) {
-            ExecutionCourse executionCourse = professorship.getExecutionCourse();
-            if (getDegree() != null) {
-                for (final CurricularCourse curricularCourse : executionCourse.getAssociatedCurricularCoursesSet()) {
-                    if (curricularCourse.getDegree().equals(getDegree())) {
+        if (user.getPerson().getTeacher() != null) {
+            for (final Professorship professorship : user.getPerson().getTeacher().getProfessorshipsSet()) {
+                ExecutionCourse executionCourse = professorship.getExecutionCourse();
+                if (getDegree() != null) {
+                    for (final CurricularCourse curricularCourse : executionCourse.getAssociatedCurricularCoursesSet()) {
+                        if (curricularCourse.getDegree().equals(getDegree())) {
+                            return true;
+                        }
+                    }
+                }
+                if (getExecutionCourse() != null) {
+                    if (executionCourse.equals(getExecutionCourse())) {
+                        return true;
+                    }
+                }
+                if (getCampus() != null) {
+                    if (executionCourse.functionsAt(getCampus())) {
                         return true;
                     }
                 }
             }
-            if (getExecutionCourse() != null) {
-                if (executionCourse.equals(getExecutionCourse())) {
-                    return true;
-                }
-            }
-            if (getCampus() != null) {
-                if (executionCourse.functionsAt(getCampus())) {
+            if (getDepartment() != null) {
+                if (getDepartment().equals(
+                        user.getPerson()
+                                .getTeacher()
+                                .getLastWorkingDepartment(getExecutionYear().getBeginDateYearMonthDay(),
+                                        getExecutionYear().getEndDateYearMonthDay()))) {
                     return true;
                 }
             }
         }
-        if (getDepartment() != null) {
-            if (getDepartment().equals(
-                    user.getPerson()
-                            .getTeacher()
-                            .getLastWorkingDepartment(getExecutionYear().getBeginDateYearMonthDay(),
-                                    getExecutionYear().getEndDateYearMonthDay()))) {
-                return true;
+        if (getExecutionCourse() != null) {
+            // also include coordinators, this is hidden from the documented semantic of the group and should be taken away in the future
+            if (!user.getPerson().getCoordinatorsSet().isEmpty()) {
+                Set<ExecutionDegree> degrees = getExecutionCourse().getExecutionDegrees();
+                for (Coordinator coordinator : user.getPerson().getCoordinatorsSet()) {
+                    if (degrees.contains(coordinator.getExecutionDegree())) {
+                        return true;
+                    }
+                }
             }
         }
+
         return false;
     }
 

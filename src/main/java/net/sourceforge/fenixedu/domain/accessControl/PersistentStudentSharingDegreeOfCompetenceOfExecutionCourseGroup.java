@@ -4,17 +4,20 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.sourceforge.fenixedu.domain.Attends;
 import net.sourceforge.fenixedu.domain.CompetenceCourse;
+import net.sourceforge.fenixedu.domain.Coordinator;
+import net.sourceforge.fenixedu.domain.CurricularCourse;
+import net.sourceforge.fenixedu.domain.Degree;
 import net.sourceforge.fenixedu.domain.Enrolment;
 import net.sourceforge.fenixedu.domain.ExecutionCourse;
+import net.sourceforge.fenixedu.domain.ExecutionDegree;
 import net.sourceforge.fenixedu.domain.StudentCurricularPlan;
 import net.sourceforge.fenixedu.domain.student.Registration;
 
 import org.fenixedu.bennu.core.annotation.CustomGroupOperator;
-import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.domain.groups.Group;
-import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.joda.time.DateTime;
 
 import pt.ist.fenixframework.Atomic;
@@ -29,19 +32,38 @@ public class PersistentStudentSharingDegreeOfCompetenceOfExecutionCourseGroup ex
     }
 
     @Override
-    public String getPresentationName() {
-        return BundleUtil.getString("resources.SiteResources",
-                " label.net.sourceforge.fenixedu.domain.accessControl.CompetenceCourseGroup", getExecutionCourse().getNameI18N()
-                        .getContent());
-    }
-
-    @Override
     public Set<User> getMembers() {
         Set<User> users = new HashSet<User>();
-        //TODO: optimize
-        for (User user : Bennu.getInstance().getUserSet()) {
-            if (isMember(user)) {
+
+        Set<Degree> degrees = new HashSet<>();
+        for (CompetenceCourse competenceCourse : getExecutionCourse().getCompetenceCourses()) {
+            for (CurricularCourse curricularCourse : competenceCourse.getAssociatedCurricularCoursesSet()) {
+                degrees.add(curricularCourse.getDegree());
+            }
+        }
+        // students of any degree sharing the same competence of the given execution course
+        for (Degree degree : degrees) {
+            for (Registration registration : degree.getActiveRegistrations()) {
+                User user = registration.getPerson().getUser();
+                if (user != null) {
+                    users.add(user);
+                }
+            }
+        }
+        // students attending the given execution course (most will be in the previous case but some may not)
+        for (Attends attends : getExecutionCourse().getAttendsSet()) {
+            User user = attends.getRegistration().getPerson().getUser();
+            if (user != null) {
                 users.add(user);
+            }
+        }
+        // also include coordinators, this is hidden from the documented semantic of the group and should be taken away in the future
+        for (ExecutionDegree executionDegree : getExecutionCourse().getExecutionDegrees()) {
+            for (Coordinator coordinator : executionDegree.getCoordinatorsListSet()) {
+                User user = coordinator.getPerson().getUser();
+                if (user != null) {
+                    users.add(user);
+                }
             }
         }
         return users;
@@ -54,17 +76,33 @@ public class PersistentStudentSharingDegreeOfCompetenceOfExecutionCourseGroup ex
 
     @Override
     public boolean isMember(User user) {
-        if (user == null || user.getPerson().getStudent() == null) {
+        if (user == null) {
             return false;
         }
-        final Set<CompetenceCourse> competenceCourses = getExecutionCourse().getCompetenceCourses();
-        for (Registration registration : user.getPerson().getStudent().getRegistrationsSet()) {
-            for (StudentCurricularPlan studentCurricularPlan : registration.getStudentCurricularPlansSet()) {
-                for (Enrolment enrolment : studentCurricularPlan.getEnrolmentsSet()) {
-                    CompetenceCourse competenceCourse = enrolment.getCurricularCourse().getCompetenceCourse();
-                    if (competenceCourses.contains(competenceCourse)) {
-                        return true;
+        if (user.getPerson().getStudent() != null) {
+            final Set<CompetenceCourse> competenceCourses = getExecutionCourse().getCompetenceCourses();
+            for (Registration registration : user.getPerson().getStudent().getRegistrationsSet()) {
+                // students of any degree sharing the same competence of the given execution course 
+                for (StudentCurricularPlan studentCurricularPlan : registration.getStudentCurricularPlansSet()) {
+                    for (Enrolment enrolment : studentCurricularPlan.getEnrolmentsSet()) {
+                        CompetenceCourse competenceCourse = enrolment.getCurricularCourse().getCompetenceCourse();
+                        if (competenceCourses.contains(competenceCourse)) {
+                            return true;
+                        }
                     }
+                }
+                // students attending the given execution course (most will be in the previous case but some may not)
+                if (registration.getAttendingExecutionCoursesFor().contains(getExecutionCourse())) {
+                    return true;
+                }
+            }
+        }
+        // also include coordinators, this is hidden from the documented semantic of the group and should be taken away in the future
+        if (!user.getPerson().getCoordinatorsSet().isEmpty()) {
+            Set<ExecutionDegree> degrees = getExecutionCourse().getExecutionDegrees();
+            for (Coordinator coordinator : user.getPerson().getCoordinatorsSet()) {
+                if (degrees.contains(coordinator.getExecutionDegree())) {
+                    return true;
                 }
             }
         }
