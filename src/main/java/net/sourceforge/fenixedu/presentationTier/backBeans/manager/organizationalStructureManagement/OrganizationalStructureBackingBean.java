@@ -949,7 +949,7 @@ public class OrganizationalStructureBackingBean extends FenixBackingBean {
 
     public String getUnitName() throws FenixServiceException {
         if (this.unitName == null && this.getChooseUnit() != null) {
-            this.unitName = this.getChooseUnit().getName();
+            this.getChooseUnit().getPartyName().getContent(Language.pt);
         }
         return unitName;
     }
