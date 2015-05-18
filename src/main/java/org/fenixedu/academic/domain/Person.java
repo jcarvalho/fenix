@@ -100,7 +100,6 @@ import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.domain.UserProfile;
 import org.fenixedu.bennu.core.domain.groups.PersistentGroup;
 import org.fenixedu.bennu.core.groups.Group;
-import org.fenixedu.bennu.core.groups.UserGroup;
 import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.fenixedu.bennu.core.util.CoreConfiguration;
@@ -435,7 +434,7 @@ public class Person extends Person_Base {
      * @return a group that only contains this person
      */
     public Group getPersonGroup() {
-        return UserGroup.of(this.getUser());
+        return this.getUser().groupOf();
     }
 
     /**
@@ -1820,7 +1819,7 @@ public class Person extends Person_Base {
         contact.logRefuse(this);
     }
 
-    public static Set<User> convertToUsers(Collection<Person> persons) {
-        return persons.stream().map(Person::getUser).filter(Objects::nonNull).collect(Collectors.toSet());
+    public static Group convertToUserGroup(Collection<Person> persons) {
+        return Group.users(persons.stream().map(Person::getUser).filter(Objects::nonNull));
     }
 }

@@ -21,6 +21,7 @@ package org.fenixedu.academic.domain.phd.alert;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.exceptions.DomainException;
@@ -33,9 +34,6 @@ import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.joda.time.LocalDate;
-
-import com.google.common.collect.FluentIterable;
-import com.google.common.collect.ImmutableSet;
 
 public class PhdCustomAlert extends PhdCustomAlert_Base {
 
@@ -94,8 +92,8 @@ public class PhdCustomAlert extends PhdCustomAlert_Base {
         return getTargetGroup().toGroup();
     }
 
-    protected ImmutableSet<Person> getTargetPeople() {
-        return FluentIterable.from(getTargetAccessGroup().getMembers()).transform(User::getPerson).toSet();
+    protected Set<Person> getTargetPeople() {
+        return getTargetAccessGroup().getMembers().map(User::getPerson).collect(Collectors.toSet());
     }
 
     @Override
@@ -142,15 +140,10 @@ public class PhdCustomAlert extends PhdCustomAlert_Base {
     public String getTargetGroupInText() {
         Group targetGroup = getTargetAccessGroup();
 
-        Set<User> elements = targetGroup.getMembers();
-
         StringBuilder builder = new StringBuilder();
-
-        for (User user : elements) {
-            builder.append(user.getPerson().getName()).append(" (").append(user.getPerson().getEmailForSendingEmails())
-                    .append(")\n");
-        }
-
+        targetGroup.getMembers().forEach(
+                user -> builder.append(user.getPerson().getName()).append(" (")
+                        .append(user.getPerson().getEmailForSendingEmails()).append(")\n"));
         return builder.toString();
     }
 

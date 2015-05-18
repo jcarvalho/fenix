@@ -26,7 +26,7 @@ import org.fenixedu.academic.domain.accessControl.ScientificCommissionGroup;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.DynamicGroup;
-import org.fenixedu.bennu.io.servlets.FileDownloadServlet;
+import org.fenixedu.bennu.io.servlet.FileDownloadServlet;
 
 public class ThesisFile extends ThesisFile_Base {
 

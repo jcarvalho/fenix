@@ -19,7 +19,7 @@
     <properties>
         <skipTests>true</skipTests>
 
-        <version.org.fenixedu.bennu>3.4.0</version.org.fenixedu.bennu>
+        <version.org.fenixedu.bennu>4.0.0-SNAPSHOT</version.org.fenixedu.bennu>
     </properties>
 
     <issueManagement>
@@ -100,7 +100,12 @@
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-renderers</artifactId>
-            <version>5.0.0</version>
+            <version>5.1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fenixedu</groupId>
+            <artifactId>bennu-portal</artifactId>
+            <version>4.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
@@ -110,7 +115,7 @@
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>bennu-spring</artifactId>
-            <version>1.1.0</version>
+            <version>${version.org.fenixedu.bennu}</version>
         </dependency>
         <dependency>
             <groupId>javax.faces</groupId>
@@ -200,11 +205,6 @@
         </dependency>
         <dependency>
             <groupId>org.fenixedu</groupId>
-            <artifactId>bennu-signals</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.fenixedu</groupId>
             <artifactId>bennu-io</artifactId>
             <version>${version.org.fenixedu.bennu}</version>
         </dependency>
@@ -216,7 +216,7 @@
         <dependency>
             <groupId>org.fenixedu</groupId>
             <artifactId>fenixedu-spaces</artifactId>
-            <version>1.6.1</version>
+            <version>1.7.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.github.axet</groupId>

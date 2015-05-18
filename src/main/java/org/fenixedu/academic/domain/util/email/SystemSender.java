@@ -22,7 +22,6 @@ import org.fenixedu.academic.domain.organizationalStructure.Unit;
 import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.groups.PersistentGroup;
 import org.fenixedu.bennu.core.groups.Group;
-import org.fenixedu.bennu.core.groups.NobodyGroup;
 
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
@@ -62,7 +61,7 @@ public class SystemSender extends SystemSender_Base {
     public Group getOptOutGroup() {
         PersistentGroup optOutGroup = super.getOptOutPersistentGroup();
         if (optOutGroup == null) {
-            return NobodyGroup.get();
+            return Group.nobody();
         }
         return optOutGroup.toGroup();
     }

@@ -78,7 +78,6 @@ import org.fenixedu.academic.domain.student.RegistrationProtocol;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.util.Bundle;
 import org.fenixedu.bennu.core.domain.User;
-import org.fenixedu.bennu.core.domain.UserLoginPeriod;
 import org.fenixedu.bennu.core.i18n.BundleUtil;
 import org.joda.time.LocalDate;
 
@@ -451,7 +450,7 @@ public class PhdProgramCandidacyProcess extends PhdProgramCandidacyProcess_Base 
         if (person.getUser() == null) {
             person.setUser(new User(person.getProfile()));
         }
-        UserLoginPeriod.createOpenPeriod(person.getUser());
+        person.getUser().openLoginPeriod();
 
         RoleType.grant(RoleType.RESEARCHER, person.getUser());
 
