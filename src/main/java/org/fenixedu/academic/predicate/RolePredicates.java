@@ -79,14 +79,6 @@ public class RolePredicates {
         };
     };
 
-    public static final AccessControlPredicate<Object> MASTER_DEGREE_ADMINISTRATIVE_OFFICE_PREDICATE =
-            new AccessControlPredicate<Object>() {
-                @Override
-                public boolean evaluate(Object domainObject) {
-                    return hasRole(AcademicGroups.MASTER_DEGREE_ADMINISTRATIVE_OFFICE);
-                };
-            };
-
     public static final AccessControlPredicate<Object> OPERATOR_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {

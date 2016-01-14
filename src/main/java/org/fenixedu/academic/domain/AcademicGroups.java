@@ -26,21 +26,14 @@ import org.fenixedu.academic.domain.accessControl.CandidateGroup;
 import org.fenixedu.academic.domain.accessControl.ExternalSupervisorGroup;
 import org.fenixedu.bennu.core.groups.DynamicGroup;
 import org.fenixedu.bennu.core.groups.Group;
-import org.fenixedu.bennu.core.groups.LoggedGroup;
 
 public interface AcademicGroups {
-
-    public static final Group MESSAGING = LoggedGroup.get();
-
-    public static final Group PERSON = LoggedGroup.get();
 
     public static final Group STUDENT = new ActiveStudentsGroup();
 
     public static final Group TEACHER = new ActiveTeachersGroup();
 
     public static final DynamicGroup RESEARCHER = DynamicGroup.get("researcher");
-
-    public static final Group DEPARTMENT_MEMBER = TEACHER;
 
     public static final Group RESOURCE_ALLOCATION_MANAGER = DynamicGroup.get("resourceAllocationManager");
 
@@ -53,12 +46,6 @@ public interface AcademicGroups {
     public static final Group COORDINATOR = new AllCoordinatorsGroup();
 
     public static final Group MANAGER = DynamicGroup.get("managers");
-
-    /**
-     * @deprecated Use {@link AcademicAuthorizationGroup#get(AcademicOperationType#MANAGE_DEGREE_CURRICULAR_PLANS)} instead
-     */
-    @Deprecated
-    public static final Group DEGREE_ADMINISTRATIVE_OFFICE_SUPER_USER = DynamicGroup.get("degreeAdmOfficeSudo");
 
     public static final DynamicGroup SCIENTIFIC_COUNCIL = DynamicGroup.get("scientificCouncil");
 
@@ -81,8 +68,6 @@ public interface AcademicGroups {
     public static final Group CANDIDATE = new CandidateGroup();
 
     public static final DynamicGroup ACADEMIC_ADMINISTRATIVE_OFFICE = DynamicGroup.get("academicAdmOffice");
-
-    public static final Group LIBRARY = DynamicGroup.get("library");
 
     public static final Group INTERNATIONAL_RELATION_OFFICE = DynamicGroup.get("internationalRelationsOffice");
 

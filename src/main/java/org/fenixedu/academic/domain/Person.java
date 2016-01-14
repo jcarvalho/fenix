@@ -1120,7 +1120,7 @@ public class Person extends Person_Base {
         if (isPhotoPubliclyAvailable()) {
             return true;
         }
-        return requester != null && AcademicGroups.PERSON.isMember(requester.getUser());
+        return requester != null && requester.getUser() != null;
     }
 
     @Override
