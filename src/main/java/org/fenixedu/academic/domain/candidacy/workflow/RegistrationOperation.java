@@ -33,9 +33,9 @@ import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacy.CandidacyOperationType;
 import org.fenixedu.academic.domain.candidacy.StudentCandidacy;
 import org.fenixedu.academic.domain.candidacy.degree.ShiftDistributionEntry;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.predicate.AccessControl;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.fenixedu.bennu.signals.DomainObjectEvent;
 import org.fenixedu.bennu.signals.Signal;
@@ -57,7 +57,7 @@ public class RegistrationOperation extends CandidacyOperation {
 
     static private final long serialVersionUID = 1L;
 
-    public RegistrationOperation(Set<RoleType> roleTypes, Candidacy candidacy) {
+    public RegistrationOperation(Set<Group> roleTypes, Candidacy candidacy) {
         super(roleTypes, candidacy);
     }
 

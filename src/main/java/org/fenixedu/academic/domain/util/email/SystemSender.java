@@ -41,8 +41,7 @@ public class SystemSender extends SystemSender_Base {
         return String.format("%s (%s)", Unit.getInstitutionAcronym(), "Sistema Fénix");
     }
 
-    public Recipient getRoleRecipient(RoleType roleType) {
-        final Group roleGroup = roleType;
+    public Recipient getRoleRecipient(Group roleGroup) {
         for (Recipient recipient : getRecipientsSet()) {
             final Group members = recipient.getMembers();
             if (roleGroup.equals(members)) {

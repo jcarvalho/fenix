@@ -28,6 +28,7 @@ import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 
 import pt.ist.fenixframework.FenixFramework;
@@ -50,8 +51,8 @@ public class CoordinatorExecutionDegreeAuthorizationFilter extends Filtro {
     }
 
     @Override
-    protected Collection<RoleType> getNeededRoleTypes() {
-        List<RoleType> roles = new ArrayList<RoleType>();
+    protected Collection<Group> getNeededRoleTypes() {
+        List<Group> roles = new ArrayList<>();
         roles.add(RoleType.RESOURCE_ALLOCATION_MANAGER);
         roles.add(RoleType.COORDINATOR);
         return roles;

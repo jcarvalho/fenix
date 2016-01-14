@@ -28,13 +28,14 @@ import org.fenixedu.academic.domain.Teacher;
 import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.filter.framework.DomainObjectAuthorizationFilter;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class DegreeCurricularPlanAuthorizationFilter extends DomainObjectAuthorizationFilter {
 
     public static final DegreeCurricularPlanAuthorizationFilter instance = new DegreeCurricularPlanAuthorizationFilter();
 
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.COORDINATOR;
     }
 

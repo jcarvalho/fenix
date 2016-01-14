@@ -23,9 +23,9 @@ import java.util.Set;
 
 import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacy.CandidacyOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.workflow.IStateWithOperations;
 import org.fenixedu.academic.domain.util.workflow.Operation;
+import org.fenixedu.bennu.core.groups.Group;
 
 public abstract class CandidacyOperation extends Operation {
 
@@ -39,7 +39,7 @@ public abstract class CandidacyOperation extends Operation {
 
     private Candidacy candidacy;
 
-    protected CandidacyOperation(Set<RoleType> roleTypes, Candidacy candidacy) {
+    protected CandidacyOperation(Set<Group> roleTypes, Candidacy candidacy) {
         super(roleTypes);
         setCandidacy(candidacy);
     }

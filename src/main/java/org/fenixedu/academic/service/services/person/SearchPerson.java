@@ -39,6 +39,7 @@ import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.util.CollectionPager;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.commons.StringNormalizer;
 
 import pt.ist.fenixframework.Atomic;
@@ -56,7 +57,7 @@ public class SearchPerson implements Serializable {
 
         private String[] nameWords;
 
-        private RoleType role;
+        private Group role;
 
         private Degree degree;
 
@@ -161,7 +162,7 @@ public class SearchPerson implements Serializable {
             return name;
         }
 
-        public RoleType getRole() {
+        public Group getRole() {
             return role;
         }
 
@@ -198,7 +199,7 @@ public class SearchPerson implements Serializable {
             this.nameWords = (name != null && !name.equals("")) ? getNameWords(name) : null;
         }
 
-        public void setRole(RoleType role) {
+        public void setRole(Group role) {
             this.role = role;
         }
 
@@ -271,7 +272,7 @@ public class SearchPerson implements Serializable {
             persons = new ArrayList<Person>();
 
             persons.addAll(Person.findPerson(searchParameters.getName()));
-            final RoleType roleBd = searchParameters.getRole();
+            final Group roleBd = searchParameters.getRole();
             if (roleBd != null) {
                 for (final Iterator<Person> peopleIterator = persons.iterator(); peopleIterator.hasNext();) {
                     final Person person = peopleIterator.next();

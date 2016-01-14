@@ -567,7 +567,7 @@ public class Person extends Person_Base {
         return findPersonStream(name, size).collect(Collectors.toSet());
     }
 
-    public static Collection<Person> readPersonsByNameAndRoleType(final String name, final RoleType roleType) {
+    public static Collection<Person> readPersonsByNameAndRoleType(final String name, final Group roleType) {
         final Collection<Person> people = findPerson(name);
         for (final Iterator<Person> iter = people.iterator(); iter.hasNext();) {
             final Person person = iter.next();

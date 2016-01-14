@@ -25,7 +25,7 @@ import org.fenixedu.academic.domain.PhotoState;
 import org.fenixedu.academic.domain.PhotoType;
 import org.fenixedu.academic.domain.Photograph;
 import org.fenixedu.academic.domain.person.HumanName;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 import org.joda.time.LocalDate;
 
 /**
@@ -42,7 +42,7 @@ public class PhotographFilterBean implements Serializable {
 
     private LocalDate endDate;
 
-    private RoleType personType;
+    private Group personType;
 
     private String name;
 
@@ -78,11 +78,11 @@ public class PhotographFilterBean implements Serializable {
         this.type = type;
     }
 
-    public RoleType getPersonType() {
+    public Group getPersonType() {
         return personType;
     }
 
-    public void setPersonType(RoleType personType) {
+    public void setPersonType(Group personType) {
         this.personType = personType;
     }
 

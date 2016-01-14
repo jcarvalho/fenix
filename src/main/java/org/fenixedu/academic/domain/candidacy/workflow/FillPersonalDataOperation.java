@@ -41,9 +41,9 @@ import org.fenixedu.academic.domain.contacts.PhysicalAddress;
 import org.fenixedu.academic.domain.contacts.PhysicalAddressData;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
 import org.fenixedu.academic.domain.organizationalStructure.UnitUtils;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.PersonalIngressionData;
 import org.fenixedu.academic.domain.student.PrecedentDegreeInformation;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class FillPersonalDataOperation extends CandidacyOperation {
 
@@ -68,7 +68,7 @@ public class FillPersonalDataOperation extends CandidacyOperation {
 
     private ResidenceApplianceInquiryForm residenceApplianceInquiryForm;
 
-    public FillPersonalDataOperation(final Set<RoleType> roleTypes, final StudentCandidacy studentCandidacy) {
+    public FillPersonalDataOperation(final Set<Group> roleTypes, final StudentCandidacy studentCandidacy) {
         super(roleTypes, studentCandidacy);
 
         addForm(new FillPersonalDataWelcomeForm());

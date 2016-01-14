@@ -20,25 +20,25 @@ package org.fenixedu.academic.service.filter;
 
 import java.util.Collection;
 
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 
 abstract public class Filtro {
 
     /**
      * @return The Needed Roles to Execute The Service
      */
-    protected Collection<RoleType> getNeededRoleTypes() {
+    protected Collection<Group> getNeededRoleTypes() {
         return null;
     }
 
     protected boolean containsRoleType(User user) {
-        final Collection<RoleType> neededRoleTypes = getNeededRoleTypes();
+        final Collection<Group> neededRoleTypes = getNeededRoleTypes();
         if (neededRoleTypes == null || neededRoleTypes.isEmpty()) {
             return true;
         }
         if (user != null) {
-            for (RoleType role : neededRoleTypes) {
+            for (Group role : neededRoleTypes) {
                 if (role.isMember(user)) {
                     return true;
                 }

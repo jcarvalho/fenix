@@ -23,11 +23,11 @@ import java.util.Set;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacy.CandidacyOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class PrintRegistrationDeclarationOperation extends CandidacyOperation {
 
-    public PrintRegistrationDeclarationOperation(Set<RoleType> roleTypes, Candidacy candidacy) {
+    public PrintRegistrationDeclarationOperation(Set<Group> roleTypes, Candidacy candidacy) {
         super(roleTypes, candidacy);
     }
 

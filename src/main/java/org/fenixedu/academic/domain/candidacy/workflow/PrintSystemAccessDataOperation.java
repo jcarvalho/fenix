@@ -23,11 +23,11 @@ import java.util.Set;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacy.CandidacyOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class PrintSystemAccessDataOperation extends CandidacyOperation {
 
-    public PrintSystemAccessDataOperation(Set<RoleType> roleTypes, Candidacy candidacy) {
+    public PrintSystemAccessDataOperation(Set<Group> roleTypes, Candidacy candidacy) {
         super(roleTypes, candidacy);
     }
 

@@ -23,6 +23,7 @@
 package org.fenixedu.academic.service.filter;
 
 import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 /**
  * @author João Mota
@@ -48,7 +49,7 @@ public class ScientificCouncilAuthorizationFilter extends AuthorizationByRoleFil
      * @see ServidorAplicacao.Filtro.AuthorizationByRoleFilter#getRoleType()
      */
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.SCIENTIFIC_COUNCIL;
     }
 

@@ -26,17 +26,17 @@ import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacy.CandidacyOperationType;
 import org.fenixedu.academic.domain.candidacy.StudentCandidacy;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class PrintAllDocumentsOperation extends CandidacyOperation {
 
     static private final long serialVersionUID = 1L;
 
-    public PrintAllDocumentsOperation(Set<RoleType> roleTypes, Candidacy candidacy) {
+    public PrintAllDocumentsOperation(Set<Group> roleTypes, Candidacy candidacy) {
         super(roleTypes, candidacy);
     }
 
-    public PrintAllDocumentsOperation(final RoleType roleType, final Candidacy candidacy) {
+    public PrintAllDocumentsOperation(final Group roleType, final Candidacy candidacy) {
         this(Collections.singleton(roleType), candidacy);
     }
 

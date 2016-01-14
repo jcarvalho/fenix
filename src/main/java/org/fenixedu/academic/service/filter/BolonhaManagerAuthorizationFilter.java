@@ -19,6 +19,7 @@
 package org.fenixedu.academic.service.filter;
 
 import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class BolonhaManagerAuthorizationFilter extends AuthorizationByRoleFilter {
 
@@ -29,7 +30,7 @@ public class BolonhaManagerAuthorizationFilter extends AuthorizationByRoleFilter
     }
 
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.BOLONHA_MANAGER;
     }
 }

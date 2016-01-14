@@ -25,21 +25,21 @@ import java.util.List;
 import java.util.Set;
 
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public abstract class Operation implements Serializable, Comparable<Operation> {
 
-    private Set<RoleType> authorizedRoleTypes;
+    private final Set<Group> authorizedRoleTypes;
 
-    private List<Form> forms = new ArrayList<Form>();
+    private final List<Form> forms = new ArrayList<Form>();
 
     private int currentFormIndex = -1;
 
-    protected Operation(Set<RoleType> roleTypes) {
+    protected Operation(Set<Group> roleTypes) {
         this.authorizedRoleTypes = roleTypes;
     }
 
-    public Set<RoleType> getAuthorizedRoleTypes() {
+    public Set<Group> getAuthorizedRoleTypes() {
         return Collections.unmodifiableSet(authorizedRoleTypes);
     }
 
@@ -52,7 +52,7 @@ public abstract class Operation implements Serializable, Comparable<Operation> {
     }
 
     public boolean isAuthorized(Person person) {
-        for (final RoleType roleType : getAuthorizedRoleTypes()) {
+        for (final Group roleType : getAuthorizedRoleTypes()) {
             if (roleType.isMember(person.getUser())) {
                 return true;
             }

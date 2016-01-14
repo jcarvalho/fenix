@@ -22,9 +22,9 @@
  */
 package org.fenixedu.academic.service.filter;
 
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 
 /**
@@ -36,7 +36,7 @@ public abstract class AuthorizationByRoleFilter extends Filtro {
      * 
      * @return RoleType
      */
-    abstract protected RoleType getRoleType();
+    abstract protected Group getRoleType();
 
     public void execute() throws NotAuthorizedException {
         User userView = Authenticate.getUser();

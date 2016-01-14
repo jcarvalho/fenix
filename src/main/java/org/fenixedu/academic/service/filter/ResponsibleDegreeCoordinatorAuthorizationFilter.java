@@ -29,6 +29,7 @@ import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 
 import pt.ist.fenixframework.FenixFramework;
@@ -52,7 +53,7 @@ public class ResponsibleDegreeCoordinatorAuthorizationFilter extends Authorizati
      * @see ServidorAplicacao.Filtro.AuthorizationByRoleFilter#getRoleType()
      */
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.COORDINATOR;
     }
 

@@ -22,10 +22,10 @@
  */
 package org.fenixedu.academic.service.filter.framework;
 
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.filter.AuthorizationByRoleFilter;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +40,7 @@ public abstract class DomainObjectAuthorizationFilter extends AuthorizationByRol
     private static final Logger logger = LoggerFactory.getLogger(DomainObjectAuthorizationFilter.class);
 
     @Override
-    abstract protected RoleType getRoleType();
+    abstract protected Group getRoleType();
 
     public void execute(String externalId) throws NotAuthorizedException {
         try {

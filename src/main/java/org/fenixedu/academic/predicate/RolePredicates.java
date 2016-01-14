@@ -22,6 +22,7 @@ import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class RolePredicates {
 
@@ -129,7 +130,7 @@ public class RolePredicates {
         };
     };
 
-    private static boolean hasRole(final RoleType roleType) {
+    private static boolean hasRole(final Group roleType) {
         final Person person = AccessControl.getPerson();
         return person != null && roleType.isMember(person.getUser());
     }

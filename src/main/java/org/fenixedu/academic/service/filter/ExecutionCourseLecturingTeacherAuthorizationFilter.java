@@ -31,6 +31,7 @@ import org.fenixedu.academic.dto.InfoExecutionCourse;
 import org.fenixedu.academic.dto.SummariesManagementBean;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 
 import pt.ist.fenixframework.FenixFramework;
@@ -49,7 +50,7 @@ public class ExecutionCourseLecturingTeacherAuthorizationFilter extends Authoriz
     }
 
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.TEACHER;
     }
 

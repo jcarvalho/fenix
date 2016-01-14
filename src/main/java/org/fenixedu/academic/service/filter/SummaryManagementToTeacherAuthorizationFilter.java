@@ -26,6 +26,7 @@ import org.fenixedu.academic.domain.Summary;
 import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 
 /**
@@ -40,7 +41,7 @@ public class SummaryManagementToTeacherAuthorizationFilter extends Authorization
     }
 
     @Override
-    protected RoleType getRoleType() {
+    protected Group getRoleType() {
         return RoleType.TEACHER;
     }
 
