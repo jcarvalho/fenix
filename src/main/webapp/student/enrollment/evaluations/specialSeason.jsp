@@ -27,7 +27,7 @@
 
 <h2><bean:message bundle="STUDENT_RESOURCES"  key="label.enrollment.specialSeason" /></h2>
 
-<logic:notPresent role="role(STUDENT)">
+<logic:notPresent role="activeStudents">
 	<span class="error"><bean:message key="error.exception.notAuthorized" bundle="STUDENT_RESOURCES" /></span>
 </logic:notPresent>
 
@@ -56,7 +56,7 @@
 </logic:messagesPresent>
 
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 	<div class="infoop2">
 		<bean:message key="label.student.SpecialSeasonEnrollment.description" bundle="STUDENT_RESOURCES"/><br/><br/>
 	</div>

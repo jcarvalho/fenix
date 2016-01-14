@@ -24,7 +24,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
 	<h2><bean:message key="documents.requirement" /></h2>
 

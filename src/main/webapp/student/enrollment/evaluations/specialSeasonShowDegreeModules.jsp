@@ -37,7 +37,7 @@
 	}
 </script>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
 	<em><bean:message bundle="STUDENT_RESOURCES"  key="title.student.portalTitle" /></em>
 	<h2>

@@ -25,7 +25,7 @@
 <html:xhtml/>
 
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
     <h2><bean:message key="title.student.shift.enrollment" bundle="STUDENT_RESOURCES"/></h2>
     

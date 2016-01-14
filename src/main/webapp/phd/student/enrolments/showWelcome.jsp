@@ -25,7 +25,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
 
 <%-- ### Title #### --%>

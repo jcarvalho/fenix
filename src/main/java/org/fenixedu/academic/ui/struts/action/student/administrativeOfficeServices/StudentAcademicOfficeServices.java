@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "StudentResources", path = "academic-services", titleKey = "administrative.office.services",
-        hint = "Student", accessGroup = "role(STUDENT)")
+        hint = "Student", accessGroup = "activeStudents")
 @Mapping(path = "/academicOfficeIndex", module = "student",
         parameter = "/student/administrativeOfficeServices/administrativeOfficeServicesIntro.jsp")
 public class StudentAcademicOfficeServices extends ForwardAction {

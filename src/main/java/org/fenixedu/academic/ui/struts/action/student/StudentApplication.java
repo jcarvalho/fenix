@@ -27,7 +27,7 @@ import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 public class StudentApplication extends ForwardAction {
 
     static final String HINT = "Student";
-    static final String ACCESS_GROUP = "role(STUDENT)";
+    static final String ACCESS_GROUP = "activeStudents";
     static final String BUNDLE = "StudentResources";
 
     @StrutsApplication(path = "consult", titleKey = "consult", bundle = BUNDLE, accessGroup = ACCESS_GROUP, hint = HINT)

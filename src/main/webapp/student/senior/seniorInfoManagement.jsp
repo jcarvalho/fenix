@@ -26,7 +26,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr" %>
 <html:xhtml/>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
 	<h2><bean:message key="label.title.seniorInfo"/></h2>
 	

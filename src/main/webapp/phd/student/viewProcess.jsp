@@ -24,7 +24,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr" %>
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/taglib/phd" prefix="phd" %>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="label.phd.viewProcess" bundle="PHD_RESOURCES" /></h2>

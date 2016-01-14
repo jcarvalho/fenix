@@ -29,7 +29,7 @@
 <em><bean:message bundle="STUDENT_RESOURCES"  key="title.student.portalTitle" /></em>
 <h2><bean:message bundle="STUDENT_RESOURCES"  key="label.enrollment.specialSeason" /></h2>
 
-<logic:notPresent role="role(STUDENT)">
+<logic:notPresent role="activeStudents">
 	<span class="error"><bean:message key="error.exception.notAuthorized" bundle="STUDENT_RESOURCES" /></span>
 </logic:notPresent>
 
@@ -39,7 +39,7 @@
 	</p>
 </html:messages>
 
-<logic:present role="role(STUDENT)">
+<logic:present role="activeStudents">
 	<logic:notPresent name="bean" property="scp">
 		<fr:view name="scps" schema="student.studentCurricularPlans">
 			<fr:layout name="tabular">
