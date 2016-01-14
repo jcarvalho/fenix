@@ -30,7 +30,7 @@ public class InternationalRelationsApplication extends ForwardAction {
 
     static final String BUNDLE = "InternRelationOfficeResources";
     static final String HINT = "International Relations";
-    static final String ACCESS_GROUP = "role(INTERNATIONAL_RELATION_OFFICE)";
+    static final String ACCESS_GROUP = "#internationalRelationsOffice";
 
     @StrutsApplication(bundle = "AcademicAdminOffice", path = "consult", titleKey = "link.consult", hint = HINT,
             accessGroup = ACCESS_GROUP)

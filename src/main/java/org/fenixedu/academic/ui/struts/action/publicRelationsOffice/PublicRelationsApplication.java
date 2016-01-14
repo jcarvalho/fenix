@@ -28,7 +28,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 public class PublicRelationsApplication extends ForwardAction {
 
     static final String HINT = "Public Relations";
-    static final String ACCESS_GROUP = "role(PUBLIC_RELATIONS_OFFICE)";
+    static final String ACCESS_GROUP = "#publicRelationsOffice";
 
     @StrutsApplication(bundle = "AlumniResources", path = "alumni", titleKey = "label.alumni.main.title", hint = HINT,
             accessGroup = ACCESS_GROUP)

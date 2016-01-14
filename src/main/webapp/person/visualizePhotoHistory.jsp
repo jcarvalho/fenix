@@ -28,7 +28,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(PERSON)">
+<logic:present role="logged">
 <bean:define id="person" name="LOGGED_USER_ATTRIBUTE" property="person"/>
 
 <h2><bean:message key="label.person.title.photoHistory"/></h2>

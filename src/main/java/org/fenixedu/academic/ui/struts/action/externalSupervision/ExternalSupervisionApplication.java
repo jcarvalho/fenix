@@ -33,7 +33,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "ExternalSupervisionResources", path = "external-supervision", titleKey = "externalSupervision",
-        hint = "External Supervision", accessGroup = "role(EXTERNAL_SUPERVISOR)")
+        hint = "External Supervision", accessGroup = "externalSupervisor")
 @Mapping(path = "/welcome", module = "externalSupervision")
 @Forwards({ @Forward(name = "welcome", path = "/externalSupervision/externalSupervisionGreetings.jsp"),
         @Forward(name = "welcome_AFA", path = "/externalSupervision/externalSupervisionGreetingsAFA.jsp"),
@@ -59,7 +59,7 @@ public class ExternalSupervisionApplication extends Action {
     }
 
     @StrutsApplication(bundle = "ExternalSupervisionResources", path = "consult", titleKey = "button.consult",
-            hint = "External Supervision", accessGroup = "role(EXTERNAL_SUPERVISOR)")
+            hint = "External Supervision", accessGroup = "externalSupervisor")
     public static class ExternalSupervisionConsultApp {
 
     }

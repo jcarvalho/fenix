@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "ResidenceManagementResources", path = "residence", titleKey = "label.residenceManagement",
-        hint = "Residence", accessGroup = "role(RESIDENCE_MANAGER)")
+        hint = "Residence", accessGroup = "#residenceManager")
 @Mapping(module = "residenceManagement", path = "/index", parameter = "/residenceManagement/index.jsp")
 public class ResidenceManagerApplication extends ForwardAction {
 

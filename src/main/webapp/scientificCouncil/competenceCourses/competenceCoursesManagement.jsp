@@ -165,7 +165,7 @@ ${portal.toolkit()}
 												<f:param name="competenceCourseID" value="#{competenceCourse.externalId}"/>
 												<f:param name="selectedDepartmentUnitID" value="#{CompetenceCourseManagement.selectedDepartmentUnitID}"/>
 											</h:outputLink>
-											<logic:present role="(role(SCIENTIFIC_COUNCIL) | role(BOLONHA_MANAGER))">
+											<logic:present role="(#scientificCouncil | #bolonhaManager)">
 												<h:outputText value=" , "/>
 												<h:outputLink value="#{facesContext.externalContext.requestContextPath}/scientificCouncil/competenceCourses/transferCompetenceCourse.faces">
 													<h:outputText value="#{scouncilBundle['transfer']}"/>

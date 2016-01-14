@@ -37,7 +37,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "CandidateResources", descriptionKey = "portal.candidate", path = "candidate",
-        titleKey = "portal.candidate", accessGroup = "role(CANDIDATE)", hint = "Candidate")
+        titleKey = "portal.candidate", accessGroup = "candidate", hint = "Candidate")
 @Mapping(module = "candidate", path = "/index")
 @Forwards(value = {
         @Forward(name = "showCandidacyDetails", path = "/candidate/degreeCandidacyManagement.do?method=showCandidacyDetails"),
@@ -69,7 +69,7 @@ public class CandidateApplication extends FenixAction {
     }
 
     @StrutsApplication(bundle = "CandidateResources", path = "candidacies", titleKey = "link.candidacies",
-            accessGroup = "role(CANDIDATE)", hint = "Candidate")
+            accessGroup = "candidate", hint = "Candidate")
     public static class CandidateCandidaciesApp {
     }
 

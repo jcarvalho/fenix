@@ -29,7 +29,7 @@ public class DepartmentMemberApp extends ForwardAction {
 
     static final String HINT = "Department Member";
     static final String BUNDLE = "DepartmentMemberResources";
-    static final String ACCESS_GROUP = "role(DEPARTMENT_MEMBER)";
+    static final String ACCESS_GROUP = "activeTeachers";
 
     @StrutsApplication(bundle = BUNDLE, path = "department", titleKey = "title.department", hint = HINT,
             accessGroup = ACCESS_GROUP)

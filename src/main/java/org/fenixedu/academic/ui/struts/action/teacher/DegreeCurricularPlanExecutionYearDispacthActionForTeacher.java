@@ -26,7 +26,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 
 @StrutsFunctionality(app = TeacherTeachingApp.class, path = "view-curriculum-historic",
-        titleKey = "link.curriculumHistoric.consult", bundle = "CurriculumHistoricResources", accessGroup = "role(TEACHER)")
+        titleKey = "link.curriculumHistoric.consult", bundle = "CurriculumHistoricResources", accessGroup = "activeTeachers")
 @Mapping(module = "teacher", path = "/chooseExecutionYearAndDegreeCurricularPlan",
         formBean = "executionYearDegreeCurricularPlanForm")
 @Forwards({ @Forward(name = "chooseExecutionYear", path = "/commons/curriculumHistoric/chooseDegreeCPlanExecutionYear.jsp"),

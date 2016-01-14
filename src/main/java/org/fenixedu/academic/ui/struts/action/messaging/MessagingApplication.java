@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 public class MessagingApplication {
 
     private static final String BUNDLE = "MessagingResources";
-    private static final String ACCESS_GROUP = "role(MESSAGING)";
+    private static final String ACCESS_GROUP = "logged";
     private static final String HINT = "Messaging";
 
     @StrutsApplication(descriptionKey = "label.emails", path = "emails", titleKey = "label.emails", bundle = BUNDLE,

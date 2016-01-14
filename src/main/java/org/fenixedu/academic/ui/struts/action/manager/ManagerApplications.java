@@ -49,7 +49,7 @@ public class ManagerApplications extends ForwardAction {
     }
 
     @StrutsApplication(path = "people-management", titleKey = "title.people", bundle = BUNDLE,
-            accessGroup = "(role(OPERATOR) | #managers)", hint = HINT)
+            accessGroup = "(#operator | #managers)", hint = HINT)
     public static class ManagerPeopleApp {
     }
 

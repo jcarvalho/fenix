@@ -42,7 +42,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "AlumniResources", path = "alumni-section", titleKey = "label.alumni.main.title", hint = "Alumni",
-        accessGroup = "role(ALUMNI)")
+        accessGroup = "allAlumni")
 @Mapping(module = "alumni", path = "/index")
 @Forwards(value = { @Forward(name = "Success", path = "/alumni/index.jsp") })
 public class AlumniHomeDA extends FenixAction {

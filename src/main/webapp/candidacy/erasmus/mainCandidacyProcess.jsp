@@ -87,7 +87,7 @@
 	
 	<bean:define id="degreeBean" name="chooseDegreeBean"/>
 	<bean:define id="mobilityProgramBean" name="chooseMobilityProgramBean"/>
-	<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+	<logic:present role="#internationalRelationsOffice">
 	<logic:equal name="canCreateProcess" value="true">
 		<p>
 			<html:link action='<%= "/caseHandling" + processName.toString() + ".do?method=prepareCreateNewProcess"%>'>
@@ -179,7 +179,7 @@
 				</logic:empty>
 			</li>
 		</logic:iterate>
-		<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+		<logic:present role="#internationalRelationsOffice">
 			<li>
 				<html:link action="<%= "/caseHandlingMobilityApplicationProcess.do?method=manageEmailTemplates&processId=" + processId %>">Manage Email Templates</html:link>
 			</li>
@@ -190,13 +190,13 @@
 		</ul>
 	</logic:notEmpty>
 	
-	<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+	<logic:present role="#internationalRelationsOffice">
 		<html:link action="/erasmusCandidacyProcessReport.do?method=list" paramId="erasmusCandidacyProcessId" paramName="process" paramProperty="externalId">
 			<bean:message key="label.org.fenixedu.academic.domain.candidacyProcess.erasmus.reports.ErasmusCandidacyProcessReport" bundle="ACADEMIC_OFFICE_RESOURCES" />
 		</html:link>
 	</logic:present>
 	
-	<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+	<logic:present role="#internationalRelationsOffice">
 		<%-- Show processes with not viewed learning agreements --%>
 		<p><strong><bean:message key="title.erasmus.not.viewed.approved.learning.agreements.list" bundle="ACADEMIC_OFFICE_RESOURCES"/></strong></p>
 		<logic:empty name="process" property="processesWithNotViewedApprovedLearningAgreements">
@@ -222,7 +222,7 @@
 		</logic:notEmpty>
 	</logic:present>
 	
-	<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+	<logic:present role="#internationalRelationsOffice">
 		<%-- Show processes with not viewed learning agreements --%>
 		<p><strong><bean:message key="title.erasmus.not.viewed.erasmus.alerts.process.list" bundle="ACADEMIC_OFFICE_RESOURCES"/></strong></p>
 		<logic:empty name="process" property="processesWithNotViewedAlerts">
@@ -250,7 +250,7 @@
 	
 	<p><strong><bean:message key="title.erasmus.application.process.list" bundle="ACADEMIC_OFFICE_RESOURCES"/></strong></p>
 	<%-- create child process --%>
-	<logic:present role="role(INTERNATIONAL_RELATION_OFFICE)">
+	<logic:present role="#internationalRelationsOffice">
 		<logic:equal name="canCreateChildProcess" value="true">
 			<html:link action='<%= "/caseHandling" + childProcessName.toString() + ".do?method=prepareCreateNewProcess&amp;parentProcessId=" + processId.toString() %>'>
 				+ <bean:message key='<%= "link.create.new.process." + childProcessName.toString()%>' bundle="APPLICATION_RESOURCES"/>	

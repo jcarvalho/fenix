@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "ApplicationResources", path = "operator", titleKey = "title.account.manager", hint = "Operator",
-        accessGroup = "(role(OPERATOR) | #managers)")
+        accessGroup = "(#operator | #managers)")
 @Mapping(path = "/index", module = "operator", parameter = "/operator/index.jsp")
 public class OperatorApplication extends ForwardAction {
 

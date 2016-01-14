@@ -21,7 +21,7 @@ package org.fenixedu.academic.ui.struts.action.rectorate.batches;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "AcademicAdminOffice", path = "rectorate", titleKey = "label.rectorate", hint = "Rectorate",
-        accessGroup = "role(RECTORATE)")
+        accessGroup = "#rectorate")
 public class RectorateApplication {
 
 }

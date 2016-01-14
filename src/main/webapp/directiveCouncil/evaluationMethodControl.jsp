@@ -26,7 +26,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/taglib/enum" prefix="e" %>
 <html:xhtml/>
 
-<logic:present role="role(DIRECTIVE_COUNCIL)">
+<logic:present role="#directiveCouncil">
 
 	<h2><bean:message key="label.evaluationMethodControl"/></h2>
 

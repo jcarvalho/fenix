@@ -23,12 +23,12 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "GEPResources", path = "gep", titleKey = "label.gep.fullName", hint = "Gep",
-        accessGroup = "role(GEP)")
+ accessGroup = "#gep")
 @Mapping(path = "/index", module = "gep", parameter = "/gep/index.jsp")
 public class GepApplication extends ForwardAction {
 
     static final String HINT = "Gep";
-    static final String ACCESS_GROUP = "role(GEP)";
+    static final String ACCESS_GROUP = "#gep";
     static final String BUNDLE = "GEPResources";
 
     @StrutsApplication(bundle = BUNDLE, path = "gep", titleKey = "label.gep.portal.tilte", hint = HINT,

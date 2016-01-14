@@ -30,7 +30,7 @@ import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 public class ScientificCouncilApplication extends ForwardAction {
 
     static final String HINT = "Scientific Council";
-    static final String ACCESS_GROUP = "role(SCIENTIFIC_COUNCIL)";
+    static final String ACCESS_GROUP = "scientificCouncil";
     static final String BUNDLE = "ScientificCouncilResources";
 
     @StrutsApplication(bundle = BUNDLE, path = "bolonha-process", titleKey = "bolonha.process", accessGroup = ACCESS_GROUP,

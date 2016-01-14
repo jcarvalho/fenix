@@ -25,18 +25,18 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 
 @StrutsApplication(bundle = "BolonhaManagerResources", path = "bolonha", titleKey = "bolonhaManager", hint = "Bolonha Manager",
-        accessGroup = "role(BOLONHA_MANAGER)")
+        accessGroup = "#bolonhaManager")
 @Mapping(module = "bolonhaManager", path = "/index", parameter = "/bolonhaManager/index.jsp")
 public class BolonhaManagerApplication extends ForwardAction {
 
     @StrutsApplication(bundle = "BolonhaManagerResources", path = "competence-courses",
-            titleKey = "navigation.competenceCoursesManagement", accessGroup = "role(BOLONHA_MANAGER)", hint = "Bolonha Manager")
+            titleKey = "navigation.competenceCoursesManagement", accessGroup = "#bolonhaManager", hint = "Bolonha Manager")
     public static class CompetenceCourseManagementApp {
 
     }
 
     @StrutsApplication(bundle = "BolonhaManagerResources", path = "curricular-plans",
-            titleKey = "navigation.curricularPlansManagement", accessGroup = "role(BOLONHA_MANAGER)", hint = "Bolonha Manager")
+            titleKey = "navigation.curricularPlansManagement", accessGroup = "#bolonhaManager", hint = "Bolonha Manager")
     public static class CurricularPlansManagementApp {
 
     }

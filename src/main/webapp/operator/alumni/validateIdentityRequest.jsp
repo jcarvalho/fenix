@@ -33,7 +33,7 @@
 	<bean:message key="label.back" bundle="MANAGER_RESOURCES"/>
 </html:link>
 
-<logic:present role="role(OPERATOR)">
+<logic:present role="#operator">
 
 	<fr:view name="requestBody" schema="alumni.identity.request.header" >
 		<fr:layout name="tabular">

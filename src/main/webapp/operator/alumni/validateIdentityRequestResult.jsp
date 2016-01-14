@@ -27,7 +27,7 @@
 
 <!-- validateIdentityRequestResult.jsp -->
 
-<logic:present role="role(OPERATOR)">
+<logic:present role="#operator">
 
 	<h2><bean:message key="alumni.validate.identity.request" bundle="MANAGER_RESOURCES"/></h2>
 

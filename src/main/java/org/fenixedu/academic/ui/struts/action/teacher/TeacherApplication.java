@@ -22,7 +22,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 public class TeacherApplication {
 
-    private static final String ACCESS_GROUP = "role(TEACHER) | professors";
+    private static final String ACCESS_GROUP = "activeTeachers | professors";
 
     @StrutsApplication(bundle = "PhdResources", path = "phd", titleKey = "label.phds", accessGroup = ACCESS_GROUP,
             hint = "Teacher")
@@ -40,7 +40,7 @@ public class TeacherApplication {
     }
 
     @StrutsApplication(bundle = "AcademicAdminOffice", path = "mobility", titleKey = "label.application.mobility",
-            accessGroup = "role(TEACHER)", hint = "Teacher")
+            accessGroup = "activeTeachers", hint = "Teacher")
     public static class TeacherMobilityApp {
     }
 

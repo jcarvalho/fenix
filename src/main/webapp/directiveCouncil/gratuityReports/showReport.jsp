@@ -24,7 +24,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 
-<logic:present role="role(DIRECTIVE_COUNCIL)">
+<logic:present role="#directiveCouncil">
 
 
 	<h2><bean:message bundle="APPLICATION_RESOURCES" key="label.directiveCouncil.gratuityReports" /></h2>

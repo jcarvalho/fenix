@@ -26,13 +26,13 @@ import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 
 @StrutsApplication(bundle = "ResourceAllocationManagerResources", path = "resource-allocation-manager",
         titleKey = "title.resourceAllocationManager.management", hint = "Resource Allocation Manager",
-        accessGroup = "role(RESOURCE_ALLOCATION_MANAGER)")
+        accessGroup = "#resourceAllocationManager")
 @Mapping(path = "/index", module = "resourceAllocationManager", parameter = "/resourceAllocationManager/mainPage.jsp")
 public class RAMApplication extends ForwardAction {
 
     private static final String BUNDLE = "ResourceAllocationManagerResources";
     private static final String HINT = "Resource Allocation Manager";
-    private static final String ACCESS_GROUP = "role(RESOURCE_ALLOCATION_MANAGER)";
+    private static final String ACCESS_GROUP = "#resourceAllocationManager";
 
     @StrutsApplication(bundle = BUNDLE, path = "periods", titleKey = "link.periods", hint = HINT, accessGroup = ACCESS_GROUP)
     public static class RAMPeriodsApp {

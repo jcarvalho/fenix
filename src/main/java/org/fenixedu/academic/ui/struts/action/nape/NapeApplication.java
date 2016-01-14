@@ -23,12 +23,12 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "PortalResources", path = "nape", titleKey = "portal.nape.name", hint = "NAPE",
-        accessGroup = "role(NAPE)")
+ accessGroup = "#nape")
 @Mapping(module = "nape", path = "/index", parameter = "/nape/index.jsp")
 public class NapeApplication extends ForwardAction {
 
     static final String HINT = "NAPE";
-    static final String ACCESS_GROUP = "role(NAPE)";
+    static final String ACCESS_GROUP = "#nape";
 
     @StrutsApplication(bundle = "AcademicAdminOffice", path = "registered-candidacies",
             titleKey = "label.registeredDegreeCandidacies.first.time.student.registration", hint = HINT,

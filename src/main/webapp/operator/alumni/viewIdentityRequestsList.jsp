@@ -29,7 +29,7 @@
 
 <h2><bean:message key="alumni.identity.requests" bundle="MANAGER_RESOURCES"/></h2>
 
-<logic:present role="role(OPERATOR)">
+<logic:present role="#operator">
 
 	<div class="infoop2">
 		Esta lista consiste nos pedidos feitos por alumni com o objectivo de:

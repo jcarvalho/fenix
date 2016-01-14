@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.annotations.Mapping;
 import org.fenixedu.bennu.struts.portal.StrutsApplication;
 
 @StrutsApplication(bundle = "LibraryResources", path = "library", titleKey = "label.library", hint = "Library",
-        accessGroup = "role(LIBRARY)")
+        accessGroup = "#library")
 @Mapping(path = "/index", module = "library", parameter = "/library/index.jsp")
 public class LibraryApplication extends ForwardAction {
 

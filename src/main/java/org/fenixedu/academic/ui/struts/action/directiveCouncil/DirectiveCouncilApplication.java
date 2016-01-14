@@ -28,7 +28,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 public class DirectiveCouncilApplication extends ForwardAction {
 
     protected static final String HINT = "Directive Council";
-    protected static final String ACCESS_GROUP = "role(DIRECTIVE_COUNCIL)";
+    protected static final String ACCESS_GROUP = "#directiveCouncil";
 
     @StrutsApplication(bundle = "ApplicationResources", path = "control", titleKey = "link.control", hint = HINT,
             accessGroup = ACCESS_GROUP)

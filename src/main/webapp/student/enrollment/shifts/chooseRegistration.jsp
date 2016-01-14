@@ -28,7 +28,7 @@
 <logic:present role="activeStudents">
 	<bean:define id="OR_CONDITION" value="true"/>
 </logic:present>
-<logic:present role="role(RESOURCE_ALLOCATION_MANAGER)">
+<logic:present role="#resourceAllocationManager">
    <bean:define id="OR_CONDITION" value="true"/>
 </logic:present>
 

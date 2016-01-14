@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 public class ResearcherApplication {
 
     @StrutsApplication(bundle = "ApplicationResources", path = "final-work", titleKey = "link.manage.finalWork",
-            accessGroup = "role(RESEARCHER)", hint = "Researcher")
+            accessGroup = "#researcher", hint = "Researcher")
     public static class ResearcherFinalWorkApp {
     }
 }

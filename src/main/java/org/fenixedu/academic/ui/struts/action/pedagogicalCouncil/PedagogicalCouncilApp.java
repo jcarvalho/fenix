@@ -25,12 +25,12 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 import org.fenixedu.bennu.struts.portal.StrutsFunctionality;
 
 @StrutsApplication(bundle = PedagogicalCouncilApp.BUNDLE, path = "pedagogical-council", titleKey = "pedagogical.council",
-        accessGroup = "role(PEDAGOGICAL_COUNCIL)", hint = PedagogicalCouncilApp.HINT)
+        accessGroup = "#pedagogicalCouncil", hint = PedagogicalCouncilApp.HINT)
 @Mapping(path = "/index", module = "pedagogicalCouncil", parameter = "/pedagogicalCouncil/index.jsp")
 public class PedagogicalCouncilApp extends ForwardAction {
 
     static final String BUNDLE = "PedagogicalCouncilResources";
-    static final String ACCESS_GROUP = "role(PEDAGOGICAL_COUNCIL)";
+    static final String ACCESS_GROUP = "#pedagogicalCouncil";
     static final String HINT = "Pedagogical Council";
 
     @StrutsApplication(bundle = BUNDLE, path = "bolonha-process", titleKey = "bolonha.process", accessGroup = ACCESS_GROUP,
