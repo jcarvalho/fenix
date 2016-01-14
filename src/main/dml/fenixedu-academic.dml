@@ -4557,10 +4557,6 @@ class Installation {
 	String academicEmailAddress;
 }
 
-class accessControl.PersistentRoleGroup extends .org.fenixedu.bennu.core.domain.groups.PersistentGroup {
-    protected String targetGroup;
-}
-
 class accessControl.FenixPredicateGroup extends .org.fenixedu.bennu.core.domain.groups.PersistentGroup;
 
 class accessControl.PersistentStudentGroup extends accessControl.FenixPredicateGroup {
