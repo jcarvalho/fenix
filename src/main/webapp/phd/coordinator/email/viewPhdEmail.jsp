@@ -24,7 +24,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr" %>
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/taglib/phd" prefix="phd" %>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="label.phd.manage.emails.view" bundle="PHD_RESOURCES" /></h2>

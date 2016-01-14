@@ -27,7 +27,7 @@
 <%@page import="org.fenixedu.academic.domain.phd.PhdProgram"%>
 <%@page import="org.fenixedu.academic.ui.renderers.degreeStructure.DegreeCurricularPlanRendererConfig" %>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <h2><bean:message key="label.phd.manage.enrolments" bundle="PHD_RESOURCES" /></h2>
 

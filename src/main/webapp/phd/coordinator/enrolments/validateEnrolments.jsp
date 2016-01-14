@@ -29,7 +29,7 @@
 <%@page import="org.fenixedu.academic.ui.struts.action.phd.coordinator.providers.ExistingEnrolmentsToValidate"%>
 <%@page import="pt.ist.fenixWebFramework.renderers.validators.EmailValidator"%>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <h2><bean:message key="label.phd.validate.enrolments" bundle="PHD_RESOURCES" /></h2>
 

@@ -27,7 +27,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr" %>
 
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="label.phd.candidacy.academicAdminOffice.manageCandidacyDocuments" bundle="PHD_RESOURCES" /></h2>

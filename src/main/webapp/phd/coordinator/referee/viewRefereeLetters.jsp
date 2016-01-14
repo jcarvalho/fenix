@@ -27,7 +27,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="title.phd.referee.letters" bundle="PHD_RESOURCES" /></h2>

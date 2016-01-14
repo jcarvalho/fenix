@@ -28,7 +28,7 @@
 <h2><bean:message key="label.phd.view.curriculum" bundle="PHD_RESOURCES" /></h2>
 <%-- ### End of Title ### --%>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 	<jsp:include page="/phd/common/viewCurriculum.jsp" />
 

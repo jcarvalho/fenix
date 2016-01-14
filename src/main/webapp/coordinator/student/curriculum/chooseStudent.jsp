@@ -25,7 +25,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 	<jsp:include page="/coordinator/context.jsp" />
 

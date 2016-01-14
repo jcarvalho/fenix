@@ -29,7 +29,7 @@
 <%@page import="org.fenixedu.academic.domain.phd.email.PhdProgramEmailBean" %>
 <%@page import="org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess" %>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 
 <%-- ### Title #### --%>

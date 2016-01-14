@@ -26,7 +26,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <bean:define id="process" name="process" />
 <bean:define id="processId" name="process" property="externalId" />

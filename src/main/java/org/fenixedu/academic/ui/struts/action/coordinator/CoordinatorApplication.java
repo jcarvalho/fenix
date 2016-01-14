@@ -23,7 +23,7 @@ import org.fenixedu.bennu.struts.portal.StrutsApplication;
 public class CoordinatorApplication {
 
     private static final String HINT = "Coordinator";
-    private static final String ACCESS_GROUP = "role(COORDINATOR)";
+    private static final String ACCESS_GROUP = "allCoordinators";
 
     @StrutsApplication(bundle = "ApplicationResources", path = "manage", titleKey = "label.coordinator.management", hint = HINT,
             accessGroup = ACCESS_GROUP)

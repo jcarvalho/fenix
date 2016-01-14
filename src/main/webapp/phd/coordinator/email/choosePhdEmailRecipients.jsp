@@ -31,7 +31,7 @@
 <%@page import="pt.ist.fenixframework.DomainObject"%>
 <%@page import="org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess" %>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 
 <%-- ### Title #### --%>

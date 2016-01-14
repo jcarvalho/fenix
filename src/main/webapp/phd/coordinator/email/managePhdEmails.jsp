@@ -30,7 +30,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="label.phd.manage.emails" bundle="PHD_RESOURCES" /></h2>

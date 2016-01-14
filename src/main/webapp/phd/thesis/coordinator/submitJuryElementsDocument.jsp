@@ -29,7 +29,7 @@
 <%@page import="org.fenixedu.academic.domain.phd.thesis.activities.SubmitJuryElementsDocuments"%>
 <html:xhtml/>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <bean:define id="process" name="process" />
 <bean:define id="individualProcessId" name="process" property="individualProgramProcess.externalId" />

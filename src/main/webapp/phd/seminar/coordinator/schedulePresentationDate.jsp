@@ -26,7 +26,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr" %>
 
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 <bean:define id="individualProcessId" name="process" property="individualProgramProcess.externalId" />
 <bean:define id="processId" name="process" property="externalId" />
 

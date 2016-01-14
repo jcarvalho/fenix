@@ -26,7 +26,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 <%-- ### Title #### --%>
 <h2><bean:message key="label.phd.viewProcess" bundle="PHD_RESOURCES" /></h2>

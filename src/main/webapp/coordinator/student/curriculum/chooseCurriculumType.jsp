@@ -31,7 +31,7 @@
 <span class="error0"><!-- Error messages go here --><html:errors /></span>
 
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 	<bean:define id="studentNumber" name="student" property="number" />
 	<bean:define id="studentId" name="student" property="externalId" />

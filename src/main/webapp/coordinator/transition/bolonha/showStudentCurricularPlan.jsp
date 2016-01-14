@@ -26,7 +26,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 
 
-<logic:present role="role(COORDINATOR)">
+<logic:present role="allCoordinators">
 
 	<jsp:include page="/coordinator/context.jsp" />
 
