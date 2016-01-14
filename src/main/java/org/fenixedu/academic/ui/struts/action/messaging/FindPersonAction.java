@@ -28,7 +28,6 @@ import org.apache.struts.action.ActionMapping;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.Department;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.person.SearchPerson;
 import org.fenixedu.academic.service.services.person.SearchPerson.SearchParameters;
 import org.fenixedu.academic.service.services.person.SearchPerson.SearchPersonPredicate;
@@ -36,6 +35,7 @@ import org.fenixedu.academic.ui.struts.action.base.FenixDispatchAction;
 import org.fenixedu.academic.ui.struts.action.messaging.MessagingApplication.MessagingSearchApp;
 import org.fenixedu.academic.util.CollectionPager;
 import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.fenixedu.bennu.struts.annotations.Forward;
 import org.fenixedu.bennu.struts.annotations.Forwards;
@@ -141,7 +141,7 @@ public class FindPersonAction extends FenixDispatchAction {
             bean.setName(name);
             bean.setViewPhoto(viewPhoto);
             if (!StringUtils.isEmpty(roleType)) {
-                bean.setRoleType(RoleType.valueOf(roleType));
+                bean.setRoleType(Group.parse(roleType));
             }
             if (!StringUtils.isEmpty(degreeId)) {
                 bean.setDegree(FenixFramework.<Degree> getDomainObject(degreeId));

@@ -35,7 +35,6 @@ import org.fenixedu.academic.domain.Teacher;
 import org.fenixedu.academic.domain.accounting.PaymentCode;
 import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.person.IDDocumentType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.util.CollectionPager;
@@ -99,7 +98,7 @@ public class SearchPerson implements Serializable {
             setPaymentCode(paymentCode);
 
             if (roleType != null && roleType.length() > 0) {
-                role = RoleType.valueOf(roleType);
+                role = Group.parse(roleType);
             }
 
             if (!StringUtils.isEmpty(degreeId)) {

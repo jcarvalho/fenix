@@ -24,11 +24,12 @@ import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.Department;
 import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.bennu.core.groups.Group;
 
 public class FindPersonBean implements Serializable {
     private static final long serialVersionUID = -7868952167229025567L;
 
-    private RoleType roleType;
+    private Group roleType;
     private DegreeType degreeType;
     private Degree degree;
     private Department department;
@@ -39,11 +40,11 @@ public class FindPersonBean implements Serializable {
 
     }
 
-    public RoleType getRoleType() {
+    public Group getRoleType() {
         return roleType;
     }
 
-    public void setRoleType(RoleType roleType) {
+    public void setRoleType(Group roleType) {
         this.roleType = roleType;
     }
 
