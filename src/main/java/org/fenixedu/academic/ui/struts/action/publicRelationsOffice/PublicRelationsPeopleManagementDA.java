@@ -62,7 +62,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
             HttpServletResponse response) throws FenixServiceException {
         String id = request.getParameter("managerID");
         User person = FenixFramework.getDomainObject(id);
-        RoleType.revoke(RoleType.PUBLIC_RELATIONS_OFFICE, person);
+        RoleType.PUBLIC_RELATIONS_OFFICE.mutator().revoke(person);
         return managePeople(mapping, actionForm, request, response);
     }
 
@@ -76,7 +76,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
         String username = bean.getUsername();
         User user;
         if (username != null && (user = User.findByUsername(username)) != null) {
-            RoleType.grant(RoleType.PUBLIC_RELATIONS_OFFICE, user);
+            RoleType.PUBLIC_RELATIONS_OFFICE.mutator().grant(user);
         } else {
             addActionMessage(request, "error.noUsername", (username.compareTo("") == 0 ? "(vazio)" : username));
         }

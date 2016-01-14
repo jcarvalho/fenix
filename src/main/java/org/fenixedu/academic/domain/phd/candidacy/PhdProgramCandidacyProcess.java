@@ -453,7 +453,7 @@ public class PhdProgramCandidacyProcess extends PhdProgramCandidacyProcess_Base 
         }
         UserLoginPeriod.createOpenPeriod(person.getUser());
 
-        RoleType.grant(RoleType.RESEARCHER, person.getUser());
+        RoleType.RESEARCHER.mutator().grant(person.getUser());
 
         if (person.getPersonalPhoto() == null) {
             final Photograph photograph = person.getPersonalPhotoEvenIfPending();

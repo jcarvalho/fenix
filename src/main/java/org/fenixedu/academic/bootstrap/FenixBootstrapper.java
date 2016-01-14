@@ -377,11 +377,11 @@ public class FenixBootstrapper {
     static void createManagerUser(AdminUserSection adminSection, SchoolSetupSection schoolSetupSection) {
         User adminUser = User.findByUsername(adminSection.getAdminUsername());
         final Person person = new Person(adminUser.getProfile());
-        RoleType.grant(RoleType.SCIENTIFIC_COUNCIL, adminUser);
-        RoleType.grant(RoleType.SPACE_MANAGER, adminUser);
-        RoleType.grant(RoleType.SPACE_MANAGER_SUPER_USER, adminUser);
-        RoleType.grant(RoleType.ACADEMIC_ADMINISTRATIVE_OFFICE, adminUser);
-        RoleType.grant(RoleType.BOLONHA_MANAGER, adminUser);
+        RoleType.SCIENTIFIC_COUNCIL.mutator().grant(adminUser);
+        RoleType.SPACE_MANAGER.mutator().grant(adminUser);
+        RoleType.SPACE_MANAGER_SUPER_USER.mutator().grant(adminUser);
+        RoleType.ACADEMIC_ADMINISTRATIVE_OFFICE.mutator().grant(adminUser);
+        RoleType.BOLONHA_MANAGER.mutator().grant(adminUser);
         person.setCountry(Country.readDefault());
         person.setCountryOfBirth(Country.readDefault());
 

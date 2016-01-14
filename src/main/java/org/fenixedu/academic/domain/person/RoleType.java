@@ -39,7 +39,7 @@ public interface RoleType {
 
     public static final Group TEACHER = new ActiveTeachersGroup();
 
-    public static final Group RESEARCHER = DynamicGroup.get("researcher");
+    public static final DynamicGroup RESEARCHER = DynamicGroup.get("researcher");
 
     public static final Group DEPARTMENT_MEMBER = TEACHER;
 
@@ -61,7 +61,7 @@ public interface RoleType {
     @Deprecated
     public static final Group DEGREE_ADMINISTRATIVE_OFFICE_SUPER_USER = DynamicGroup.get("degreeAdmOfficeSudo");
 
-    public static final Group SCIENTIFIC_COUNCIL = DynamicGroup.get("scientificCouncil");
+    public static final DynamicGroup SCIENTIFIC_COUNCIL = DynamicGroup.get("scientificCouncil");
 
     public static final Group OPERATOR = DynamicGroup.get("operator");
 
@@ -69,11 +69,11 @@ public interface RoleType {
 
     public static final Group DIRECTIVE_COUNCIL = DynamicGroup.get("directiveCouncil");
 
-    public static final Group BOLONHA_MANAGER = DynamicGroup.get("bolonhaManager");
+    public static final DynamicGroup BOLONHA_MANAGER = DynamicGroup.get("bolonhaManager");
 
-    public static final Group SPACE_MANAGER = DynamicGroup.get("spaceManager");
+    public static final DynamicGroup SPACE_MANAGER = DynamicGroup.get("spaceManager");
 
-    public static final Group SPACE_MANAGER_SUPER_USER = DynamicGroup.get("spaceManagerSudo");
+    public static final DynamicGroup SPACE_MANAGER_SUPER_USER = DynamicGroup.get("spaceManagerSudo");
 
     public static final Group ALUMNI = new AllAlumniGroup();
 
@@ -81,7 +81,7 @@ public interface RoleType {
 
     public static final Group CANDIDATE = new CandidateGroup();
 
-    public static final Group ACADEMIC_ADMINISTRATIVE_OFFICE = DynamicGroup.get("academicAdmOffice");
+    public static final DynamicGroup ACADEMIC_ADMINISTRATIVE_OFFICE = DynamicGroup.get("academicAdmOffice");
 
     public static final Group LIBRARY = DynamicGroup.get("library");
 
@@ -89,7 +89,7 @@ public interface RoleType {
 
     public static final Group EXTERNAL_SUPERVISOR = new ExternalSupervisorGroup();
 
-    public static final Group PUBLIC_RELATIONS_OFFICE = DynamicGroup.get("publicRelationsOffice");
+    public static final DynamicGroup PUBLIC_RELATIONS_OFFICE = DynamicGroup.get("publicRelationsOffice");
 
     public static final Group NAPE = DynamicGroup.get("nape");
 

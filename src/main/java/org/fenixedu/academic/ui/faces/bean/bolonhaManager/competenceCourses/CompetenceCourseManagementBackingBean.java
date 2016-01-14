@@ -271,7 +271,7 @@ public class CompetenceCourseManagementBackingBean extends FenixBackingBean {
 
     private void removeRoleIfNecessary(User user) {
         if (!isUserMemberOfAnyCurricularPlanGroup(user) && !isUserMemberOfAnyDepartmentCompetenceCourseGroup(user)) {
-            RoleType.revoke(RoleType.BOLONHA_MANAGER, user);
+            RoleType.BOLONHA_MANAGER.mutator().revoke(user);
         }
     }
 
@@ -282,7 +282,7 @@ public class CompetenceCourseManagementBackingBean extends FenixBackingBean {
             if (user != null) {
                 Group group = getSelectedDepartmentUnit().getDepartment().getCompetenceCourseMembersGroup();
                 getSelectedDepartmentUnit().getDepartment().setCompetenceCourseMembersGroup(group.grant(user));
-                RoleType.grant(RoleType.BOLONHA_MANAGER, user);
+                RoleType.BOLONHA_MANAGER.mutator().grant(user);
             }
         }
     }

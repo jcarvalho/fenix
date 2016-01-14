@@ -134,7 +134,7 @@ public class DegreeCurricularPlanManagementBackingBean extends FenixBackingBean 
             if (user != null) {
                 Group group = getDcp().getCurricularPlanMembersGroup();
                 getDcp().setCurricularPlanMembersGroup(group.grant(user));
-                RoleType.grant(RoleType.BOLONHA_MANAGER, user);
+                RoleType.BOLONHA_MANAGER.mutator().grant(user);
             }
         }
     }
@@ -167,7 +167,7 @@ public class DegreeCurricularPlanManagementBackingBean extends FenixBackingBean 
 
     private void removeRoleIfNecessary(User user) {
         if (!isUserMemberOfAnyCurricularPlanGroup(user) && !isUserMemberOfAnyDepartmentCompetenceCourseGroup(user)) {
-            RoleType.revoke(RoleType.BOLONHA_MANAGER, user);
+            RoleType.BOLONHA_MANAGER.mutator().revoke(user);
         }
     }
 
