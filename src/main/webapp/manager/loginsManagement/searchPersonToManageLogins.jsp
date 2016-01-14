@@ -27,7 +27,7 @@
 
 <h2><bean:message key="logins.management.title" bundle="MANAGER_RESOURCES"/></h2>
 
-<logic:present role="(role(MANAGER) | role(OPERATOR))">
+<logic:present role="(#managers | role(OPERATOR))">
 	
 	<logic:messagesPresent message="true">
 		<p>

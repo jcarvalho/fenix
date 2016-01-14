@@ -29,7 +29,7 @@
 
 <h2><bean:message key="documents.management.title" bundle="MANAGER_RESOURCES" /></h2>
 
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 
 	<logic:messagesPresent message="true">
 		<p><span class="error0"><!-- Error messages go here --> <html:messages id="message"

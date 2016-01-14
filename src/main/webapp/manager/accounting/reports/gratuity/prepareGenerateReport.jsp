@@ -26,7 +26,7 @@
 <%@page import="org.fenixedu.academic.domain.accounting.report.GratuityReportQueueJobType"%>
 
 <html:xhtml />
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 
 	<h2><bean:message bundle="MANAGER_RESOURCES" key="title.gratuity.reports" /></h2>
 

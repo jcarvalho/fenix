@@ -27,7 +27,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 
 
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 	<h2><bean:message key="label.curricularPlan"
 		bundle="APPLICATION_RESOURCES" /> - <bean:write name="registration"
 		property="lastStudentCurricularPlan.degreeCurricularPlan.presentationName" /></h2>

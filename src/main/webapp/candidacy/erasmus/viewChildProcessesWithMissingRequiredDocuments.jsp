@@ -50,7 +50,7 @@
 	
 	<bean:size id="candidacyProcessesSize" name="candidacyProcesses" />
 		
-		<logic:present role="role(MANAGER)">
+		<logic:present role="#managers">
 			<ul>
 				<li>
 					<html:link action='<%= "/caseHandlingMobilityApplicationProcess.do?method=executeSendEmailToMissingRequiredDocumentsProcesses&amp;processId=" + processId.toString() %>'>

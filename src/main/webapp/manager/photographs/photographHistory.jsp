@@ -29,7 +29,7 @@
 
 <h2>Histórico de Fotografias<!-- bean:message key="documents.management.title" bundle="MANAGER_RESOURCES" / --></h2>
 
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 
 <fr:form action="/photographs/history.do?method=historyFilter">
     <h3>Foto</h3>

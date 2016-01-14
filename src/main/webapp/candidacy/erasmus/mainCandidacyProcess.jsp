@@ -299,7 +299,7 @@
 				<fr:slot name="validatedByMobilityCoordinator" key="label.erasmus.validated.by.coordinator" bundle="ACADEMIC_OFFICE_RESOURCES" />
 				<fr:slot name="erasmusCandidacyStateDescription" key="label.erasmus.candidacy.state.description" bundle="ACADEMIC_OFFICE_RESOURCES" />
 				
-				<logic:present role="role(MANAGER)">
+				<logic:present role="#managers">
 					<fr:slot name="isCandidacyProcessWithEidentifer" key="label.erasmus.eidentifier" bundle="ACADEMIC_OFFICE_RESOURCES" />
 				</logic:present>
 				

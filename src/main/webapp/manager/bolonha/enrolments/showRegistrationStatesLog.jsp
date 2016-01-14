@@ -27,7 +27,7 @@
 
 <%@page import="org.fenixedu.academic.domain.student.registrationStates.RegistrationStateLog"%>
 
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 	<h2><bean:message key="student.registration.states.log" bundle="APPLICATION_RESOURCES" /></h2>
 
 	<html:link action="/bolonhaStudentEnrolment.do?method=showAllStudentCurricularPlans" paramId="studentId" paramName="registration" paramProperty="student.externalId">

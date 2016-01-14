@@ -24,7 +24,7 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 <html:xhtml />
 
-<logic:present role="(role(MANAGER) | role(OPERATOR))">
+<logic:present role="(#managers | role(OPERATOR))">
 
 	<h2><bean:message bundle="MANAGER_RESOURCES" key="title.edit.execution.period" /></h2>
 	

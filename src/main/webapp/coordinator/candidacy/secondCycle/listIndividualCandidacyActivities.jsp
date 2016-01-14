@@ -131,7 +131,7 @@
 	</logic:empty>
 	
 	
-	<logic:present role="role(MANAGER)">
+	<logic:present role="#managers">
 	<%-- show public candidacy access information --%>
 	<h3 style="margin-top: 1em;"><bean:message key="title.public.candidacy.information.access" bundle="CANDIDATE_RESOURCES" />:</h3>
 	

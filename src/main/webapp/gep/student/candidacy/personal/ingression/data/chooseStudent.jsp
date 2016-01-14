@@ -26,7 +26,7 @@
 
 <html:xhtml/>
 
-<logic:present role="role(MANAGER)">
+<logic:present role="#managers">
 
 <h2><bean:message key="title.personal.ingression.data.viewer.student.raides.data.view" bundle="GEP_RESOURCES" /></h2>
 

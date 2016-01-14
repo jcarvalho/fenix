@@ -97,7 +97,7 @@
 			<html:link page="<%=  "/residenceManagement.do?method=editRoomValues&monthOID=" + monthOID %>">
 				<bean:message key="label.modify.roomValues" bundle="RESIDENCE_MANAGEMENT_RESOURCES"/>
 			</html:link>
-			<logic:present role="role(MANAGER)">
+			<logic:present role="#managers">
 			|
 			<html:link page="<%= "/residenceEventManagement.do?method=generatePaymentCodes&monthOID=" + monthOID %>">
 				<bean:message key="label.residence.events.generate.payment.codes" bundle="RESIDENCE_MANAGEMENT_RESOURCES" />
