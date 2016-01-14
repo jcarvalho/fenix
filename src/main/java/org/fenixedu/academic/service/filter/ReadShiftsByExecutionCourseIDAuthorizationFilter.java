@@ -23,6 +23,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Coordinator;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.ExecutionCourse;
@@ -30,7 +31,6 @@ import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -67,8 +67,8 @@ public class ReadShiftsByExecutionCourseIDAuthorizationFilter extends Filtro {
     @Override
     protected Collection<Group> getNeededRoleTypes() {
         List<Group> roles = new ArrayList<>();
-        roles.add(RoleType.RESOURCE_ALLOCATION_MANAGER);
-        roles.add(RoleType.COORDINATOR);
+        roles.add(AcademicGroups.RESOURCE_ALLOCATION_MANAGER);
+        roles.add(AcademicGroups.COORDINATOR);
         return roles;
     }
 
@@ -78,11 +78,11 @@ public class ReadShiftsByExecutionCourseIDAuthorizationFilter extends Filtro {
      * @return
      */
     private boolean hasPrivilege(User id, String executionCourseID) {
-        if (RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(id.getPerson().getUser())) {
+        if (AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(id.getPerson().getUser())) {
             return true;
         }
 
-        if (RoleType.COORDINATOR.isMember(id.getPerson().getUser())) {
+        if (AcademicGroups.COORDINATOR.isMember(id.getPerson().getUser())) {
 
             final Person person = id.getPerson();
 

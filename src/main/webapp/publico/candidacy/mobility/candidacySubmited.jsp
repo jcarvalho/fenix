@@ -29,7 +29,6 @@
 <%@ page import="org.fenixedu.academic.domain.candidacyProcess.degreeChange.DegreeChangeIndividualCandidacyProcess"%>
 <%@ page import="org.fenixedu.academic.domain.candidacyProcess.degreeTransfer.DegreeTransferIndividualCandidacyProcess" %>
 <%@ page import="org.fenixedu.academic.domain.candidacyProcess.IndividualCandidacyProcess" %>
-<%@ page import="org.fenixedu.academic.domain.person.RoleType" %>
 
 
 <%@page import="org.fenixedu.academic.domain.candidacyProcess.IndividualCandidacyProcess"%><html:xhtml/>

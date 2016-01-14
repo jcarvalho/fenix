@@ -27,6 +27,7 @@ import java.util.TreeSet;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Alumni;
 import org.fenixedu.academic.domain.AlumniIdentityCheckRequest;
 import org.fenixedu.academic.domain.DomainObjectUtil;
@@ -39,7 +40,6 @@ import org.fenixedu.academic.domain.contacts.EmailAddress;
 import org.fenixedu.academic.domain.contacts.Phone;
 import org.fenixedu.academic.domain.contacts.PhysicalAddress;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.domain.studentCurriculum.CycleCurriculumGroup;
@@ -123,7 +123,7 @@ public class AlumniReportFile extends AlumniReportFile_Base {
 
         int count = 0;
 
-        for (User user : RoleType.ALUMNI.getMembers()) {
+        for (User user : AcademicGroups.ALUMNI.getMembers()) {
             Person person = user.getPerson();
             if ((++count % 100) == 0) {
                 logger.info(String.format("Count %s persons", count));

@@ -24,6 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.ExecutionYear;
@@ -38,7 +39,6 @@ import org.fenixedu.academic.domain.candidacy.IngressionType;
 import org.fenixedu.academic.domain.caseHandling.Activity;
 import org.fenixedu.academic.domain.caseHandling.StartActivity;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.PhdCandidacyProcessState;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramDocumentType;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess;
@@ -453,7 +453,7 @@ public class PhdProgramCandidacyProcess extends PhdProgramCandidacyProcess_Base 
         }
         UserLoginPeriod.createOpenPeriod(person.getUser());
 
-        RoleType.RESEARCHER.mutator().grant(person.getUser());
+        AcademicGroups.RESEARCHER.mutator().grant(person.getUser());
 
         if (person.getPersonalPhoto() == null) {
             final Photograph photograph = person.getPersonalPhotoEvenIfPending();

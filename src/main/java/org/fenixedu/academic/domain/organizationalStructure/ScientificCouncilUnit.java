@@ -21,8 +21,8 @@ package org.fenixedu.academic.domain.organizationalStructure;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.util.MultiLanguageString;
 import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.spaces.domain.Space;
@@ -44,7 +44,7 @@ public class ScientificCouncilUnit extends ScientificCouncilUnit_Base {
     protected List<Group> getDefaultGroups() {
         List<Group> groups = super.getDefaultGroups();
 
-        groups.add(RoleType.SCIENTIFIC_COUNCIL);
+        groups.add(AcademicGroups.SCIENTIFIC_COUNCIL);
 
         return groups;
     }

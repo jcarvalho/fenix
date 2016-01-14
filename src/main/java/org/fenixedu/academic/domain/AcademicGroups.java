@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with FenixEdu Academic.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.fenixedu.academic.domain.person;
+package org.fenixedu.academic.domain;
 
 import org.fenixedu.academic.domain.accessControl.ActiveStudentsGroup;
 import org.fenixedu.academic.domain.accessControl.ActiveTeachersGroup;
@@ -28,8 +28,7 @@ import org.fenixedu.bennu.core.groups.DynamicGroup;
 import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.groups.LoggedGroup;
 
-@Deprecated
-public interface RoleType {
+public interface AcademicGroups {
 
     public static final Group MESSAGING = LoggedGroup.get();
 
@@ -46,7 +45,7 @@ public interface RoleType {
     public static final Group RESOURCE_ALLOCATION_MANAGER = DynamicGroup.get("resourceAllocationManager");
 
     /**
-     * @deprecated Use {@link RoleType}.ACADEMIC_ADMINISTRATIVE_OFFICE instead
+     * @deprecated Use {@link AcademicGroups}.ACADEMIC_ADMINISTRATIVE_OFFICE instead
      */
     @Deprecated
     public static final Group MASTER_DEGREE_ADMINISTRATIVE_OFFICE = DynamicGroup.get("masterDegreeAdmOffice");

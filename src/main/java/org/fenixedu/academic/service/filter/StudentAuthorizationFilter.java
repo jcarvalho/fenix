@@ -22,7 +22,7 @@
  */
 package org.fenixedu.academic.service.filter;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.bennu.core.groups.Group;
 
 /**
@@ -49,7 +49,7 @@ public class StudentAuthorizationFilter extends AuthorizationByRoleFilter {
      */
     @Override
     protected Group getRoleType() {
-        return RoleType.STUDENT;
+        return AcademicGroups.STUDENT;
     }
 
 }

@@ -25,6 +25,7 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
@@ -55,7 +56,6 @@ import org.fenixedu.academic.domain.caseHandling.StartActivity;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.period.MobilityApplicationPeriod;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.util.Bundle;
 import org.fenixedu.academic.util.MultiLanguageString;
@@ -182,8 +182,8 @@ public class MobilityIndividualApplicationProcess extends MobilityIndividualAppl
 
     @Override
     public boolean canExecuteActivity(User userView) {
-        return isAllowedToManageProcess(this, userView) || RoleType.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())
-                || RoleType.COORDINATOR.isMember(userView.getPerson().getUser()) || isCoordinatorOfProcess(userView);
+        return isAllowedToManageProcess(this, userView) || AcademicGroups.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())
+                || AcademicGroups.COORDINATOR.isMember(userView.getPerson().getUser()) || isCoordinatorOfProcess(userView);
     }
 
     @Override
@@ -201,11 +201,11 @@ public class MobilityIndividualApplicationProcess extends MobilityIndividualAppl
     }
 
     static private boolean isInternationalRelationsOfficer(User userView) {
-        return RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser());
+        return AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser());
     }
 
     static private boolean isManager(User userView) {
-        return RoleType.MANAGER.isMember(userView.getPerson().getUser());
+        return AcademicGroups.MANAGER.isMember(userView.getPerson().getUser());
     }
 
     private boolean isCoordinatorOfProcess(User userView) {

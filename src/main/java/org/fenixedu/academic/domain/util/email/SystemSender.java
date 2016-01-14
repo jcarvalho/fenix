@@ -18,8 +18,8 @@
  */
 package org.fenixedu.academic.domain.util.email;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.groups.PersistentGroup;
 import org.fenixedu.bennu.core.groups.Group;
 import org.fenixedu.bennu.core.groups.NobodyGroup;
@@ -31,7 +31,7 @@ public class SystemSender extends SystemSender_Base {
 
     public SystemSender() {
         super();
-        setMembers(RoleType.MANAGER);
+        setMembers(AcademicGroups.MANAGER);
         setFromAddress(Sender.getNoreplyMail());
         setSystemRootDomainObject(getRootDomainObject());
         setFromName(createFromName());

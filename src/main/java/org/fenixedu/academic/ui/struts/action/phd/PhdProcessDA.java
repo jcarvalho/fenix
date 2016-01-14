@@ -30,13 +30,13 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Country;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.caseHandling.Activity;
 import org.fenixedu.academic.domain.caseHandling.Process;
 import org.fenixedu.academic.domain.contacts.PhysicalAddress;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess;
 import org.fenixedu.academic.domain.phd.PhdProgramProcess;
 import org.fenixedu.academic.domain.phd.PhdProgramProcessDocument;
@@ -65,7 +65,7 @@ abstract public class PhdProcessDA extends PhdDA {
         final Person loggedPerson = getLoggedPerson(request);
         if (loggedPerson != null) {
             request.setAttribute("alertMessagesToNotify", loggedPerson.getUnreadedPhdAlertMessages());
-            request.setAttribute("isTeacher", RoleType.TEACHER.isMember(loggedPerson.getUser())
+            request.setAttribute("isTeacher", AcademicGroups.TEACHER.isMember(loggedPerson.getUser())
                     || !loggedPerson.getProfessorshipsSet().isEmpty());
         }
 

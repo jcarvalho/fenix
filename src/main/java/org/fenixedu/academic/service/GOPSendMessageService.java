@@ -27,10 +27,10 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.util.MessageResources;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.WrittenTest;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.email.Message;
 import org.fenixedu.academic.domain.util.email.Sender;
 import org.fenixedu.academic.util.Bundle;
@@ -70,7 +70,7 @@ public class GOPSendMessageService implements NotificationService {
     private static Sender initGOPSender() {
         for (Sender sender : Sender.getAvailableSenders()) {
             final Group members = sender.getMembers();
-            if (members.equals(RoleType.RESOURCE_ALLOCATION_MANAGER)) {
+            if (members.equals(AcademicGroups.RESOURCE_ALLOCATION_MANAGER)) {
                 return sender;
             }
         }

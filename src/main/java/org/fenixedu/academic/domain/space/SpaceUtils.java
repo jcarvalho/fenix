@@ -36,6 +36,7 @@ import javax.servlet.UnavailableException;
 
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.comparators.ComparatorChain;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.FrequencyType;
@@ -43,7 +44,6 @@ import org.fenixedu.academic.domain.Lesson;
 import org.fenixedu.academic.domain.LessonInstance;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.WrittenEvaluation;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.time.calendarStructure.AcademicInterval;
 import org.fenixedu.academic.dto.InfoRoom;
 import org.fenixedu.academic.dto.spaceManager.FindSpacesBean.SpacesSearchCriteriaType;
@@ -374,8 +374,8 @@ public class SpaceUtils {
     };
 
     public static boolean personIsSpacesAdministrator(Person person) {
-        return (RoleType.MANAGER.isMember(person.getUser()) || RoleType.SPACE_MANAGER_SUPER_USER.isMember(person.getUser()))
-                && RoleType.SPACE_MANAGER.isMember(person.getUser());
+        return (AcademicGroups.MANAGER.isMember(person.getUser()) || AcademicGroups.SPACE_MANAGER_SUPER_USER.isMember(person.getUser()))
+                && AcademicGroups.SPACE_MANAGER.isMember(person.getUser());
     }
 
     public static Space getSpaceBuilding(Space space) {

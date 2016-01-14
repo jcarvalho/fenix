@@ -18,7 +18,7 @@
  */
 package org.fenixedu.academic.domain.candidacy;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.util.FileUtils;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.io.servlets.FileDownloadServlet;
@@ -42,10 +42,10 @@ public class CandidacyDocumentFile extends CandidacyDocumentFile_Base {
 
     @Override
     public boolean isAccessible(User user) {
-        if (RoleType.MASTER_DEGREE_ADMINISTRATIVE_OFFICE.isMember(user)) {
+        if (AcademicGroups.MASTER_DEGREE_ADMINISTRATIVE_OFFICE.isMember(user)) {
             return true;
         }
-        if (RoleType.COORDINATOR.isMember(user)) {
+        if (AcademicGroups.COORDINATOR.isMember(user)) {
             return true;
         }
         User candidate = getCandidacyDocument().getCandidacy().getPerson().getUser();

@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.EntryPhase;
 import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.Person;
@@ -32,7 +33,6 @@ import org.fenixedu.academic.domain.candidacy.workflow.PrintRegistrationDeclarat
 import org.fenixedu.academic.domain.candidacy.workflow.PrintScheduleOperation;
 import org.fenixedu.academic.domain.candidacy.workflow.PrintSystemAccessDataOperation;
 import org.fenixedu.academic.domain.candidacy.workflow.RegistrationOperation;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.workflow.Operation;
 import org.fenixedu.academic.util.Bundle;
 import org.fenixedu.bennu.core.i18n.BundleUtil;
@@ -68,18 +68,18 @@ public class DegreeCandidacy extends DegreeCandidacy_Base {
         final Set<Operation> operations = new HashSet<Operation>();
         switch (candidacySituation.getCandidacySituationType()) {
         case STAND_BY:
-            operations.add(new FillPersonalDataOperation(Collections.singleton(RoleType.CANDIDATE), this));
+            operations.add(new FillPersonalDataOperation(Collections.singleton(AcademicGroups.CANDIDATE), this));
             break;
         case ADMITTED:
-            operations.add(new RegistrationOperation(Collections.singleton(RoleType.CANDIDATE), this));
+            operations.add(new RegistrationOperation(Collections.singleton(AcademicGroups.CANDIDATE), this));
             break;
         case REGISTERED:
-            operations.add(new PrintScheduleOperation(Collections.singleton(RoleType.STUDENT), this));
-            operations.add(new PrintRegistrationDeclarationOperation(Collections.singleton(RoleType.STUDENT), this));
-            operations.add(new PrintSystemAccessDataOperation(Collections.singleton(RoleType.STUDENT), this));
+            operations.add(new PrintScheduleOperation(Collections.singleton(AcademicGroups.STUDENT), this));
+            operations.add(new PrintRegistrationDeclarationOperation(Collections.singleton(AcademicGroups.STUDENT), this));
+            operations.add(new PrintSystemAccessDataOperation(Collections.singleton(AcademicGroups.STUDENT), this));
             //operations.add(new PrintUnder23TransportsDeclarationOperation(RoleType.STUDENT, this));
             //operations.add(new PrintMeasurementTestDateOperation(RoleType.STUDENT, this));
-            operations.add(new PrintAllDocumentsOperation(RoleType.STUDENT, this));
+            operations.add(new PrintAllDocumentsOperation(AcademicGroups.STUDENT, this));
             break;
         }
         return operations;

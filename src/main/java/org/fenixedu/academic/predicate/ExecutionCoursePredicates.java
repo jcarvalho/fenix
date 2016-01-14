@@ -20,12 +20,12 @@ package org.fenixedu.academic.predicate;
 
 import java.util.Collection;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 
 public class ExecutionCoursePredicates {
 
@@ -42,7 +42,7 @@ public class ExecutionCoursePredicates {
                         return true;
                     }
 
-                    if (RoleType.COORDINATOR.isMember(person.getUser())) {
+                    if (AcademicGroups.COORDINATOR.isMember(person.getUser())) {
                         Collection<DegreeCurricularPlan> degreeCurricularPlans =
                                 executionCourse.getAssociatedDegreeCurricularPlans();
                         for (DegreeCurricularPlan degreeCurricularPlan : degreeCurricularPlans) {

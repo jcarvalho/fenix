@@ -40,7 +40,6 @@ import org.fenixedu.academic.domain.contacts.Phone;
 import org.fenixedu.academic.domain.contacts.PhysicalAddress;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.organizationalStructure.Party;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.dto.alumni.AlumniSearchBean;
@@ -175,11 +174,11 @@ public class Alumni extends Alumni_Base {
         // (n�o � docente, nao � aluno, nao � funcionario, ...)
 
         Person p = getStudent().getPerson();
-        if (RoleType.TEACHER.isMember(p.getUser())) {
+        if (AcademicGroups.TEACHER.isMember(p.getUser())) {
             return Boolean.FALSE;
         }
 
-        if (RoleType.STUDENT.isMember(p.getUser())) {
+        if (AcademicGroups.STUDENT.isMember(p.getUser())) {
             return Boolean.FALSE;
         }
 
@@ -239,7 +238,7 @@ public class Alumni extends Alumni_Base {
                 bean.getFinalExecutionYear() == null ? ExecutionYear.readLastExecutionYear() : bean.getFinalExecutionYear();
 
         List<Registration> resultRegistrations = new ArrayList<Registration>();
-        for (Person person : Person.readPersonsByNameAndRoleType(bean.getName(), RoleType.ALUMNI)) {
+        for (Person person : Person.readPersonsByNameAndRoleType(bean.getName(), AcademicGroups.ALUMNI)) {
             if (person.getStudent() != null) {
 
                 if (bean.getStudentNumber() == null || person.getStudent().getNumber().equals(bean.getStudentNumber())) {
@@ -274,7 +273,7 @@ public class Alumni extends Alumni_Base {
 
         List<Registration> resultRegistrations = new ArrayList<Registration>();
         if (!StringUtils.isEmpty(personName)) {
-            for (Person person : Person.readPersonsByNameAndRoleType(personName, RoleType.ALUMNI)) {
+            for (Person person : Person.readPersonsByNameAndRoleType(personName, AcademicGroups.ALUMNI)) {
                 if (matchStudentNumber(person, studentNumber) && matchDocumentIdNumber(person, documentIdNumber)) {
                     for (Registration registration : person.getStudent().getRegistrationsSet()) {
                         if (registration.isConcluded()) {
@@ -387,7 +386,7 @@ public class Alumni extends Alumni_Base {
                 Person person = (Person) contact.getParty();
                 partyRead.add(person);
 
-                if (!RoleType.ALUMNI.isMember(person.getUser()) || person.getStudent() == null) {
+                if (!AcademicGroups.ALUMNI.isMember(person.getUser()) || person.getStudent() == null) {
                     continue;
                 }
                 for (Registration registration : person.getStudent().getRegistrationsSet()) {

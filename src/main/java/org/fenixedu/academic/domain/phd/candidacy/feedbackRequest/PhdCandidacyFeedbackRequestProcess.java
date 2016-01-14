@@ -24,13 +24,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.caseHandling.Activity;
 import org.fenixedu.academic.domain.caseHandling.PreConditionNotValidException;
 import org.fenixedu.academic.domain.caseHandling.StartActivity;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.InternalPhdParticipant;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramDocumentType;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess;
@@ -333,7 +333,7 @@ public class PhdCandidacyFeedbackRequestProcess extends PhdCandidacyFeedbackRequ
                 if (process.isCoordinatorForPhdProgram(person)) {
                     return AlertMessage.get("message.phd.candidacy.feedback.coordinator.access");
 
-                } else if (process.isGuiderOrAssistentGuider(person) || RoleType.TEACHER.isMember(person.getUser())) {
+                } else if (process.isGuiderOrAssistentGuider(person) || AcademicGroups.TEACHER.isMember(person.getUser())) {
                     return AlertMessage.get("message.phd.candidacy.feedback.teacher.access");
                 }
             }

@@ -21,8 +21,8 @@ package org.fenixedu.academic.service.services.commons.searchers;
 import java.util.Collection;
 import java.util.HashSet;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 
 public class SearchInternalPersonsByNameHavingTeacherOrIsResearcher extends SearchParties<Person> {
 
@@ -30,7 +30,7 @@ public class SearchInternalPersonsByNameHavingTeacherOrIsResearcher extends Sear
     protected Collection<Person> search(String value, int size) {
         final Collection<Person> result = new HashSet<Person>();
         for (final Person person : Person.findPerson(value, size)) {
-            if (person.getUser() != null && (person.getTeacher() != null || RoleType.RESEARCHER.isMember(person.getUser()))) {
+            if (person.getUser() != null && (person.getTeacher() != null || AcademicGroups.RESEARCHER.isMember(person.getUser()))) {
                 result.add(person);
             }
         }

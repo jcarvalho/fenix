@@ -26,11 +26,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.QueueJob;
 import org.fenixedu.academic.domain.QueueJobResult;
 import org.fenixedu.academic.domain.QueueJobResultFile;
 import org.fenixedu.academic.domain.QueueJobWithFile;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.email.Message;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.scheduler.CronTask;
@@ -119,7 +119,7 @@ public class JobQueueDispatcher extends CronTask {
                             + "Request Time : " + job.getRequestDate() + "\n" + "Start Time : " + job.getJobStartTime() + "\n"
                             + "User : " + getQueueJobResponsibleName(job) + "\n" + "\n\n Error Stack Trace:\n" + sw.toString();
             new Message(Bennu.getInstance().getSystemSender(), Bennu.getInstance().getSystemSender()
-                    .getRoleRecipient(RoleType.MANAGER), subject, body);
+                    .getRoleRecipient(AcademicGroups.MANAGER), subject, body);
         }
     }
 }

@@ -29,6 +29,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.candidacy.GenericApplication;
 import org.fenixedu.academic.domain.candidacy.GenericApplicationFile;
 import org.fenixedu.academic.domain.candidacy.GenericApplicationLetterOfRecomentation;
@@ -39,7 +40,6 @@ import org.fenixedu.academic.domain.candidacy.util.GenericApplicationUploadBean;
 import org.fenixedu.academic.domain.candidacy.util.GenericApplicationUserBean;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.period.GenericApplicationPeriod;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.ui.struts.action.base.FenixDispatchAction;
 import org.fenixedu.academic.ui.struts.action.publico.PublicApplication.PublicCandidaciesApp;
 import org.fenixedu.academic.util.Bundle;
@@ -76,7 +76,7 @@ public class GenericCandidaciesDA extends FenixDispatchAction {
         request.setAttribute("periods", periods);
 
         final User userView = Authenticate.getUser();
-        if (userView != null && RoleType.MANAGER.isMember(userView.getPerson().getUser())) {
+        if (userView != null && AcademicGroups.MANAGER.isMember(userView.getPerson().getUser())) {
             final GenericApplicationPeriodBean genericApplicationPeriodBean = new GenericApplicationPeriodBean();
             request.setAttribute("genericApplicationPeriodBean", genericApplicationPeriodBean);
         }

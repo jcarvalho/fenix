@@ -28,6 +28,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.candidacy.Candidacy;
 import org.fenixedu.academic.domain.candidacyProcess.IndividualCandidacy;
@@ -36,7 +37,6 @@ import org.fenixedu.academic.domain.mobility.outbound.OutboundMobilityCandidacy;
 import org.fenixedu.academic.domain.mobility.outbound.OutboundMobilityCandidacyContest;
 import org.fenixedu.academic.domain.mobility.outbound.OutboundMobilityCandidacyContestGroup;
 import org.fenixedu.academic.domain.mobility.outbound.OutboundMobilityCandidacySubmission;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.ui.struts.action.administrativeOffice.student.SearchForStudentsDA;
@@ -80,7 +80,7 @@ public class ViewStudentApplicationDA extends FenixDispatchAction {
         final User user = Authenticate.getUser();
         if (user != null) {
             final Person person = user.getPerson();
-            if (RoleType.MANAGER.isMember(person.getUser()) || isMobilityCoordinator(document, person)) {
+            if (AcademicGroups.MANAGER.isMember(person.getUser()) || isMobilityCoordinator(document, person)) {
                 return true;
             }
         }

@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.ExecutionYear;
@@ -36,7 +37,6 @@ import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.degree.degreeCurricularPlan.DegreeCurricularPlanState;
 import org.fenixedu.academic.domain.degreeStructure.CurricularStage;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.time.calendarStructure.AcademicPeriod;
 import org.fenixedu.academic.domain.time.calendarStructure.AcademicYears;
 import org.fenixedu.academic.dto.InfoExecutionYear;
@@ -134,7 +134,7 @@ public class DegreeCurricularPlanManagementBackingBean extends FenixBackingBean 
             if (user != null) {
                 Group group = getDcp().getCurricularPlanMembersGroup();
                 getDcp().setCurricularPlanMembersGroup(group.grant(user));
-                RoleType.BOLONHA_MANAGER.mutator().grant(user);
+                AcademicGroups.BOLONHA_MANAGER.mutator().grant(user);
             }
         }
     }
@@ -167,7 +167,7 @@ public class DegreeCurricularPlanManagementBackingBean extends FenixBackingBean 
 
     private void removeRoleIfNecessary(User user) {
         if (!isUserMemberOfAnyCurricularPlanGroup(user) && !isUserMemberOfAnyDepartmentCompetenceCourseGroup(user)) {
-            RoleType.BOLONHA_MANAGER.mutator().revoke(user);
+            AcademicGroups.BOLONHA_MANAGER.mutator().revoke(user);
         }
     }
 
@@ -290,7 +290,7 @@ public class DegreeCurricularPlanManagementBackingBean extends FenixBackingBean 
 
         for (final InfoExecutionYear notClosedInfoExecutionYear : notClosedInfoExecutionYears) {
             Person loggedPerson = AccessControl.getPerson();
-            if (RoleType.MANAGER.isMember(loggedPerson.getUser()) || notClosedInfoExecutionYear.after(currentInfoExecutionYear)) {
+            if (AcademicGroups.MANAGER.isMember(loggedPerson.getUser()) || notClosedInfoExecutionYear.after(currentInfoExecutionYear)) {
                 result.add(new SelectItem(notClosedInfoExecutionYear.getExternalId(), notClosedInfoExecutionYear.getYear()));
             }
         }

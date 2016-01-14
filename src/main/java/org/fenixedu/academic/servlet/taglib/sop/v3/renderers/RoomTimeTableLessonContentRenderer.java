@@ -18,8 +18,8 @@
  */
 package org.fenixedu.academic.servlet.taglib.sop.v3.renderers;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.FrequencyType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.dto.InfoExam;
 import org.fenixedu.academic.dto.InfoExecutionCourse;
 import org.fenixedu.academic.dto.InfoLesson;
@@ -122,7 +122,7 @@ public class RoomTimeTableLessonContentRenderer extends LessonSlotContentRendere
             strBuffer.append("<span title=\"").append(infoGenericEvent.getDescription()).append("\">");
             final User userView = Authenticate.getUser();
             if (infoGenericEvent.getOccupation().isActive() && userView != null
-                    && RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
+                    && AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
                 strBuffer.append("<a href=\"");
                 strBuffer.append(context).append("/resourceAllocationManager/");
                 strBuffer.append("roomsPunctualScheduling.do?method=prepareView&genericEventID=")

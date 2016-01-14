@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.Enrolment;
@@ -44,7 +45,6 @@ import org.fenixedu.academic.domain.accessControl.academicAdministration.Academi
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
 import org.fenixedu.academic.domain.curricularRules.CreditsLimit;
 import org.fenixedu.academic.domain.curricularRules.CurricularRuleType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.curriculum.ICurriculumEntry;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumGroup;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumModule.ConclusionValue;
@@ -1293,7 +1293,7 @@ public class StudentCurricularPlanRenderer extends InputRenderer {
 
     public static boolean isViewerAllowedToViewFullStudentCurriculum(final StudentCurricularPlan studentCurricularPlan) {
         final Person person = AccessControl.getPerson();
-        return RoleType.MANAGER.isMember(person.getUser())
+        return AcademicGroups.MANAGER.isMember(person.getUser())
                 || AcademicAccessRule
                         .getProgramsAccessibleToFunction(AcademicOperationType.VIEW_FULL_STUDENT_CURRICULUM, person.getUser())
                         .collect(Collectors.toSet()).contains(studentCurricularPlan.getDegree());

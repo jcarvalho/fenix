@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Coordinator;
 import org.fenixedu.academic.domain.Enrolment;
 import org.fenixedu.academic.domain.ExecutionSemester;
@@ -38,7 +39,6 @@ import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.ManageEnrolmentsBean;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess;
 import org.fenixedu.academic.domain.phd.PhdProgram;
@@ -212,7 +212,7 @@ public class PhdIndividualProgramProcessDA extends CommonPhdIndividualProgramPro
 
     private boolean isPerformedByStudent(Enrolment enrolment) {
         final Person person = Person.readPersonByUsername(enrolment.getCreatedBy());
-        return RoleType.STUDENT.isMember(person.getUser()) && enrolment.getStudent().equals(person.getStudent());
+        return AcademicGroups.STUDENT.isMember(person.getUser()) && enrolment.getStudent().equals(person.getStudent());
     }
 
     public ActionForward prepareValidateEnrolments(ActionMapping mapping, ActionForm form, HttpServletRequest request,

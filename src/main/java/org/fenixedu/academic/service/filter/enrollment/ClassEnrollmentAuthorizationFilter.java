@@ -26,6 +26,7 @@ import java.util.Optional;
 import java.util.SortedSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.DegreeCurricularPlanEquivalencePlan;
 import org.fenixedu.academic.domain.EnrolmentPeriod;
@@ -35,7 +36,6 @@ import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.service.services.exceptions.FenixServiceException;
 import org.fenixedu.bennu.core.security.Authenticate;
@@ -67,7 +67,7 @@ public class ClassEnrollmentAuthorizationFilter {
             return;
         }
 
-        if (RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser())) {
+        if (AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser())) {
             person = registration.getPerson();
         }
 
@@ -103,7 +103,7 @@ public class ClassEnrollmentAuthorizationFilter {
             return;
         }
 
-        if (RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser())) {
+        if (AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser())) {
             person = registration.getPerson();
         }
 

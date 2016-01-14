@@ -22,7 +22,7 @@
  */
 package org.fenixedu.academic.service.filter;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.bennu.core.groups.Group;
 
 /**
@@ -50,7 +50,7 @@ public class ScientificCouncilAuthorizationFilter extends AuthorizationByRoleFil
      */
     @Override
     protected Group getRoleType() {
-        return RoleType.SCIENTIFIC_COUNCIL;
+        return AcademicGroups.SCIENTIFIC_COUNCIL;
     }
 
 }

@@ -23,13 +23,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.curricularRules.executors.ruleExecutors.CurricularRuleLevel;
 import org.fenixedu.academic.domain.degreeStructure.DegreeModule;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumModule;
 import org.fenixedu.academic.domain.studentCurriculum.NoCourseGroupCurriculumGroup;
@@ -140,7 +140,7 @@ public class EnrolmentContext {
     }
 
     public boolean isResponsiblePersonStudent() {
-        return RoleType.STUDENT.isMember(userView.getPerson().getUser());
+        return AcademicGroups.STUDENT.isMember(userView.getPerson().getUser());
     }
 
     public boolean isRegistrationFromResponsiblePerson() {

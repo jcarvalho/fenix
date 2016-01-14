@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
@@ -31,7 +32,6 @@ import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.util.Bundle;
 import org.fenixedu.bennu.core.annotation.GroupArgument;
 import org.fenixedu.bennu.core.annotation.GroupOperator;
@@ -159,7 +159,7 @@ public class TeacherGroup extends FenixGroup {
         }
         //by campus
         if (campus != null) {
-            for (User user : RoleType.TEACHER.getMembers()) {
+            for (User user : AcademicGroups.TEACHER.getMembers()) {
                 if (user.getPerson() != null && user.getPerson().getTeacher().teachesAt(campus)) {
                     users.add(user);
                 }

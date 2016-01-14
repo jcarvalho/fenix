@@ -36,7 +36,6 @@ import org.fenixedu.academic.domain.curriculum.EnrollmentState;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.exceptions.EnrolmentNotPayedException;
 import org.fenixedu.academic.domain.exceptions.InDebtEnrolmentsException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.dto.degreeAdministrativeOffice.gradeSubmission.MarkSheetEnrolmentEvaluationBean;
 import org.fenixedu.academic.predicate.MarkSheetPredicates;
@@ -198,7 +197,7 @@ public class MarkSheet extends MarkSheet_Base {
             ExecutionSemester executionSemester, Teacher responsibleTeacher, EvaluationSeason season) throws DomainException {
 
         if (curricularCourse.isDissertation()) {
-            if (RoleType.SCIENTIFIC_COUNCIL.isMember(responsibleTeacher.getPerson().getUser())) {
+            if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(responsibleTeacher.getPerson().getUser())) {
                 return;
             }
             for (final ExecutionCourse executionCourse : curricularCourse.getAssociatedExecutionCoursesSet()) {

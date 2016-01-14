@@ -20,7 +20,6 @@
 --%>
 <%@page import="org.fenixedu.bennu.core.domain.User"%>
 <%@page import="org.fenixedu.academic.domain.candidacy.GenericApplication"%>
-<%@page import="org.fenixedu.academic.domain.person.RoleType"%>
 <%@page import="org.fenixedu.academic.predicate.AccessControl"%>
 <%@page import="org.fenixedu.academic.domain.Person"%>
 <%@ page language="java"%>

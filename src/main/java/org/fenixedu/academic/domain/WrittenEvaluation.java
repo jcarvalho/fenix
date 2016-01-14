@@ -34,7 +34,6 @@ import org.fenixedu.academic.domain.CurricularCourseScope.DegreeModuleScopeCurri
 import org.fenixedu.academic.domain.degreeStructure.Context;
 import org.fenixedu.academic.domain.degreeStructure.Context.DegreeModuleScopeContext;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.space.SpaceUtils;
 import org.fenixedu.academic.domain.space.WrittenEvaluationSpaceOccupation;
 import org.fenixedu.academic.domain.student.Registration;
@@ -206,7 +205,7 @@ abstract public class WrittenEvaluation extends WrittenEvaluation_Base {
 
     protected void checkIntervalBetweenEvaluations() {
         final User userView = Authenticate.getUser();
-        if (userView == null || !RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
+        if (userView == null || !AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
             checkIntervalBetweenEvaluationsCondition();
         }
     }

@@ -21,8 +21,8 @@ package org.fenixedu.academic.service.services.thesis;
 import java.io.IOException;
 import java.util.Locale;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.thesis.Thesis;
 import org.fenixedu.academic.domain.thesis.ThesisFile;
 import org.fenixedu.academic.service.filter.student.thesis.ScientificCouncilOrStudentThesisAuthorizationFilter;
@@ -37,7 +37,7 @@ public class CreateThesisDissertationFile extends CreateThesisFile {
     protected void removePreviousFile(Thesis thesis) {
         ThesisFile dissertation = thesis.getDissertation();
         if (dissertation != null) {
-            if (RoleType.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
+            if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
                 dissertation.deleteWithoutStateCheck();
             } else {
                 dissertation.delete();

@@ -21,8 +21,8 @@ package org.fenixedu.academic.service.services.thesis;
 import java.io.IOException;
 import java.util.Locale;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.thesis.Thesis;
 import org.fenixedu.academic.domain.thesis.ThesisFile;
 import org.fenixedu.academic.service.services.exceptions.FenixServiceException;
@@ -34,12 +34,12 @@ public abstract class CreateThesisFile {
             throws FenixServiceException, IOException {
 
         if (!thesis.isWaitingConfirmation()
-                && !RoleType.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
+                && !AcademicGroups.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
             throw new DomainException("thesis.files.submit.unavailable");
         }
 
         if (!thesis.isDeclarationAccepted()
-                && !RoleType.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
+                && !AcademicGroups.SCIENTIFIC_COUNCIL.isMember(Authenticate.getUser().getPerson().getUser())) {
             throw new DomainException("thesis.files.submit.unavailable");
         }
 

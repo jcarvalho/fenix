@@ -18,13 +18,13 @@
  */
 package org.fenixedu.academic.domain.util.email;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.accessControl.CoordinatorGroup;
 import org.fenixedu.academic.domain.accessControl.StudentGroup;
 import org.fenixedu.academic.domain.accessControl.TeacherGroup;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.groups.Group;
 
 import pt.ist.fenixframework.Atomic;
@@ -49,7 +49,7 @@ public class CoordinatorSender extends CoordinatorSender_Base {
         addRecipients(createRecipient(current));
         addRecipients(createRecipient(teachers));
         addRecipients(createRecipient(students));
-        addRecipients(createRecipient(RoleType.TEACHER));
+        addRecipients(createRecipient(AcademicGroups.TEACHER));
         addRecipients(createRecipient(StudentGroup.get()));
         setFromName(createFromName());
     }

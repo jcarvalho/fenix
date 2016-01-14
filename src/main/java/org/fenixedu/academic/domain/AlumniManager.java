@@ -23,7 +23,6 @@ import java.util.UUID;
 
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 
@@ -117,7 +116,7 @@ public class AlumniManager {
 
     private boolean checkAlumni(Student alumniStudent) {
 
-        if (alumniStudent.getAlumni() != null || RoleType.ALUMNI.isMember(alumniStudent.getPerson().getUser())) {
+        if (alumniStudent.getAlumni() != null || AcademicGroups.ALUMNI.isMember(alumniStudent.getPerson().getUser())) {
             return true;
         }
 

@@ -37,6 +37,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.fenixedu.academic.FenixEduAcademicConfiguration;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.accounting.PaymentCode;
 import org.fenixedu.academic.domain.accounting.PaymentCodeType;
 import org.fenixedu.academic.domain.accounting.installments.InstallmentForFirstTimeStudents;
@@ -49,7 +50,6 @@ import org.fenixedu.academic.domain.candidacy.workflow.CandidacyOperation;
 import org.fenixedu.academic.domain.candidacy.workflow.PrintAllDocumentsOperation;
 import org.fenixedu.academic.domain.candidacy.workflow.form.ResidenceInformationForm;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.util.workflow.Form;
 import org.fenixedu.academic.domain.util.workflow.Operation;
@@ -182,7 +182,7 @@ public class DegreeCandidacyManagementDispatchAction extends FenixDispatchAction
 
         if (candidacyOperation == null) {
             // possible due to first-time candidacy summary generation link in manager portal
-            candidacyOperation = new PrintAllDocumentsOperation(RoleType.STUDENT, getCandidacy(request));
+            candidacyOperation = new PrintAllDocumentsOperation(AcademicGroups.STUDENT, getCandidacy(request));
         } else {
             ExecuteStateOperation.run(candidacyOperation, getLoggedPerson(request));
         }

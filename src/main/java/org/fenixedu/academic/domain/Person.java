@@ -82,7 +82,6 @@ import org.fenixedu.academic.domain.person.IDDocumentType;
 import org.fenixedu.academic.domain.person.IdDocument;
 import org.fenixedu.academic.domain.person.IdDocumentTypeObject;
 import org.fenixedu.academic.domain.person.MaritalStatus;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.alert.PhdAlertMessage;
 import org.fenixedu.academic.domain.phd.candidacy.PHDProgramCandidacy;
 import org.fenixedu.academic.domain.student.Registration;
@@ -1121,7 +1120,7 @@ public class Person extends Person_Base {
         if (isPhotoPubliclyAvailable()) {
             return true;
         }
-        return requester != null && RoleType.PERSON.isMember(requester.getUser());
+        return requester != null && AcademicGroups.PERSON.isMember(requester.getUser());
     }
 
     @Override

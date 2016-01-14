@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Set;
 
 import org.apache.commons.collections.comparators.ComparatorChain;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DomainObjectUtil;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.ExecutionYear;
@@ -36,7 +37,6 @@ import org.fenixedu.academic.domain.degreeStructure.CycleCourseGroup;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
 import org.fenixedu.academic.domain.degreeStructure.DegreeModule;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.predicate.RolePredicates;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
@@ -174,7 +174,7 @@ public class CycleCurriculumGroup extends CycleCurriculumGroup_Base {
                 final User userView = Authenticate.getUser();
                 if (AcademicAccessRule.isProgramAccessibleToFunction(AcademicOperationType.STUDENT_ENROLMENTS, getRegistration()
                         .getDegree(), userView.getPerson().getUser())
-                        || RoleType.MANAGER.isMember(userView.getPerson().getUser())) {
+                        || AcademicGroups.MANAGER.isMember(userView.getPerson().getUser())) {
                     return;
                 }
             }

@@ -26,6 +26,7 @@ import java.util.MissingResourceException;
 
 import org.apache.commons.lang.StringUtils;
 import org.fenixedu.academic.bootstrap.FenixBootstrapper.SchoolSetupSection;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Country;
 import org.fenixedu.academic.domain.CurricularYear;
 import org.fenixedu.academic.domain.Department;
@@ -52,7 +53,6 @@ import org.fenixedu.academic.domain.organizationalStructure.SchoolUnit;
 import org.fenixedu.academic.domain.organizationalStructure.ScientificAreaUnit;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
 import org.fenixedu.academic.domain.organizationalStructure.UniversityUnit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.serviceRequests.InstitutionRegistryCodeGenerator;
 import org.fenixedu.academic.domain.space.SpaceUtils;
 import org.fenixedu.academic.domain.student.RegistrationProtocol;
@@ -268,7 +268,7 @@ public class FenixBootstrapper {
         }
 
         private org.fenixedu.bennu.core.groups.Group getCompetenceCourseMembersGroup() {
-            return RoleType.TEACHER.or(RoleType.MANAGER);
+            return AcademicGroups.TEACHER.or(AcademicGroups.MANAGER);
         }
 
         private String getDepartmentName(final int i) {
@@ -377,11 +377,11 @@ public class FenixBootstrapper {
     static void createManagerUser(AdminUserSection adminSection, SchoolSetupSection schoolSetupSection) {
         User adminUser = User.findByUsername(adminSection.getAdminUsername());
         final Person person = new Person(adminUser.getProfile());
-        RoleType.SCIENTIFIC_COUNCIL.mutator().grant(adminUser);
-        RoleType.SPACE_MANAGER.mutator().grant(adminUser);
-        RoleType.SPACE_MANAGER_SUPER_USER.mutator().grant(adminUser);
-        RoleType.ACADEMIC_ADMINISTRATIVE_OFFICE.mutator().grant(adminUser);
-        RoleType.BOLONHA_MANAGER.mutator().grant(adminUser);
+        AcademicGroups.SCIENTIFIC_COUNCIL.mutator().grant(adminUser);
+        AcademicGroups.SPACE_MANAGER.mutator().grant(adminUser);
+        AcademicGroups.SPACE_MANAGER_SUPER_USER.mutator().grant(adminUser);
+        AcademicGroups.ACADEMIC_ADMINISTRATIVE_OFFICE.mutator().grant(adminUser);
+        AcademicGroups.BOLONHA_MANAGER.mutator().grant(adminUser);
         person.setCountry(Country.readDefault());
         person.setCountryOfBirth(Country.readDefault());
 

@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Attends;
 import org.fenixedu.academic.domain.CurricularYear;
 import org.fenixedu.academic.domain.Degree;
@@ -33,7 +34,6 @@ import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumModule.ConclusionValue;
 import org.fenixedu.academic.domain.studentCurriculum.CycleCurriculumGroup;
@@ -271,7 +271,7 @@ public class StudentGroup extends FenixGroup {
 
     private static FluentIterable<Registration> getRegistrations(DegreeType type) {
         Set<Registration> registrations = new HashSet<>();
-        for (User user : RoleType.STUDENT.getMembers()) {
+        for (User user : AcademicGroups.STUDENT.getMembers()) {
             user.getPerson().getStudentsSet().forEach(reg -> {
                 if (reg.getDegreeType() == type && reg.isActive()) {
                     registrations.add(reg);
@@ -295,7 +295,7 @@ public class StudentGroup extends FenixGroup {
 
     private static FluentIterable<Registration> getRegistrations() {
         Set<Registration> registrations = new HashSet<>();
-        for (User user : RoleType.STUDENT.getMembers()) {
+        for (User user : AcademicGroups.STUDENT.getMembers()) {
             registrations.addAll(user.getPerson().getStudent().getActiveRegistrations());
         }
         return FluentIterable.from(registrations);

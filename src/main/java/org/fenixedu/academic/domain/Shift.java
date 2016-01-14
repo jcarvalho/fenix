@@ -36,7 +36,6 @@ import java.util.TreeSet;
 import org.apache.commons.lang.StringUtils;
 import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.util.email.ExecutionCourseSender;
 import org.fenixedu.academic.domain.util.email.Message;
@@ -372,7 +371,7 @@ public class Shift extends Shift_Base {
 
     private boolean isResourceAllocationManager() {
         final Person person = AccessControl.getPerson();
-        return person != null && RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser());
+        return person != null && AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(person.getUser());
     }
 
     public SortedSet<ShiftEnrolment> getShiftEnrolmentsOrderedByDate() {

@@ -18,13 +18,13 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.Lesson;
 import org.fenixedu.academic.domain.LessonInstance;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.SchoolClass;
 import org.fenixedu.academic.domain.Shift;
-import org.fenixedu.academic.domain.person.RoleType;
 
 public class ResourceAllocationRolePredicates {
 
@@ -33,7 +33,7 @@ public class ResourceAllocationRolePredicates {
     public static final AccessControlPredicate<Lesson> checkPermissionsToManageLessons = new AccessControlPredicate<Lesson>() {
         @Override
         public boolean evaluate(Lesson lesson) {
-            return RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
+            return AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
         }
     };
 
@@ -42,7 +42,7 @@ public class ResourceAllocationRolePredicates {
     public static final AccessControlPredicate<Shift> checkPermissionsToManageShifts = new AccessControlPredicate<Shift>() {
         @Override
         public boolean evaluate(Shift shift) {
-            return RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
+            return AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
         }
     };
 
@@ -52,7 +52,7 @@ public class ResourceAllocationRolePredicates {
             new AccessControlPredicate<SchoolClass>() {
                 @Override
                 public boolean evaluate(SchoolClass schoolClass) {
-                    return RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
+                    return AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
                 }
             };
 
@@ -62,7 +62,7 @@ public class ResourceAllocationRolePredicates {
             new AccessControlPredicate<LessonInstance>() {
                 @Override
                 public boolean evaluate(LessonInstance lessonInstance) {
-                    return RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
+                    return AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
                 }
             };
 
@@ -79,7 +79,7 @@ public class ResourceAllocationRolePredicates {
                         return true;
                     }
 
-                    return RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
+                    return AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser());
                 }
             };
 

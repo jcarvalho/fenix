@@ -22,11 +22,11 @@
  */
 package org.fenixedu.academic.service.filter;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Evaluation;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -48,7 +48,7 @@ public class ExecutionCourseAndExamLecturingTeacherAuthorizationFilter extends A
 
     @Override
     protected Group getRoleType() {
-        return RoleType.TEACHER;
+        return AcademicGroups.TEACHER;
     }
 
     public void execute(String executionCourseID, String evaluationID) throws NotAuthorizedException {

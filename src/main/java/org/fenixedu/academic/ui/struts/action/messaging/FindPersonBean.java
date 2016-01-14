@@ -20,10 +20,10 @@ package org.fenixedu.academic.ui.struts.action.messaging;
 
 import java.io.Serializable;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.Department;
 import org.fenixedu.academic.domain.degree.DegreeType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.groups.Group;
 
 public class FindPersonBean implements Serializable {
@@ -49,7 +49,7 @@ public class FindPersonBean implements Serializable {
     }
 
     public DegreeType getDegreeType() {
-        if (!RoleType.STUDENT.equals(roleType)) {
+        if (!AcademicGroups.STUDENT.equals(roleType)) {
             return null;
         }
         return degreeType;
@@ -92,14 +92,14 @@ public class FindPersonBean implements Serializable {
     }
 
     public String getDepartmentExternalId() {
-        if (department != null && RoleType.TEACHER.equals(roleType)) {
+        if (department != null && AcademicGroups.TEACHER.equals(roleType)) {
             return department.getExternalId();
         }
         return null;
     }
 
     public String getDegreeExternalId() {
-        if (degree != null && RoleType.STUDENT.equals(roleType)) {
+        if (degree != null && AcademicGroups.STUDENT.equals(roleType)) {
             return degree.getExternalId();
         }
         return null;

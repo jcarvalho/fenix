@@ -18,13 +18,13 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.Enrolment;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.thesis.Thesis;
 
 public class ThesisPredicates {
@@ -42,7 +42,7 @@ public class ThesisPredicates {
 
         @Override
         public boolean evaluate(Thesis thesis) {
-            return RoleType.SCIENTIFIC_COUNCIL.isMember(AccessControl.getPerson().getUser());
+            return AcademicGroups.SCIENTIFIC_COUNCIL.isMember(AccessControl.getPerson().getUser());
         }
 
     };
@@ -66,7 +66,7 @@ public class ThesisPredicates {
                     return (person.getStudent() == thesis.getStudent() && thesis.isWaitingConfirmation())
                             || (AcademicAccessRule.isProgramAccessibleToFunction(AcademicOperationType.MANAGE_MARKSHEETS,
                                     thesis.getDegree(), person.getUser()))
-                            || RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser());
+                            || AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser());
                 }
 
             };

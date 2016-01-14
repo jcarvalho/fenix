@@ -18,10 +18,10 @@
  */
 package org.fenixedu.academic.domain.documents;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accounting.Receipt;
 import org.fenixedu.academic.domain.organizationalStructure.Party;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.bennu.core.domain.User;
 
@@ -39,7 +39,7 @@ public class ReceiptGeneratedDocument extends ReceiptGeneratedDocument_Base {
 
     @Override
     public boolean isAccessible(User user) {
-        return super.isAccessible(user) || RoleType.MANAGER.isMember(user);
+        return super.isAccessible(user) || AcademicGroups.MANAGER.isMember(user);
     }
 
     @Override

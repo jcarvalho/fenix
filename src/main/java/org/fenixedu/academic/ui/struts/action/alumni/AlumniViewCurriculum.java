@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.ui.struts.action.administrativeOffice.student.CurriculumDispatchAction;
 import org.fenixedu.academic.ui.struts.action.alumni.AlumniApplication.AlumniAcademicPathApp;
 import org.fenixedu.bennu.struts.annotations.Forward;
@@ -52,7 +52,7 @@ public class AlumniViewCurriculum extends CurriculumDispatchAction {
             }
             return super.prepare(mapping, form, request, response);
         } else {
-            if (RoleType.ALUMNI.isMember(getLoggedPerson(request).getUser())) {
+            if (AcademicGroups.ALUMNI.isMember(getLoggedPerson(request).getUser())) {
                 return super.prepare(mapping, form, request, response);
             } else {
                 return mapping.findForward("alumni.view.curriculum.not.authorized");

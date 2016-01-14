@@ -18,8 +18,8 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Student;
 
 public class StudentPredicates {
@@ -29,14 +29,14 @@ public class StudentPredicates {
                 @Override
                 public boolean evaluate(Student student) {
                     final Person person = AccessControl.getPerson();
-                    return person.getStudent() == student || RoleType.MANAGER.isMember(person.getUser());
+                    return person.getStudent() == student || AcademicGroups.MANAGER.isMember(person.getUser());
                 }
             };
 
     public static final AccessControlPredicate<Student> checkIfLoggedPersonIsCoordinator = new AccessControlPredicate<Student>() {
         @Override
         public boolean evaluate(Student student) {
-            return RoleType.COORDINATOR.isMember(AccessControl.getPerson().getUser());
+            return AcademicGroups.COORDINATOR.isMember(AccessControl.getPerson().getUser());
         }
     };
 

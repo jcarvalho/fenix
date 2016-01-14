@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.AcademicProgram;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
@@ -48,7 +49,6 @@ import org.fenixedu.academic.domain.caseHandling.PreConditionNotValidException;
 import org.fenixedu.academic.domain.caseHandling.StartActivity;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.PrecedentDegreeInformation;
 import org.fenixedu.academic.dto.person.PersonBean;
 import org.fenixedu.bennu.core.domain.User;
@@ -125,8 +125,8 @@ public class SecondCycleIndividualCandidacyProcess extends SecondCycleIndividual
 
     @Override
     public boolean canExecuteActivity(User userView) {
-        return isAllowedToManageProcess(this, userView) || RoleType.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())
-                || RoleType.COORDINATOR.isMember(userView.getPerson().getUser());
+        return isAllowedToManageProcess(this, userView) || AcademicGroups.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())
+                || AcademicGroups.COORDINATOR.isMember(userView.getPerson().getUser());
     }
 
     @Override
@@ -306,7 +306,7 @@ public class SecondCycleIndividualCandidacyProcess extends SecondCycleIndividual
 
         @Override
         public void checkPreConditions(SecondCycleIndividualCandidacyProcess process, User userView) {
-            if (!isAllowedToManageProcess(process, userView) && !RoleType.COORDINATOR.isMember(userView.getPerson().getUser())) {
+            if (!isAllowedToManageProcess(process, userView) && !AcademicGroups.COORDINATOR.isMember(userView.getPerson().getUser())) {
                 throw new PreConditionNotValidException();
             }
 

@@ -22,10 +22,10 @@
  */
 package org.fenixedu.academic.service.filter.coordinator;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Coordinator;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.filter.framework.DomainObjectAuthorizationFilter;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -36,7 +36,7 @@ public class DegreeCurricularPlanAuthorizationFilter extends DomainObjectAuthori
 
     @Override
     protected Group getRoleType() {
-        return RoleType.COORDINATOR;
+        return AcademicGroups.COORDINATOR;
     }
 
     @Override

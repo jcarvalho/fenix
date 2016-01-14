@@ -21,11 +21,11 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.accessControl.AcademicAuthorizationGroup;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
 import org.fenixedu.academic.domain.degreeStructure.CourseGroup;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
 
@@ -47,10 +47,10 @@ public class CourseGroupPredicates {
                     }
 
                     User user = Authenticate.getUser();
-                    if (RoleType.SCIENTIFIC_COUNCIL.isMember(user)
-                            || RoleType.MANAGER.isMember(user)
+                    if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(user)
+                            || AcademicGroups.MANAGER.isMember(user)
                             || AcademicAuthorizationGroup.get(AcademicOperationType.MANAGE_DEGREE_CURRICULAR_PLANS)
-                                    .isMember(user) || RoleType.OPERATOR.isMember(user)) {
+                                    .isMember(user) || AcademicGroups.OPERATOR.isMember(user)) {
                         return true;
                     }
 

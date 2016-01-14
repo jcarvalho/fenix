@@ -27,7 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
 
@@ -47,7 +47,7 @@ public class ManagerFilter implements Filter {
 
         final User userView = Authenticate.getUser();
         if (userView == null
-                || !(RoleType.MANAGER.isMember(userView.getPerson().getUser()) || RoleType.OPERATOR.isMember(userView.getPerson()
+                || !(AcademicGroups.MANAGER.isMember(userView.getPerson().getUser()) || AcademicGroups.OPERATOR.isMember(userView.getPerson()
                         .getUser()))) {
             throw new RuntimeException();
         }

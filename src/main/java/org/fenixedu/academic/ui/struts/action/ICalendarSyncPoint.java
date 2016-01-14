@@ -32,6 +32,7 @@ import org.apache.commons.lang.CharEncoding;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Attends;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionSemester;
@@ -40,7 +41,6 @@ import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Project;
 import org.fenixedu.academic.domain.Shift;
 import org.fenixedu.academic.domain.WrittenEvaluation;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.util.icalendar.CalendarFactory;
 import org.fenixedu.academic.domain.util.icalendar.EventBean;
@@ -201,7 +201,7 @@ public class ICalendarSyncPoint extends FenixDispatchAction {
                     if (user.getPrivateKey().getPrivateKeyValidity().isBeforeNow()) {
                         returnError(httpServletResponse, "private.key.validity.expired");
                     } else {
-                        if (RoleType.STUDENT.isMember(user.getPerson().getUser())) {
+                        if (AcademicGroups.STUDENT.isMember(user.getPerson().getUser())) {
 
                             encodeAndTransmitResponse(httpServletResponse,
                                     getCalendar(method, user, user.getPrivateKey().getPrivateKeyValidity(), request));

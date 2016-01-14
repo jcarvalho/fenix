@@ -49,7 +49,6 @@ import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.organizationalStructure.CompetenceCourseGroupUnit;
 import org.fenixedu.academic.domain.organizationalStructure.DepartmentUnit;
 import org.fenixedu.academic.domain.organizationalStructure.ScientificAreaUnit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.time.calendarStructure.AcademicPeriod;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.academic.predicate.CompetenceCoursePredicates;
@@ -334,10 +333,10 @@ public class CompetenceCourse extends CompetenceCourse_Base {
         if (isApproved()) {
             return true;
         }
-        if (RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
+        if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
             return true;
         }
-        if (!RoleType.BOLONHA_MANAGER.isMember(person.getUser())) {
+        if (!AcademicGroups.BOLONHA_MANAGER.isMember(person.getUser())) {
             return false;
         }
         return getDepartmentUnit().getDepartment().isUserMemberOfCompetenceCourseMembersGroup(person);
@@ -345,10 +344,10 @@ public class CompetenceCourse extends CompetenceCourse_Base {
 
     public boolean isLoggedPersonAllowedToViewChangeRequests() {
         Person person = AccessControl.getPerson();
-        if (RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
+        if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
             return true;
         }
-        if (!RoleType.BOLONHA_MANAGER.isMember(person.getUser())) {
+        if (!AcademicGroups.BOLONHA_MANAGER.isMember(person.getUser())) {
             return false;
         }
         for (CompetenceCourseInformation information : getCompetenceCourseInformationsSet()) {
@@ -361,10 +360,10 @@ public class CompetenceCourse extends CompetenceCourse_Base {
 
     public boolean isLoggedPersonAllowedToCreateChangeRequests(ExecutionSemester semester) {
         Person person = AccessControl.getPerson();
-        if (RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
+        if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
             return true;
         }
-        if (!RoleType.BOLONHA_MANAGER.isMember(person.getUser())) {
+        if (!AcademicGroups.BOLONHA_MANAGER.isMember(person.getUser())) {
             return false;
         }
         return getDepartmentUnit(semester).getDepartment().isUserMemberOfCompetenceCourseMembersGroup(person);

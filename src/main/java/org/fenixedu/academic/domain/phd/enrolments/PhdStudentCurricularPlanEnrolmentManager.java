@@ -20,6 +20,7 @@ package org.fenixedu.academic.domain.phd.enrolments;
 
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.Enrolment;
 import org.fenixedu.academic.domain.Person;
@@ -28,7 +29,6 @@ import org.fenixedu.academic.domain.curricularRules.executors.RuleResult;
 import org.fenixedu.academic.domain.curricularRules.executors.ruleExecutors.EnrolmentResultType;
 import org.fenixedu.academic.domain.curriculum.EnrollmentCondition;
 import org.fenixedu.academic.domain.enrolment.EnrolmentContext;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.studentCurriculum.StudentCurricularPlanEnrolmentManager;
 
 public class PhdStudentCurricularPlanEnrolmentManager extends StudentCurricularPlanEnrolmentManager {
@@ -87,7 +87,7 @@ public class PhdStudentCurricularPlanEnrolmentManager extends StudentCurricularP
 
     private boolean wasPerformedByStudent(final Enrolment enrolment) {
         final Person person = Person.readPersonByUsername(enrolment.getCreatedBy());
-        return RoleType.STUDENT.isMember(person.getUser()) && enrolment.getStudent().equals(person.getStudent());
+        return AcademicGroups.STUDENT.isMember(person.getUser()) && enrolment.getStudent().equals(person.getStudent());
     }
 
 }

@@ -28,10 +28,10 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.studentCurriculum.ExternalEnrolment;
 import org.fenixedu.academic.domain.util.workflow.IState;
@@ -162,10 +162,10 @@ public abstract class RegistrationState extends RegistrationState_Base implement
 
     private Person selectPerson(final Person responsiblePerson) {
         if (responsiblePerson != null) {
-            return RoleType.MANAGER.isMember(responsiblePerson.getUser()) ? null : responsiblePerson;
+            return AcademicGroups.MANAGER.isMember(responsiblePerson.getUser()) ? null : responsiblePerson;
         } else {
             final Person loggedPerson = AccessControl.getPerson();
-            return (loggedPerson == null) ? null : (RoleType.MANAGER.isMember(loggedPerson.getUser()) ? null : loggedPerson);
+            return (loggedPerson == null) ? null : (AcademicGroups.MANAGER.isMember(loggedPerson.getUser()) ? null : loggedPerson);
         }
     }
 

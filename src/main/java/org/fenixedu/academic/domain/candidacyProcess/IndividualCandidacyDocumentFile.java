@@ -20,12 +20,12 @@ package org.fenixedu.academic.domain.candidacyProcess;
 
 import java.util.stream.Collectors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.AcademicProgram;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.util.FileUtils;
 import org.fenixedu.bennu.core.domain.User;
 
@@ -80,7 +80,7 @@ public class IndividualCandidacyDocumentFile extends IndividualCandidacyDocument
         }
 
         // International Relation Office permissions
-        if (RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser())) {
+        if (AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser())) {
             return true;
         }
 

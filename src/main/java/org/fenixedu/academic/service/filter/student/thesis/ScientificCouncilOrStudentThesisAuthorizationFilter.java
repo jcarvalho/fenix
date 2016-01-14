@@ -18,7 +18,7 @@
  */
 package org.fenixedu.academic.service.filter.student.thesis;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.thesis.Thesis;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
@@ -32,7 +32,7 @@ public class ScientificCouncilOrStudentThesisAuthorizationFilter extends Student
     @Override
     public void execute(Thesis thesis) throws NotAuthorizedException {
         final User userView = Authenticate.getUser();
-        if (!RoleType.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())) {
+        if (!AcademicGroups.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser())) {
             super.execute(thesis);
         }
     }

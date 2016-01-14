@@ -25,11 +25,11 @@ package org.fenixedu.academic.service.filter;
 
 import java.util.Iterator;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.BibliographicReference;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Teacher;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -52,7 +52,7 @@ public class ExecutionCourseAndBibliographicReferenceLecturingTeacherAuthorizati
 
     @Override
     protected Group getRoleType() {
-        return RoleType.TEACHER;
+        return AcademicGroups.TEACHER;
     }
 
     public void execute(String bibliographicReferenceID) throws NotAuthorizedException {

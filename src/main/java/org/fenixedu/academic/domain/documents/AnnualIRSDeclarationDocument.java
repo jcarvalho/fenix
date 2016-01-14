@@ -18,9 +18,9 @@
  */
 package org.fenixedu.academic.domain.documents;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.User;
 import org.joda.time.LocalDate;
 
@@ -43,7 +43,7 @@ public class AnnualIRSDeclarationDocument extends AnnualIRSDeclarationDocument_B
 
     @Override
     public boolean isAccessible(User user) {
-        return super.isAccessible(user) || RoleType.MANAGER.isMember(user);
+        return super.isAccessible(user) || AcademicGroups.MANAGER.isMember(user);
     }
 
     private void checkRulesToCreate(Person addressee, Integer year) {

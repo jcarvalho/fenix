@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.dto.residenceManagement.ResidenceRoleManagementBean;
 import org.fenixedu.academic.ui.struts.action.base.FenixDispatchAction;
 import org.fenixedu.bennu.core.domain.User;
@@ -66,7 +66,7 @@ public class ResidenceRoleManagementDA extends FenixDispatchAction {
     }
 
     private DynamicGroup getResidenceRoleManagement() {
-        return (DynamicGroup) RoleType.RESIDENCE_MANAGER;
+        return (DynamicGroup) AcademicGroups.RESIDENCE_MANAGER;
     }
 
     private ResidenceRoleManagementBean getResidenceRoleManagementBean() {

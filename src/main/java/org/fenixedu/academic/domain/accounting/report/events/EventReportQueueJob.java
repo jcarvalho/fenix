@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.QueueJobResult;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
@@ -49,7 +50,6 @@ import org.fenixedu.academic.domain.accounting.events.gratuity.GratuityEvent;
 import org.fenixedu.academic.domain.accounting.events.serviceRequests.AcademicServiceRequestEvent;
 import org.fenixedu.academic.domain.administrativeOffice.AdministrativeOffice;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.debts.PhdEvent;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.academic.util.ConnectionManager;
@@ -102,7 +102,7 @@ public class EventReportQueueJob extends EventReportQueueJob_Base {
             throw new DomainException("error.EventReportQueueJob.permission.denied");
         }
 
-        if (RoleType.MANAGER.isMember(loggedPerson.getUser())) {
+        if (AcademicGroups.MANAGER.isMember(loggedPerson.getUser())) {
             return;
         }
 

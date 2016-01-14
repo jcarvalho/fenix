@@ -20,6 +20,7 @@ package org.fenixedu.academic.domain.degreeStructure;
 
 import static org.fenixedu.academic.predicate.AccessControl.check;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CompetenceCourse;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.Person;
@@ -27,7 +28,6 @@ import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.organizationalStructure.CompetenceCourseGroupUnit;
 import org.fenixedu.academic.domain.organizationalStructure.DepartmentUnit;
 import org.fenixedu.academic.domain.organizationalStructure.ScientificAreaUnit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.time.calendarStructure.AcademicPeriod;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.academic.predicate.RolePredicates;
@@ -248,10 +248,10 @@ public class CompetenceCourseInformationChangeRequest extends CompetenceCourseIn
 
     public boolean isLoggedPersonAllowedToEdit() {
         Person person = AccessControl.getPerson();
-        if (RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
+        if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser())) {
             return true;
         }
-        if (!RoleType.BOLONHA_MANAGER.isMember(person.getUser())) {
+        if (!AcademicGroups.BOLONHA_MANAGER.isMember(person.getUser())) {
             return false;
         }
         return getCompetenceCourse().getDepartmentUnit(getExecutionPeriod()).getDepartment()

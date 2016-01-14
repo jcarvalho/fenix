@@ -22,10 +22,10 @@ import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.candidacy.GenericApplication;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.util.MultiLanguageString;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
@@ -104,7 +104,7 @@ public class GenericApplicationPeriod extends GenericApplicationPeriod_Base {
     public boolean isCurrentUserAllowedToMange() {
         final User userView = Authenticate.getUser();
         return userView != null
-                && (RoleType.MANAGER.isMember(userView.getPerson().getUser()) || getManagerSet().contains(
+                && (AcademicGroups.MANAGER.isMember(userView.getPerson().getUser()) || getManagerSet().contains(
                         userView.getPerson().getUser()));
     }
 

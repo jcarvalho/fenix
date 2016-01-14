@@ -29,8 +29,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.email.ExecutionCourseSender;
 import org.fenixedu.academic.domain.util.email.Message;
 import org.fenixedu.academic.domain.util.email.MessageDeleteService;
@@ -90,7 +90,7 @@ public class ViewSentEmailsDA extends FenixDispatchAction {
         request.setAttribute("sendersGroupsCourses", sendersGroupsCourses);
 
         final Person person = AccessControl.getPerson();
-        if (person != null && RoleType.MANAGER.isMember(person.getUser())) {
+        if (person != null && AcademicGroups.MANAGER.isMember(person.getUser())) {
             SearchSendersBean searchSendersBean = getRenderedObject("searchSendersBean");
             if (searchSendersBean == null) {
                 searchSendersBean = new SearchSendersBean();

@@ -23,10 +23,10 @@
  */
 package org.fenixedu.academic.service.filter;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Professorship;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.dto.InfoExecutionCourse;
 import org.fenixedu.academic.dto.SummariesManagementBean;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
@@ -51,7 +51,7 @@ public class ExecutionCourseLecturingTeacherAuthorizationFilter extends Authoriz
 
     @Override
     protected Group getRoleType() {
-        return RoleType.TEACHER;
+        return AcademicGroups.TEACHER;
     }
 
     public void execute(String executionCourseCode) throws NotAuthorizedException {

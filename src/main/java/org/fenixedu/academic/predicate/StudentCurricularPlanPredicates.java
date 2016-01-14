@@ -20,13 +20,13 @@ package org.fenixedu.academic.predicate;
 
 import java.util.stream.Collectors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.AcademicProgram;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
 
 public class StudentCurricularPlanPredicates {
 
@@ -36,11 +36,11 @@ public class StudentCurricularPlanPredicates {
                 @Override
                 public boolean evaluate(StudentCurricularPlan studentCurricularPlan) {
                     final Person person = AccessControl.getPerson();
-                    return RoleType.STUDENT.isMember(person.getUser())
+                    return AcademicGroups.STUDENT.isMember(person.getUser())
                             || hasAuthorization(person, AcademicOperationType.STUDENT_ENROLMENTS,
                                     studentCurricularPlan.getDegree())
-                            || RoleType.MANAGER.isMember(person.getUser())
-                            || RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser())
+                            || AcademicGroups.MANAGER.isMember(person.getUser())
+                            || AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser())
                             /*
                              * used in PhdIndividualProgramProcess enrolments management
                              */
@@ -55,15 +55,15 @@ public class StudentCurricularPlanPredicates {
                 public boolean evaluate(StudentCurricularPlan studentCurricularPlan) {
                     final Person person = AccessControl.getPerson();
 
-                    if (RoleType.MANAGER.isMember(person.getUser())) {
+                    if (AcademicGroups.MANAGER.isMember(person.getUser())) {
                         return true;
                     }
 
                     if (!studentCurricularPlan.isConclusionProcessed()) {
-                        return RoleType.STUDENT.isMember(person.getUser())
+                        return AcademicGroups.STUDENT.isMember(person.getUser())
                                 || hasAuthorization(person, AcademicOperationType.STUDENT_ENROLMENTS,
                                         studentCurricularPlan.getDegree())
-                                || RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser());
+                                || AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser());
                     }
 
                     if (studentCurricularPlan.isEmptyDegree()) {
@@ -82,7 +82,7 @@ public class StudentCurricularPlanPredicates {
                 public boolean evaluate(StudentCurricularPlan studentCurricularPlan) {
                     final Person person = AccessControl.getPerson();
                     return hasAuthorization(person, AcademicOperationType.STUDENT_ENROLMENTS, studentCurricularPlan.getDegree())
-                            || RoleType.MANAGER.isMember(person.getUser());
+                            || AcademicGroups.MANAGER.isMember(person.getUser());
                 }
             };
 
@@ -93,7 +93,7 @@ public class StudentCurricularPlanPredicates {
                 public boolean evaluate(StudentCurricularPlan studentCurricularPlan) {
                     final Person person = AccessControl.getPerson();
 
-                    if (RoleType.MANAGER.isMember(person.getUser())) {
+                    if (AcademicGroups.MANAGER.isMember(person.getUser())) {
                         return true;
                     }
 

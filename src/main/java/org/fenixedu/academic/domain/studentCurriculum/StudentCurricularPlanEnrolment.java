@@ -29,6 +29,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.ExecutionYear;
@@ -44,7 +45,6 @@ import org.fenixedu.academic.domain.enrolment.EnrolmentContext;
 import org.fenixedu.academic.domain.enrolment.IDegreeModuleToEvaluate;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.exceptions.EnrollmentDomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.enrolments.PhdStudentCurricularPlanEnrolmentManager;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
@@ -350,7 +350,7 @@ abstract public class StudentCurricularPlanEnrolment {
     }
 
     protected boolean isResponsiblePersonManager() {
-        return RoleType.MANAGER.isMember(getResponsiblePerson().getUser());
+        return AcademicGroups.MANAGER.isMember(getResponsiblePerson().getUser());
     }
 
     // Old AcademicAdminOffice role check
@@ -361,15 +361,15 @@ abstract public class StudentCurricularPlanEnrolment {
     }
 
     protected boolean isResponsibleInternationalRelationOffice() {
-        return RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(getResponsiblePerson().getUser());
+        return AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(getResponsiblePerson().getUser());
     }
 
     protected boolean isResponsiblePersonStudent() {
-        return RoleType.STUDENT.isMember(getResponsiblePerson().getUser());
+        return AcademicGroups.STUDENT.isMember(getResponsiblePerson().getUser());
     }
 
     protected boolean isResponsiblePersonCoordinator() {
-        return RoleType.COORDINATOR.isMember(getResponsiblePerson().getUser());
+        return AcademicGroups.COORDINATOR.isMember(getResponsiblePerson().getUser());
     }
 
     abstract protected void unEnrol();

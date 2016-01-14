@@ -26,11 +26,11 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.messaging.ConversationMessage;
 import org.fenixedu.academic.domain.messaging.ConversationThread;
 import org.fenixedu.academic.domain.messaging.ForumSubscription;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.util.email.Message;
 import org.fenixedu.academic.domain.util.email.Recipient;
 import org.fenixedu.academic.domain.util.email.SystemSender;
@@ -76,7 +76,7 @@ public abstract class ForumService {
                 if (subscriber.getEmail() == null) {
                     subscription.setReceivePostsByEmail(false);
                 } else {
-                    if (RoleType.TEACHER.isMember(subscriber.getUser())) {
+                    if (AcademicGroups.TEACHER.isMember(subscriber.getUser())) {
                         teachers.add(subscriber);
                     } else {
                         students.add(subscriber);
@@ -104,7 +104,7 @@ public abstract class ForumService {
                     .isPersonReceivingMessagesByEmail(nextToLastMessageReplier)) {
                 final Set<Person> teachers = new HashSet<Person>();
                 final Set<Person> students = new HashSet<Person>();
-                if (RoleType.TEACHER.isMember(nextToLastMessageReplier.getUser())) {
+                if (AcademicGroups.TEACHER.isMember(nextToLastMessageReplier.getUser())) {
                     teachers.add(nextToLastMessageReplier);
                 } else {
                     students.add(nextToLastMessageReplier);

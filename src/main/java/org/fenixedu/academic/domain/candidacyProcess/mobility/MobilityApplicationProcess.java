@@ -33,6 +33,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
 import org.apache.commons.lang.StringUtils;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.AcademicProgram;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.ExecutionInterval;
@@ -59,7 +60,6 @@ import org.fenixedu.academic.domain.caseHandling.StartActivity;
 import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.period.MobilityApplicationPeriod;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.util.Bundle;
 import org.fenixedu.bennu.core.domain.Bennu;
 import org.fenixedu.bennu.core.domain.User;
@@ -272,8 +272,8 @@ public class MobilityApplicationProcess extends MobilityApplicationProcess_Base 
     @Override
     public boolean canExecuteActivity(User userView) {
         return isAllowedToManageProcess(userView)
-                || RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser())
-                || RoleType.COORDINATOR.isMember(userView.getPerson().getUser());
+                || AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser())
+                || AcademicGroups.COORDINATOR.isMember(userView.getPerson().getUser());
     }
 
     private static final java.util.function.Predicate<DegreeType> ALLOWED_DEGREE_TYPES = DegreeType.oneOf(
@@ -290,11 +290,11 @@ public class MobilityApplicationProcess extends MobilityApplicationProcess_Base 
     }
 
     static private boolean isInternationalRelationsOfficer(User userView) {
-        return RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser());
+        return AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(userView.getPerson().getUser());
     }
 
     static private boolean isManager(User userView) {
-        return RoleType.MANAGER.isMember(userView.getPerson().getUser());
+        return AcademicGroups.MANAGER.isMember(userView.getPerson().getUser());
     }
 
     @Override

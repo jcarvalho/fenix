@@ -21,8 +21,8 @@ package org.fenixedu.academic.domain.organizationalStructure;
 import java.util.List;
 import java.util.Set;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.groups.Group;
 
 public class PedagogicalCouncilUnit extends PedagogicalCouncilUnit_Base {
@@ -41,7 +41,7 @@ public class PedagogicalCouncilUnit extends PedagogicalCouncilUnit_Base {
     protected List<Group> getDefaultGroups() {
         List<Group> groups = super.getDefaultGroups();
 
-        groups.add(RoleType.PEDAGOGICAL_COUNCIL);
+        groups.add(AcademicGroups.PEDAGOGICAL_COUNCIL);
 
         return groups;
     }

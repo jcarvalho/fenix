@@ -18,10 +18,10 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumGroup;
 
 public class CycleCurriculumGroupPredicates {
@@ -33,7 +33,7 @@ public class CycleCurriculumGroupPredicates {
                 public boolean evaluate(final CurriculumGroup curriculumGroup) {
                     final Person person = AccessControl.getPerson();
 
-                    if (RoleType.MANAGER.isMember(person.getUser())) {
+                    if (AcademicGroups.MANAGER.isMember(person.getUser())) {
                         return true;
                     }
 

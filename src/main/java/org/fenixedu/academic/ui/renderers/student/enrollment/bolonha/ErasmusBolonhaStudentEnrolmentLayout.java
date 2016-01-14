@@ -26,12 +26,12 @@ import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.StringUtils;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CurricularCourse;
 import org.fenixedu.academic.domain.Enrolment;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.degreeStructure.Context;
 import org.fenixedu.academic.domain.enrolment.IDegreeModuleToEvaluate;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.studentCurriculum.NoCourseGroupCurriculumGroup;
 import org.fenixedu.academic.domain.studentCurriculum.NoCourseGroupCurriculumGroupType;
 import org.fenixedu.academic.dto.student.enrollment.bolonha.BolonhaStudentEnrollmentBean;
@@ -60,7 +60,7 @@ public class ErasmusBolonhaStudentEnrolmentLayout extends BolonhaStudentEnrolmen
 
     protected boolean isAcademicRelationsOfficeMember() {
         final Person person = AccessControl.getPerson();
-        return RoleType.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser()) || canPerformStudentEnrolments;
+        return AcademicGroups.INTERNATIONAL_RELATION_OFFICE.isMember(person.getUser()) || canPerformStudentEnrolments;
     }
 
     private boolean contains(List<CurricularCourse> curricularCourseList, final IDegreeModuleToEvaluate degreeModule) {

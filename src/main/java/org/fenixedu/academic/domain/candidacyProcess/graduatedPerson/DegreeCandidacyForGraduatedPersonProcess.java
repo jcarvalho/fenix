@@ -29,6 +29,7 @@ import java.util.TreeSet;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.AcademicProgram;
 import org.fenixedu.academic.domain.Degree;
 import org.fenixedu.academic.domain.ExecutionInterval;
@@ -47,7 +48,6 @@ import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
 import org.fenixedu.academic.domain.period.CandidacyProcessCandidacyPeriod;
 import org.fenixedu.academic.domain.period.DegreeCandidacyForGraduatedPersonCandidacyPeriod;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
 import org.joda.time.DateTime;
@@ -112,7 +112,7 @@ public class DegreeCandidacyForGraduatedPersonProcess extends DegreeCandidacyFor
 
     @Override
     public boolean canExecuteActivity(User userView) {
-        return isAllowedToManageProcess(userView) || RoleType.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser());
+        return isAllowedToManageProcess(userView) || AcademicGroups.SCIENTIFIC_COUNCIL.isMember(userView.getPerson().getUser());
     }
 
     @Override

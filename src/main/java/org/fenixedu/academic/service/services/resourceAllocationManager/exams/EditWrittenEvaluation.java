@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeModuleScope;
 import org.fenixedu.academic.domain.Exam;
 import org.fenixedu.academic.domain.ExecutionCourse;
@@ -29,7 +30,6 @@ import org.fenixedu.academic.domain.GradeScale;
 import org.fenixedu.academic.domain.WrittenEvaluation;
 import org.fenixedu.academic.domain.WrittenTest;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.space.EventSpaceOccupation;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.academic.service.GOPSendMessageService;
@@ -112,7 +112,7 @@ public class EditWrittenEvaluation {
             if (writtenTest.getRequestRoomSentDate() != null) {
                 if (!prevTestDate.equals(writtenEvaluationDate) || !prevStartTime.equals(writtenEvaluationStartTime)
                         || !prevTestEnd.equals(writtenEvaluationEndTime)) {
-                    if (!RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser())) {
+                    if (!AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(AccessControl.getPerson().getUser())) {
                         GOPSendMessageService.requestChangeRoom(writtenTest, prevTestDate, prevStartTime, prevTestEnd);
                     }
                 }

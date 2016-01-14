@@ -37,6 +37,7 @@ import javax.faces.model.SelectItem;
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.comparators.ReverseComparator;
 import org.apache.commons.lang.StringUtils;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CompetenceCourse;
 import org.fenixedu.academic.domain.CompetenceCourseType;
 import org.fenixedu.academic.domain.Degree;
@@ -54,7 +55,6 @@ import org.fenixedu.academic.domain.organizationalStructure.CompetenceCourseGrou
 import org.fenixedu.academic.domain.organizationalStructure.DepartmentUnit;
 import org.fenixedu.academic.domain.organizationalStructure.ScientificAreaUnit;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.dto.bolonhaManager.CourseLoad;
 import org.fenixedu.academic.predicate.AccessControl;
 import org.fenixedu.academic.predicate.IllegalDataAccessException;
@@ -271,7 +271,7 @@ public class CompetenceCourseManagementBackingBean extends FenixBackingBean {
 
     private void removeRoleIfNecessary(User user) {
         if (!isUserMemberOfAnyCurricularPlanGroup(user) && !isUserMemberOfAnyDepartmentCompetenceCourseGroup(user)) {
-            RoleType.BOLONHA_MANAGER.mutator().revoke(user);
+            AcademicGroups.BOLONHA_MANAGER.mutator().revoke(user);
         }
     }
 
@@ -282,7 +282,7 @@ public class CompetenceCourseManagementBackingBean extends FenixBackingBean {
             if (user != null) {
                 Group group = getSelectedDepartmentUnit().getDepartment().getCompetenceCourseMembersGroup();
                 getSelectedDepartmentUnit().getDepartment().setCompetenceCourseMembersGroup(group.grant(user));
-                RoleType.BOLONHA_MANAGER.mutator().grant(user);
+                AcademicGroups.BOLONHA_MANAGER.mutator().grant(user);
             }
         }
     }

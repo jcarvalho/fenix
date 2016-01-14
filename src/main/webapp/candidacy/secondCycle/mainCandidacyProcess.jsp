@@ -25,7 +25,6 @@
 <%@ taglib uri="http://fenix-ashes.ist.utl.pt/fenix-renderers" prefix="fr"%>
 <%@ page import="org.fenixedu.academic.ui.struts.action.candidacy.CandidacyProcessDA.HideCancelledCandidaciesBean" %>
 <%@ page import="org.fenixedu.academic.predicate.AccessControl" %>
-<%@ page import="org.fenixedu.academic.domain.person.RoleType" %>
 
 <html:xhtml/>
 

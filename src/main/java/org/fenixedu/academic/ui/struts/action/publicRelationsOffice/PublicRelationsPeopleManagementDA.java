@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.service.services.exceptions.FenixServiceException;
 import org.fenixedu.academic.ui.struts.action.base.FenixDispatchAction;
 import org.fenixedu.bennu.core.domain.User;
@@ -49,7 +49,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
     @EntryPoint
     public ActionForward managePeople(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request,
             HttpServletResponse response) throws FenixServiceException {
-        request.setAttribute("role", RoleType.PUBLIC_RELATIONS_OFFICE);
+        request.setAttribute("role", AcademicGroups.PUBLIC_RELATIONS_OFFICE);
         request.setAttribute("bean", new PersonBean());
         return mapping.findForward("managePeople");
     }
@@ -62,7 +62,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
             HttpServletResponse response) throws FenixServiceException {
         String id = request.getParameter("managerID");
         User person = FenixFramework.getDomainObject(id);
-        RoleType.PUBLIC_RELATIONS_OFFICE.mutator().revoke(person);
+        AcademicGroups.PUBLIC_RELATIONS_OFFICE.mutator().revoke(person);
         return managePeople(mapping, actionForm, request, response);
     }
 
@@ -76,7 +76,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
         String username = bean.getUsername();
         User user;
         if (username != null && (user = User.findByUsername(username)) != null) {
-            RoleType.PUBLIC_RELATIONS_OFFICE.mutator().grant(user);
+            AcademicGroups.PUBLIC_RELATIONS_OFFICE.mutator().grant(user);
         } else {
             addActionMessage(request, "error.noUsername", (username.compareTo("") == 0 ? "(vazio)" : username));
         }

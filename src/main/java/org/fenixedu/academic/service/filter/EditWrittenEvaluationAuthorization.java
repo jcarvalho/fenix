@@ -18,8 +18,8 @@
  */
 package org.fenixedu.academic.service.filter;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.WrittenEvaluation;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
@@ -33,7 +33,7 @@ public class EditWrittenEvaluationAuthorization extends Filtro {
     public void execute(String writtenEvaluationId) throws NotAuthorizedException {
         final User userView = Authenticate.getUser();
 
-        if (!RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
+        if (!AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(userView.getPerson().getUser())) {
 
             final WrittenEvaluation writtenEvaluation = readWrittenEvaluation(writtenEvaluationId);
 

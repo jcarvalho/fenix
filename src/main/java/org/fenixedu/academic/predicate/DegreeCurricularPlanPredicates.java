@@ -21,9 +21,9 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 
 /**
  * @author - Shezad Anavarali (shezad@ist.utl.pt)
@@ -37,7 +37,7 @@ public class DegreeCurricularPlanPredicates {
                 @Override
                 public boolean evaluate(DegreeCurricularPlan dcp) {
                     final Person person = AccessControl.getPerson();
-                    return RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser()) || !dcp.isBolonhaDegree();
+                    return AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser()) || !dcp.isBolonhaDegree();
                 }
 
             };

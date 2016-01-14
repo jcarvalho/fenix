@@ -18,7 +18,7 @@
  */
 package org.fenixedu.academic.domain.contacts;
 
-import org.fenixedu.academic.domain.person.RoleType;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.util.FileUtils;
 import org.fenixedu.bennu.core.domain.User;
 
@@ -42,6 +42,6 @@ public class PhysicalAddressValidationFile extends PhysicalAddressValidationFile
 
     @Override
     public boolean isAccessible(User user) {
-        return RoleType.OPERATOR.isMember(user);
+        return AcademicGroups.OPERATOR.isMember(user);
     }
 }

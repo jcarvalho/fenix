@@ -23,10 +23,10 @@
  */
 package org.fenixedu.academic.service.filter;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Coordinator;
 import org.fenixedu.academic.domain.ExecutionDegree;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -47,7 +47,7 @@ public class DegreeCoordinatorAuthorizationFilter extends AuthorizationByRoleFil
 
     @Override
     protected Group getRoleType() {
-        return RoleType.COORDINATOR;
+        return AcademicGroups.COORDINATOR;
     }
 
     public void execute(String executionDegreeId) throws NotAuthorizedException {

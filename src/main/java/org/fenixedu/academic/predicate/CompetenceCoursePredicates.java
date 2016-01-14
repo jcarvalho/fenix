@@ -23,10 +23,10 @@ package org.fenixedu.academic.predicate;
 
 import java.util.Collection;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.CompetenceCourse;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.groups.Group;
 
 /**
@@ -46,7 +46,7 @@ public class CompetenceCoursePredicates {
 
             Person person = AccessControl.getPerson();
 
-            if (RoleType.MANAGER.isMember(person.getUser())) {
+            if (AcademicGroups.MANAGER.isMember(person.getUser())) {
                 return true;
             }
 
@@ -61,7 +61,7 @@ public class CompetenceCoursePredicates {
             case PUBLISHED:
                 return isCompetenceGroupMember || isDegreeCurricularPlansMember;
             case APPROVED:
-                return RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser());
+                return AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser());
             default:
                 return false;
             }
@@ -82,9 +82,9 @@ public class CompetenceCoursePredicates {
                     case DRAFT:
                         return isCompetenceGroupMember;
                     case PUBLISHED:
-                        return isCompetenceGroupMember || RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser());
+                        return isCompetenceGroupMember || AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser());
                     case APPROVED:
-                        return RoleType.SCIENTIFIC_COUNCIL.isMember(person.getUser());
+                        return AcademicGroups.SCIENTIFIC_COUNCIL.isMember(person.getUser());
                     default:
                         return false;
                     }

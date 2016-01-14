@@ -18,6 +18,7 @@
  */
 package org.fenixedu.academic.domain.curricularRules.executors.ruleExecutors;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicAccessRule;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
@@ -25,7 +26,6 @@ import org.fenixedu.academic.domain.curricularRules.ICurricularRule;
 import org.fenixedu.academic.domain.curricularRules.executors.RuleResult;
 import org.fenixedu.academic.domain.enrolment.EnrolmentContext;
 import org.fenixedu.academic.domain.enrolment.IDegreeModuleToEvaluate;
-import org.fenixedu.academic.domain.person.RoleType;
 
 public class EnrolmentToBeApprovedByCoordinatorExecutor extends CurricularRuleExecutor {
 
@@ -48,7 +48,7 @@ public class EnrolmentToBeApprovedByCoordinatorExecutor extends CurricularRuleEx
         final Person responsiblePerson = enrolmentContext.getResponsiblePerson();
         if (AcademicAccessRule.isProgramAccessibleToFunction(AcademicOperationType.STUDENT_ENROLMENTS, enrolmentContext
                 .getStudentCurricularPlan().getDegree(), responsiblePerson.getUser())
-                || RoleType.MANAGER.isMember(responsiblePerson.getUser())) {
+                || AcademicGroups.MANAGER.isMember(responsiblePerson.getUser())) {
             return RuleResult
                     .createWarning(
                             sourceDegreeModuleToEvaluate.getDegreeModule(),

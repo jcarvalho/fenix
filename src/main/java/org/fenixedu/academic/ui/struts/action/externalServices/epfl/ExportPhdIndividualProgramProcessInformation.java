@@ -32,9 +32,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExternalUser;
 import org.fenixedu.academic.domain.Photograph;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcess;
 import org.fenixedu.academic.domain.phd.PhdIndividualProgramProcessNumber;
 import org.fenixedu.academic.domain.phd.candidacy.PhdCandidacyReferee;
@@ -154,7 +154,7 @@ public class ExportPhdIndividualProgramProcessInformation extends FenixAction {
                     return null;
                 }
             }
-        } else if (RoleType.MANAGER.isMember(userView.getPerson().getUser())) {
+        } else if (AcademicGroups.MANAGER.isMember(userView.getPerson().getUser())) {
             return null;
         }
         return displayUnAuhtorizedPage(request, response);

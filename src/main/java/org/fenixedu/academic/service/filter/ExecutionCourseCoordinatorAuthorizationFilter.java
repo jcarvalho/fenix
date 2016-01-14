@@ -24,11 +24,11 @@ package org.fenixedu.academic.service.filter;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Coordinator;
 import org.fenixedu.academic.domain.ExecutionCourse;
 import org.fenixedu.academic.domain.ExecutionYear;
 import org.fenixedu.academic.domain.Person;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.filter.coordinator.CoordinatorAuthorizationFilter;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.security.Authenticate;
@@ -52,7 +52,7 @@ public class ExecutionCourseCoordinatorAuthorizationFilter extends CoordinatorAu
     public void execute(String executionCourseID) throws NotAuthorizedException {
         Person person = Authenticate.getUser().getPerson();
 
-        if (!RoleType.COORDINATOR.isMember(person.getUser())) {
+        if (!AcademicGroups.COORDINATOR.isMember(person.getUser())) {
             deny();
         }
 

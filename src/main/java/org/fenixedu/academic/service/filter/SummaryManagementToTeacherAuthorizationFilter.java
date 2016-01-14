@@ -21,9 +21,9 @@
  */
 package org.fenixedu.academic.service.filter;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Professorship;
 import org.fenixedu.academic.domain.Summary;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.service.services.exceptions.NotAuthorizedException;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.groups.Group;
@@ -42,7 +42,7 @@ public class SummaryManagementToTeacherAuthorizationFilter extends Authorization
 
     @Override
     protected Group getRoleType() {
-        return RoleType.TEACHER;
+        return AcademicGroups.TEACHER;
     }
 
     public void execute(Summary summary, Professorship professorshipLogged) throws NotAuthorizedException {

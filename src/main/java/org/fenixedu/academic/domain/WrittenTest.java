@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.space.EventSpaceOccupation;
 import org.fenixedu.academic.domain.space.LessonInstanceSpaceOccupation;
 import org.fenixedu.academic.domain.space.LessonSpaceOccupation;
@@ -162,7 +161,7 @@ public class WrittenTest extends WrittenTest_Base {
     }
 
     public boolean hasCoordinatorPrivledges(final User requestor) {
-        if (requestor != null && RoleType.COORDINATOR.isMember(requestor.getPerson().getUser())) {
+        if (requestor != null && AcademicGroups.COORDINATOR.isMember(requestor.getPerson().getUser())) {
             final Person person = requestor.getPerson();
             if (person != null) {
                 for (final Coordinator coordinator : person.getCoordinatorsSet()) {
@@ -184,7 +183,7 @@ public class WrittenTest extends WrittenTest_Base {
     }
 
     public boolean hasTimeTableManagerPrivledges(final User requestor) {
-        return requestor != null && RoleType.RESOURCE_ALLOCATION_MANAGER.isMember(requestor.getPerson().getUser());
+        return requestor != null && AcademicGroups.RESOURCE_ALLOCATION_MANAGER.isMember(requestor.getPerson().getUser());
     }
 
     @Override

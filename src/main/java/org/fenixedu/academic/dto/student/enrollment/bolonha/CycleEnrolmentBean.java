@@ -24,12 +24,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.StudentCurricularPlan;
 import org.fenixedu.academic.domain.degreeStructure.CycleCourseGroup;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.studentCurriculum.CycleCurriculumGroup;
 import org.fenixedu.bennu.core.security.Authenticate;
 
@@ -124,7 +124,7 @@ public class CycleEnrolmentBean implements Serializable {
     }
 
     private boolean isStudent() {
-        return RoleType.STUDENT.isMember(Authenticate.getUser().getPerson().getUser());
+        return AcademicGroups.STUDENT.isMember(Authenticate.getUser().getPerson().getUser());
     }
 
     private DegreeCurricularPlan getDegreeCurricularPlan() {

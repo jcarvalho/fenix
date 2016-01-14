@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Department;
 import org.fenixedu.academic.domain.EmptyDegree;
 import org.fenixedu.academic.domain.EmptyDegreeCurricularPlan;
@@ -48,7 +49,6 @@ import org.fenixedu.academic.domain.organizationalStructure.DepartmentUnit;
 import org.fenixedu.academic.domain.organizationalStructure.ScientificAreaUnit;
 import org.fenixedu.academic.domain.organizationalStructure.Unit;
 import org.fenixedu.academic.domain.organizationalStructure.UnitClassification;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.ui.struts.action.base.FenixDispatchAction;
 import org.fenixedu.academic.ui.struts.action.manager.ManagerApplications.ManagerSystemManagementApp;
 import org.fenixedu.academic.util.MultiLanguageString;
@@ -444,7 +444,7 @@ public class ManageAssociatedObjects extends FenixDispatchAction {
     @Atomic
     private void createDepartment(AssociatedObjectsBean bean) {
         Department department = new Department();
-        department.setCompetenceCourseMembersGroup(RoleType.MANAGER);
+        department.setCompetenceCourseMembersGroup(AcademicGroups.MANAGER);
         department.setActive(bean.isActive());
         department.setCode(bean.getCode());
         department.setName(bean.getName());

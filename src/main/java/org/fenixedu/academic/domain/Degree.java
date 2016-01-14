@@ -44,7 +44,6 @@ import org.fenixedu.academic.domain.degree.DegreeType;
 import org.fenixedu.academic.domain.degree.degreeCurricularPlan.DegreeCurricularPlanState;
 import org.fenixedu.academic.domain.degreeStructure.CycleType;
 import org.fenixedu.academic.domain.exceptions.DomainException;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.student.Student;
 import org.fenixedu.academic.domain.studentCurriculum.CurriculumModule;
@@ -321,8 +320,8 @@ public class Degree extends Degree_Base implements Comparable<Degree> {
         if (creator == null) {
             throw new DomainException("DEGREE.degree.curricular.plan.creator.cannot.be.null");
         }
-        if (!RoleType.BOLONHA_MANAGER.isMember(creator.getUser())) {
-            RoleType.BOLONHA_MANAGER.mutator().grant(creator.getUser());
+        if (!AcademicGroups.BOLONHA_MANAGER.isMember(creator.getUser())) {
+            AcademicGroups.BOLONHA_MANAGER.mutator().grant(creator.getUser());
         }
 
         CurricularPeriod curricularPeriod = new CurricularPeriod(duration);

@@ -33,13 +33,13 @@ import org.apache.commons.beanutils.BeanComparator;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Alumni;
 import org.fenixedu.academic.domain.Formation;
 import org.fenixedu.academic.domain.Qualification;
 import org.fenixedu.academic.domain.QueueJob;
 import org.fenixedu.academic.domain.alumni.AlumniReportFile;
 import org.fenixedu.academic.domain.alumni.AlumniReportFileBean;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.student.Registration;
 import org.fenixedu.academic.domain.util.email.EmailBean;
 import org.fenixedu.academic.domain.util.email.Recipient;
@@ -120,7 +120,7 @@ public class AlumniInformationAction extends FenixDispatchAction {
         }
 
         request.setAttribute("chartData", createJsonArray(registrationsByDay));
-        request.setAttribute("statistics1", RoleType.ALUMNI.getMembers().size());
+        request.setAttribute("statistics1", AcademicGroups.ALUMNI.getMembers().size());
         request.setAttribute("statistics2", totalAlumniCount);
         request.setAttribute("statistics3", newAlumniCount);
         request.setAttribute("statistics4", registeredAlumniCount);

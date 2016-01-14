@@ -18,10 +18,10 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.ExecutionSemester;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.Professorship;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.groups.Group;
 
 public class RolePredicates {
@@ -30,21 +30,21 @@ public class RolePredicates {
             new AccessControlPredicate<Object>() {
                 @Override
                 public boolean evaluate(Object domainObject) {
-                    return hasRole(RoleType.ACADEMIC_ADMINISTRATIVE_OFFICE);
+                    return hasRole(AcademicGroups.ACADEMIC_ADMINISTRATIVE_OFFICE);
                 };
             };
 
     public static final AccessControlPredicate<Object> BOLONHA_MANAGER_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.BOLONHA_MANAGER);
+            return hasRole(AcademicGroups.BOLONHA_MANAGER);
         };
     };
 
     public static final AccessControlPredicate<Object> DIRECTIVE_COUNCIL_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object object) {
-            return hasRole(RoleType.DIRECTIVE_COUNCIL);
+            return hasRole(AcademicGroups.DIRECTIVE_COUNCIL);
 
         };
     };
@@ -52,7 +52,7 @@ public class RolePredicates {
     public static final AccessControlPredicate<Object> GEP_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.GEP);
+            return hasRole(AcademicGroups.GEP);
         };
     };
 
@@ -68,7 +68,7 @@ public class RolePredicates {
     public static final AccessControlPredicate<Object> MANAGER_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.MANAGER);
+            return hasRole(AcademicGroups.MANAGER);
         };
     };
 
@@ -83,14 +83,14 @@ public class RolePredicates {
             new AccessControlPredicate<Object>() {
                 @Override
                 public boolean evaluate(Object domainObject) {
-                    return hasRole(RoleType.MASTER_DEGREE_ADMINISTRATIVE_OFFICE);
+                    return hasRole(AcademicGroups.MASTER_DEGREE_ADMINISTRATIVE_OFFICE);
                 };
             };
 
     public static final AccessControlPredicate<Object> OPERATOR_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.OPERATOR);
+            return hasRole(AcademicGroups.OPERATOR);
         };
     };
 
@@ -98,21 +98,21 @@ public class RolePredicates {
             new AccessControlPredicate<Object>() {
                 @Override
                 public boolean evaluate(Object domainObject) {
-                    return hasRole(RoleType.RESOURCE_ALLOCATION_MANAGER);
+                    return hasRole(AcademicGroups.RESOURCE_ALLOCATION_MANAGER);
                 };
             };
 
     public static final AccessControlPredicate<Object> SCIENTIFIC_COUNCIL_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.SCIENTIFIC_COUNCIL);
+            return hasRole(AcademicGroups.SCIENTIFIC_COUNCIL);
         };
     };
 
     public static final AccessControlPredicate<Object> STUDENT_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return hasRole(RoleType.STUDENT);
+            return hasRole(AcademicGroups.STUDENT);
         };
     };
 
@@ -126,7 +126,7 @@ public class RolePredicates {
     public static final AccessControlPredicate<Object> STUDENT_AND_TEACHER_PREDICATE = new AccessControlPredicate<Object>() {
         @Override
         public boolean evaluate(Object domainObject) {
-            return isTeacher() || hasRole(RoleType.STUDENT);
+            return isTeacher() || hasRole(AcademicGroups.STUDENT);
         };
     };
 
@@ -136,7 +136,7 @@ public class RolePredicates {
     }
 
     private static boolean isTeacher() {
-        return hasRole(RoleType.TEACHER) || hasActiveProfessorship();
+        return hasRole(AcademicGroups.TEACHER) || hasActiveProfessorship();
     }
 
     private static boolean hasActiveProfessorship() {

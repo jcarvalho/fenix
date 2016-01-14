@@ -21,11 +21,11 @@
  */
 package org.fenixedu.academic.predicate;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.DegreeCurricularPlan;
 import org.fenixedu.academic.domain.accessControl.AcademicAuthorizationGroup;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
 import org.fenixedu.academic.domain.degreeStructure.Context;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.core.security.Authenticate;
 
@@ -41,7 +41,7 @@ public class ContextPredicates {
                 @Override
                 public boolean evaluate(Context context) {
                     User user = Authenticate.getUser();
-                    if (RoleType.SCIENTIFIC_COUNCIL.isMember(user)) {
+                    if (AcademicGroups.SCIENTIFIC_COUNCIL.isMember(user)) {
                         return true;
                     }
 
@@ -52,7 +52,7 @@ public class ContextPredicates {
                     }
 
                     if (AcademicAuthorizationGroup.get(AcademicOperationType.MANAGE_DEGREE_CURRICULAR_PLANS).isMember(user)
-                            || RoleType.MANAGER.isMember(user) || RoleType.OPERATOR.isMember(user)) {
+                            || AcademicGroups.MANAGER.isMember(user) || AcademicGroups.OPERATOR.isMember(user)) {
                         return true;
                     }
 

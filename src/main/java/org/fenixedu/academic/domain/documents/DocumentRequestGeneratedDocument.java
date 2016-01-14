@@ -18,11 +18,11 @@
  */
 package org.fenixedu.academic.domain.documents;
 
+import org.fenixedu.academic.domain.AcademicGroups;
 import org.fenixedu.academic.domain.Person;
 import org.fenixedu.academic.domain.accessControl.AcademicAuthorizationGroup;
 import org.fenixedu.academic.domain.accessControl.academicAdministration.AcademicOperationType;
 import org.fenixedu.academic.domain.organizationalStructure.Party;
-import org.fenixedu.academic.domain.person.RoleType;
 import org.fenixedu.academic.domain.serviceRequests.AcademicServiceRequest;
 import org.fenixedu.academic.domain.serviceRequests.documentRequests.IDocumentRequest;
 import org.fenixedu.academic.predicate.AccessControl;
@@ -44,7 +44,7 @@ public class DocumentRequestGeneratedDocument extends DocumentRequestGeneratedDo
     @Override
     public boolean isAccessible(User user) {
         return super.isAccessible(user) || AcademicAuthorizationGroup.get(AcademicOperationType.SERVICE_REQUESTS).isMember(user)
-                || (RoleType.RECTORATE.isMember(user) && getSource().hasRegistryCode());
+                || (AcademicGroups.RECTORATE.isMember(user) && getSource().hasRegistryCode());
     }
 
     @Override
