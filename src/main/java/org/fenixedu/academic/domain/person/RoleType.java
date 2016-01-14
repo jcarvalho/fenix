@@ -18,130 +18,85 @@
  */
 package org.fenixedu.academic.domain.person;
 
-import org.fenixedu.academic.util.Bundle;
-import org.fenixedu.bennu.core.domain.User;
+import org.fenixedu.academic.domain.accessControl.ActiveStudentsGroup;
+import org.fenixedu.academic.domain.accessControl.ActiveTeachersGroup;
+import org.fenixedu.academic.domain.accessControl.AllAlumniGroup;
+import org.fenixedu.academic.domain.accessControl.AllCoordinatorsGroup;
+import org.fenixedu.academic.domain.accessControl.CandidateGroup;
+import org.fenixedu.academic.domain.accessControl.ExternalSupervisorGroup;
 import org.fenixedu.bennu.core.groups.DynamicGroup;
 import org.fenixedu.bennu.core.groups.Group;
-import org.fenixedu.bennu.core.i18n.BundleUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import pt.ist.fenixWebFramework.rendererExtensions.util.IPresentableEnum;
+import org.fenixedu.bennu.core.groups.LoggedGroup;
 
 @Deprecated
-public enum RoleType implements IPresentableEnum {
+public interface RoleType {
 
-    MESSAGING("logged"),
+    public static final Group MESSAGING = LoggedGroup.get();
 
-    PERSON("logged"),
+    public static final Group PERSON = LoggedGroup.get();
 
-    STUDENT("activeStudents"),
+    public static final Group STUDENT = new ActiveStudentsGroup();
 
-    TEACHER("activeTeachers"),
+    public static final Group TEACHER = new ActiveTeachersGroup();
 
-    RESEARCHER("#researcher"),
+    public static final Group RESEARCHER = DynamicGroup.get("researcher");
 
-    DEPARTMENT_MEMBER("activeTeachers"),
+    public static final Group DEPARTMENT_MEMBER = TEACHER;
 
-    RESOURCE_ALLOCATION_MANAGER("#resourceAllocationManager"),
+    public static final Group RESOURCE_ALLOCATION_MANAGER = DynamicGroup.get("resourceAllocationManager");
 
     /**
      * @deprecated Use {@link RoleType}.ACADEMIC_ADMINISTRATIVE_OFFICE instead
      */
-    MASTER_DEGREE_ADMINISTRATIVE_OFFICE("#masterDegreeAdmOffice"),
+    @Deprecated
+    public static final Group MASTER_DEGREE_ADMINISTRATIVE_OFFICE = DynamicGroup.get("masterDegreeAdmOffice");
 
-    COORDINATOR("allCoordinators"),
+    public static final Group COORDINATOR = new AllCoordinatorsGroup();
 
-    MANAGER("#managers"),
+    public static final Group MANAGER = DynamicGroup.get("managers");
 
     /**
      * @deprecated Use {@link AcademicAuthorizationGroup#get(AcademicOperationType#MANAGE_DEGREE_CURRICULAR_PLANS)} instead
      */
-    DEGREE_ADMINISTRATIVE_OFFICE_SUPER_USER("#degreeAdmOfficeSudo"),
+    @Deprecated
+    public static final Group DEGREE_ADMINISTRATIVE_OFFICE_SUPER_USER = DynamicGroup.get("degreeAdmOfficeSudo");
 
-    SCIENTIFIC_COUNCIL("#scientificCouncil"),
+    public static final Group SCIENTIFIC_COUNCIL = DynamicGroup.get("scientificCouncil");
 
-    OPERATOR("#operator"),
+    public static final Group OPERATOR = DynamicGroup.get("operator");
 
-    GEP("#gep"),
+    public static final Group GEP = DynamicGroup.get("gep");
 
-    DIRECTIVE_COUNCIL("#directiveCouncil"),
+    public static final Group DIRECTIVE_COUNCIL = DynamicGroup.get("directiveCouncil");
 
-    BOLONHA_MANAGER("#bolonhaManager"),
+    public static final Group BOLONHA_MANAGER = DynamicGroup.get("bolonhaManager");
 
-    SPACE_MANAGER("#spaceManager"),
+    public static final Group SPACE_MANAGER = DynamicGroup.get("spaceManager");
 
-    SPACE_MANAGER_SUPER_USER("#spaceManagerSudo"),
+    public static final Group SPACE_MANAGER_SUPER_USER = DynamicGroup.get("spaceManagerSudo");
 
-    ALUMNI("allAlumni"),
+    public static final Group ALUMNI = new AllAlumniGroup();
 
-    PEDAGOGICAL_COUNCIL("#pedagogicalCouncil"),
+    public static final Group PEDAGOGICAL_COUNCIL = DynamicGroup.get("pedagogicalCouncil");
 
-    CANDIDATE("candidate"),
+    public static final Group CANDIDATE = new CandidateGroup();
 
-    ACADEMIC_ADMINISTRATIVE_OFFICE("#academicAdmOffice"),
+    public static final Group ACADEMIC_ADMINISTRATIVE_OFFICE = DynamicGroup.get("academicAdmOffice");
 
-    LIBRARY("#library"),
+    public static final Group LIBRARY = DynamicGroup.get("library");
 
-    INTERNATIONAL_RELATION_OFFICE("#internationalRelationsOffice"),
+    public static final Group INTERNATIONAL_RELATION_OFFICE = DynamicGroup.get("internationalRelationsOffice");
 
-    EXTERNAL_SUPERVISOR("externalSupervisor"),
+    public static final Group EXTERNAL_SUPERVISOR = new ExternalSupervisorGroup();
 
-    PUBLIC_RELATIONS_OFFICE("#publicRelationsOffice"),
+    public static final Group PUBLIC_RELATIONS_OFFICE = DynamicGroup.get("publicRelationsOffice");
 
-    NAPE("#nape"),
+    public static final Group NAPE = DynamicGroup.get("nape");
 
-    RESIDENCE_MANAGER("#residenceManager"),
+    public static final Group RESIDENCE_MANAGER = DynamicGroup.get("residenceManager");
 
-    RECTORATE("#rectorate"),
+    public static final Group RECTORATE = DynamicGroup.get("rectorate");
 
-    HTML_CAPABLE_SENDER("#htmlCapableSender")
-
-    ;
-
-    private static final Logger logger = LoggerFactory.getLogger(RoleType.class);
-
-    public String getName() {
-        return name();
-    }
-
-    private final Group actualGroup;
-
-    private RoleType(String underlyingGroup) {
-        this.actualGroup = Group.parse(underlyingGroup);
-    }
-
-    public Group actualGroup() {
-        return actualGroup;
-    }
-
-    @Override
-    public String getLocalizedName() {
-        return BundleUtil.getString(Bundle.ENUMERATION, name());
-    }
-
-    public static void grant(RoleType roleType, User user) {
-        Group group = roleType.actualGroup();
-        if (group instanceof DynamicGroup) {
-            DynamicGroup dynamic = (DynamicGroup) group;
-            dynamic.mutator().changeGroup(dynamic.underlyingGroup().grant(user));
-        } else {
-            logger.warn("RoleType '{}' is not manageable!", roleType.name());
-        }
-    }
-
-    public static void revoke(RoleType roleType, User user) {
-        Group group = roleType.actualGroup();
-        if (group instanceof DynamicGroup) {
-            DynamicGroup dynamic = (DynamicGroup) group;
-            dynamic.mutator().changeGroup(dynamic.underlyingGroup().revoke(user));
-        } else {
-            logger.warn("RoleType '{}' is not manageable!", roleType.name());
-        }
-    }
-
-    public boolean isMember(User user) {
-        return actualGroup.isMember(user);
-    }
+    public static final Group HTML_CAPABLE_SENDER = DynamicGroup.get("htmlCapableSender");
 
 }
