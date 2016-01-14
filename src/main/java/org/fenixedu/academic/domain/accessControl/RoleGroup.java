@@ -47,7 +47,7 @@ public class RoleGroup extends FenixGroup {
 
     @Override
     public Set<User> getMembers() {
-        return roleType.actualGroup().getMembers();
+        return roleType.getMembers();
     }
 
     /*
@@ -60,7 +60,7 @@ public class RoleGroup extends FenixGroup {
 
     @Override
     public boolean isMember(User user) {
-        return roleType.actualGroup().isMember(user);
+        return roleType.isMember(user);
     }
 
     /*
@@ -73,7 +73,7 @@ public class RoleGroup extends FenixGroup {
 
     @Override
     public PersistentGroup toPersistentGroup() {
-        return roleType.actualGroup().toPersistentGroup();
+        return roleType.toPersistentGroup();
     }
 
     @Override

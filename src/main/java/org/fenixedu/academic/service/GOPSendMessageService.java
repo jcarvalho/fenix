@@ -70,7 +70,7 @@ public class GOPSendMessageService implements NotificationService {
     private static Sender initGOPSender() {
         for (Sender sender : Sender.getAvailableSenders()) {
             final Group members = sender.getMembers();
-            if (members.equals(RoleType.RESOURCE_ALLOCATION_MANAGER.actualGroup())) {
+            if (members.equals(RoleType.RESOURCE_ALLOCATION_MANAGER)) {
                 return sender;
             }
         }

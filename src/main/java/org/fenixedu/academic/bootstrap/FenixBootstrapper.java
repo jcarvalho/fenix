@@ -268,7 +268,7 @@ public class FenixBootstrapper {
         }
 
         private org.fenixedu.bennu.core.groups.Group getCompetenceCourseMembersGroup() {
-            return RoleType.TEACHER.actualGroup().or(RoleType.MANAGER.actualGroup());
+            return RoleType.TEACHER.or(RoleType.MANAGER);
         }
 
         private String getDepartmentName(final int i) {

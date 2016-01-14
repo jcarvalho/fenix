@@ -44,7 +44,7 @@ public class ScientificCouncilUnit extends ScientificCouncilUnit_Base {
     protected List<Group> getDefaultGroups() {
         List<Group> groups = super.getDefaultGroups();
 
-        groups.add(RoleType.SCIENTIFIC_COUNCIL.actualGroup());
+        groups.add(RoleType.SCIENTIFIC_COUNCIL);
 
         return groups;
     }

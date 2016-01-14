@@ -39,7 +39,7 @@ abstract public class Filtro {
         }
         if (user != null) {
             for (RoleType role : neededRoleTypes) {
-                if (role.actualGroup().isMember(user)) {
+                if (role.isMember(user)) {
                     return true;
                 }
             }

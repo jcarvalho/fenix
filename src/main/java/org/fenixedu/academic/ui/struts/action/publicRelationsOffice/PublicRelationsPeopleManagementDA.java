@@ -49,7 +49,7 @@ public class PublicRelationsPeopleManagementDA extends FenixDispatchAction {
     @EntryPoint
     public ActionForward managePeople(ActionMapping mapping, ActionForm actionForm, HttpServletRequest request,
             HttpServletResponse response) throws FenixServiceException {
-        request.setAttribute("role", RoleType.PUBLIC_RELATIONS_OFFICE.actualGroup());
+        request.setAttribute("role", RoleType.PUBLIC_RELATIONS_OFFICE);
         request.setAttribute("bean", new PersonBean());
         return mapping.findForward("managePeople");
     }

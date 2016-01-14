@@ -41,7 +41,7 @@ public class PedagogicalCouncilUnit extends PedagogicalCouncilUnit_Base {
     protected List<Group> getDefaultGroups() {
         List<Group> groups = super.getDefaultGroups();
 
-        groups.add(RoleType.PEDAGOGICAL_COUNCIL.actualGroup());
+        groups.add(RoleType.PEDAGOGICAL_COUNCIL);
 
         return groups;
     }

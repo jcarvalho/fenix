@@ -159,7 +159,7 @@ public class TeacherGroup extends FenixGroup {
         }
         //by campus
         if (campus != null) {
-            for (User user : RoleType.TEACHER.actualGroup().getMembers()) {
+            for (User user : RoleType.TEACHER.getMembers()) {
                 if (user.getPerson() != null && user.getPerson().getTeacher().teachesAt(campus)) {
                     users.add(user);
                 }

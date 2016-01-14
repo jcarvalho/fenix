@@ -123,7 +123,7 @@ public class AlumniReportFile extends AlumniReportFile_Base {
 
         int count = 0;
 
-        for (User user : RoleType.ALUMNI.actualGroup().getMembers()) {
+        for (User user : RoleType.ALUMNI.getMembers()) {
             Person person = user.getPerson();
             if ((++count % 100) == 0) {
                 logger.info(String.format("Count %s persons", count));

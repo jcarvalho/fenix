@@ -49,7 +49,7 @@ public class CoordinatorSender extends CoordinatorSender_Base {
         addRecipients(createRecipient(current));
         addRecipients(createRecipient(teachers));
         addRecipients(createRecipient(students));
-        addRecipients(createRecipient(RoleType.TEACHER.actualGroup()));
+        addRecipients(createRecipient(RoleType.TEACHER));
         addRecipients(createRecipient(StudentGroup.get()));
         setFromName(createFromName());
     }

@@ -31,7 +31,7 @@ public class SystemSender extends SystemSender_Base {
 
     public SystemSender() {
         super();
-        setMembers(RoleType.MANAGER.actualGroup());
+        setMembers(RoleType.MANAGER);
         setFromAddress(Sender.getNoreplyMail());
         setSystemRootDomainObject(getRootDomainObject());
         setFromName(createFromName());
@@ -42,7 +42,7 @@ public class SystemSender extends SystemSender_Base {
     }
 
     public Recipient getRoleRecipient(RoleType roleType) {
-        final Group roleGroup = roleType.actualGroup();
+        final Group roleGroup = roleType;
         for (Recipient recipient : getRecipientsSet()) {
             final Group members = recipient.getMembers();
             if (roleGroup.equals(members)) {

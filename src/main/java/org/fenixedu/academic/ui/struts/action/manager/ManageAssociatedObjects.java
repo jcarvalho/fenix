@@ -444,7 +444,7 @@ public class ManageAssociatedObjects extends FenixDispatchAction {
     @Atomic
     private void createDepartment(AssociatedObjectsBean bean) {
         Department department = new Department();
-        department.setCompetenceCourseMembersGroup(RoleType.MANAGER.actualGroup());
+        department.setCompetenceCourseMembersGroup(RoleType.MANAGER);
         department.setActive(bean.isActive());
         department.setCode(bean.getCode());
         department.setName(bean.getName());

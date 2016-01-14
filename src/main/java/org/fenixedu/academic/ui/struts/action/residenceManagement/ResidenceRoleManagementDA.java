@@ -66,7 +66,7 @@ public class ResidenceRoleManagementDA extends FenixDispatchAction {
     }
 
     private DynamicGroup getResidenceRoleManagement() {
-        return (DynamicGroup) RoleType.RESIDENCE_MANAGER.actualGroup();
+        return (DynamicGroup) RoleType.RESIDENCE_MANAGER;
     }
 
     private ResidenceRoleManagementBean getResidenceRoleManagementBean() {
